@@ -21,6 +21,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.wiringbits.net"
 # twitter_username: jekyllrb
 github_username:  wiringbits
+google_analytics: UA-65008315-4
 
 # Build settings
 markdown: kramdown
