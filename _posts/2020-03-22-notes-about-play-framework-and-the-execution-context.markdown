@@ -20,7 +20,7 @@ As a summary:
 
 
 ## Avoid the global ExecutionContext
-It should be clear that the global execution context must not be used in any place, while it's common to just add this line while experimenting, you shouldn't it:
+It should be clear that the global execution context must not be used in any place, while it's common to just add this line while experimenting, you shouldn't use it:
 
 ```scala
 import scala.concurrent.ExecutionContext.Implicits.global
