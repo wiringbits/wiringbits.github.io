@@ -13,6 +13,7 @@ We strive for great quality on the software we built, and try to open source eve
 We have experience in several areas, while we specialize in the Web Applications and Blockchain, we have produced browser extensions and even GitHub apps.
 
 These are some of the projects:
+- [CollabUML - The collaborative UML editor](https://collabuml.com)
 - [The Stakenet Block Explorer](https://xsnexplorer.io/)
 - [The Stakenet Orderbook](https://orderbook.stakenet.io/)
 - [Pull Request Attention](https://prattention.com)
