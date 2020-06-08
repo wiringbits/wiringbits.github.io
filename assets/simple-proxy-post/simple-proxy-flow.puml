@@ -1,0 +1,21 @@
+@startuml pi
+title Simple Proxy Flow
+
+participant Website as "wiringbits.net"
+participant Proxy as "Simple Proxy"
+participant Pi as "Raspberry Pi"
+participant Server as "The Scrapping Server"
+
+Pi -> Server : Opens SSH Tunnel
+Server -> Pi : Ack
+
+Pi -> Proxy : Run
+Proxy -> Pi : Ack
+
+Server -> Pi : Scrape wiringbits.net
+Pi -> Proxy : Scrape wiringbits.net
+Proxy -> Website : Issue GET Request
+Website -> Proxy : Response
+Proxy -> Pi : Response
+Pi -> Server : Response
+@enduml
