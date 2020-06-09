@@ -5,7 +5,7 @@ date:   2020-06-07 14:35:32 -0700
 categories: wiringbits
 ---
 
-One of our projects ([cazadescuentos.net](https://cazadescuentos.net)) uses web-scrapping to scan several online stores to find discounts. Lately, we started supporting some stores that seem to block requests coming from common cloud proivdes (like AWS, DigitalOcean, etc), if you are curious, the websites are [BestBuy](https://www.bestbuy.com) and [Costco Mexico](https://www.costco.com.mx).
+One of our projects ([cazadescuentos.net](https://cazadescuentos.net)) uses web-scraping to scan several online stores to find discounts. Lately, we started supporting some stores that seem to block requests coming from common cloud proivdes (like AWS, DigitalOcean, etc), if you are curious, the websites are [BestBuy](https://www.bestbuy.com) and [Costco Mexico](https://www.costco.com.mx).
 
 A popular workaround to mitigate this problem is to pay for a proxy service to scrape these websites, sadly, we weren't able to find a reliable provider that was within our small budget.
 
@@ -33,7 +33,7 @@ The approach is actually very simple:
 - The Raspberry Pi runs a simple HTTP proxy.
 - The Pi is connected to the internet on a router exclusive for it.
 - As the Pi isn't easily accesible from the internet, it opens a SSH tunnel to the server that will connect to the proxy served by the pi.
-- Our scrapper invokes the proxy as if it was running on localhost.
+- Our scraper invokes the proxy as if it was running on localhost.
 
 ![Simple proxy flow](/assets/simple-proxy-post/simple-proxy-flow.png)
 
@@ -62,7 +62,7 @@ It is very likely that if the proxy traffic increases considerably, it will get 
 
 A more scalable approach could be to distribute these proxy devices into different locations, which prevents the SSH tunnel trick from being reasonable.
 
-A possible approach is to use a queue service like AWS SQS/Kafka/etc to push the requests for scrapping a website while the proxy devices could be fighting to consume the next request, if one doesn't complete the job, another one can try.
+A possible approach is to use a queue service like AWS SQS/Kafka/etc to push the requests for scraping a website while the proxy devices could be fighting to consume the next request, if one doesn't complete the job, another one can try.
 
 If you think about it, you don't need a Raspberry Pi, you can even build a very simple Android app serving the same purpose.
 
