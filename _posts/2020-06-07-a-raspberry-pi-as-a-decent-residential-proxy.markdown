@@ -68,5 +68,6 @@ If you think about it, you don't need a Raspberry Pi, you can even build a very 
 
 In any case, this is how the proxy has been running for a couple of months, and I hope it stays like this for a while.
 
+This article has been translated to [Russian](https://softdroid.net/raspberry-pi-kak-dostoynyy-zhiloy-proksi).
 
 Found an error? [We will appreciate if you submit a PR](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-06-07-a-raspberry-pi-as-a-decent-residential-proxy.markdown).
