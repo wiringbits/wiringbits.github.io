@@ -124,7 +124,7 @@ Then, click on the `Show` button that's next to the `App Secret` field
 Now, the actual call:
 
 ```shell
-curl -i -X GET "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=[app-id]&client_secret=[client-secret]&fb_exchange_token=[long-lived-user-access-token]"
+curl -i -X GET "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=[app-id]&client_secret=[client-secret]&fb_exchange_token=[short-lived-user-access-token]"
 ```
 
 The API call returns something like:
