@@ -104,7 +104,7 @@ Flyway.configure()
 You will likely prefer to log or validate the migration result from flyway.
 
 
-### 4. Clean out your code to NOT define the schema constraints
+### 3. Clean out your code to NOT define the schema constraints
 When Hibernate handles the schema evolution, the column definitions should be removed, otherwise, Hibernate schema valdation could fail, for example, let's assume you have a Hibernate entity, like:
 
 ```java
@@ -127,7 +127,7 @@ class DemoEntity {
 
 You can either go and change everything at once, or just change the ones that are causing problems when the application starts.
 
-### 5. Test the integration locally
+### 4. Test the integration locally
 Once the previous steps are ready, you must test the integration carefully, these are the steps we followed.
 
 #### New environment
@@ -150,7 +150,7 @@ This is the most important test because it is how the application will behave on
 There is a potential tricky detail, nn the rare case that you get to work in a database that used flyway in the past, then, started using Hibernate migrations, the best way we found is to delete the flyway control table before running the application (which is done before step `3`).
 
 
-### 6. Deploy your application
+### 5. Deploy your application
 
 Now that you are ready, it is time to deploy the application and make sure it works as expected, just follow what's described in the previous section(see `Existing enviroment` above) but using the production environment/database.
 
