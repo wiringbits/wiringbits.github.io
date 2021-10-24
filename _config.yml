@@ -25,9 +25,12 @@ google_analytics: UA-65008315-4
 
 # Build settings
 markdown: kramdown
-theme: minima
-# plugins:
-#  - jekyll-feed
+remote_theme: jekyll/minima
+plugins:
+ - jekyll-remote-theme@2.5.1
+
+minima:
+  skin: dark
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
