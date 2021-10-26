@@ -32,9 +32,17 @@ permalink: /
     {% for post in site.posts %}
         <div class="post-card">
             <p>{{post.date | date_to_string }}</p>
-            <img alt="test" src="assets/slack.jpg"/>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-            <p>{{post.excerpt }}</p>
+
+            {% if post.post_photo %}
+                <img alt="{{post.title}} photo" src={{post.post_photo}}/>
+            {% else %}
+                <img alt="placeholder" src="assets/post_placeholder.jpg">
+            {% endif %}
+            <a href="{{ post.url }}">
+                <h2>
+                    {{post.title}}
+                </h2>
+            </a>
         </div>
     {% endfor %}
 </div>

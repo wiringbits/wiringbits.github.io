@@ -3,6 +3,7 @@ layout: post
 title:  "Writing a Discord bot for trying to ban scammers"
 date:   2020-07-05 20:35:32 -0700
 categories: wiringbits
+post_photo: /assets/slack.jpg
 ---
 
 One of the projects we are involved in is a cryptocurrency, we contribute mostly to the ecosystem around it, like maintaining it's [Block Explorer](https://xsnexplorer.io), as well as the services behind it's [Decentralized Exchange](https://link.medium.com/aSEA6vMyj7).

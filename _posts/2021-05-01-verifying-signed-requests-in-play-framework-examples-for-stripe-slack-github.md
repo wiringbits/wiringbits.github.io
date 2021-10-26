@@ -3,6 +3,7 @@ layout: post
 title:  "Verifying signed requests in Play Framework | examples for Stripe/Slack/Github"
 date:   2021-05-01 09:35:32 -0700
 categories: scala playframework
+post_photo: /assets/slack.jpg
 ---
 
 Verifying a signed request is a common task when you work with services that require a webhook integration, this post covers how to do that with Play Framework, with examples for some polular services, Github, Stripe, and Slack.

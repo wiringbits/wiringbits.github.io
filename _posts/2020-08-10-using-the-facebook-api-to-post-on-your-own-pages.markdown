@@ -3,6 +3,7 @@ layout: post
 title:  "Using the Facebook API to post on your own pages"
 date:   2020-08-10 20:35:32 -0700
 categories: wiringbits
+post_photo: /assets/slack.jpg
 ---
 
 The reason to write this post, it's because I found tricky to use the Facebook API to publish on my own pages.

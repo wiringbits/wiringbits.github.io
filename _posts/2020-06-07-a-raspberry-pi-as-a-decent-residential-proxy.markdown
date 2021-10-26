@@ -3,6 +3,7 @@ layout: post
 title:  "A Raspberry Pi as a decent residential proxy"
 date:   2020-06-07 14:35:32 -0700
 categories: wiringbits
+post_photo: /assets/slack.jpg
 ---
 
 One of our projects ([cazadescuentos.net](https://cazadescuentos.net)) uses web-scraping to scan several online stores to find discounts. Lately, we started supporting some stores that seem to block requests coming from common cloud proivdes (like AWS, DigitalOcean, etc), if you are curious, the websites are [BestBuy](https://www.bestbuy.com) and [Costco Mexico](https://www.costco.com.mx).

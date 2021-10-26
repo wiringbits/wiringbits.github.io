@@ -3,6 +3,7 @@ layout: post
 title:  "Using an HTTP proxy on Play Framework's WSClient"
 date:   2021-01-10 20:35:32 -0700
 categories: scala
+post_photo: /assets/slack.jpg
 ---
 
 If you ever had the need to use http proxies from your JVM-based apps, you likely faced the pain involed with the Java [Authenticator](https://docs.oracle.com/javase/8/docs/api/java/net/Authenticator.html). Gladly, [Play Framework's WSClient](https://www.playframework.com/documentation/2.8.x/ScalaWS) has a cleaner way/

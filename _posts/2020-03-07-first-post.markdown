@@ -3,6 +3,7 @@ layout: post
 title:  "The history begins"
 date:   2020-03-07 14:35:32 -0700
 categories: wiringbits
+post_photo: /assets/slack.jpg
 ---
 
 While wiringbits has been around unoficcially for years, it has been formally there since Jan/2019.
