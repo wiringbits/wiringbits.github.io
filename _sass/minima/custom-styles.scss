@@ -1,0 +1,113 @@
+a:hover {
+    text-decoration: none;
+}
+
+.wrapper {
+    max-width: 65%;
+}
+
+.site-title {
+    img {
+        max-width: 40%;
+        padding: 12.5px 0;
+    }
+}
+
+.logo-pattern {
+    background-color: black;
+    color: white;
+
+    .logo-pattern-wrapper {
+        @extend .wrapper;
+        max-width: 82.5%;
+        margin-right: 0;
+        padding: 0;
+    }
+}
+
+.page-link {
+    font-weight: bold;
+    font-size: 18px;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+
+    .flex-left {
+        flex: 45%;
+        margin: auto;
+        h1 {
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+        h3 {
+            line-height: 1.6;
+        }
+    }
+
+    .flex-right {
+        flex: 55%;
+        max-width: 60%;
+    }
+}
+
+.contact-button {
+    padding: 15px 20px;
+    color: white;
+    border-radius: 5px;
+    background-color: #3399ff;
+    transition: background-color 350ms ease-out 100ms;
+    font-weight: bold;
+
+    &:visited {
+        color: white;
+    }
+
+    &:hover {
+        color: inherit;
+        background-color: #58a8f8;
+    }
+}
+
+.company-logos {
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0 0 20px 0;
+
+    a {
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    img {
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.posts {
+    column-count: 3;
+}
+
+.post-card {
+    margin: 15px;
+    padding: 15px;
+
+    background-color: #eeeeee;
+
+    p:first-child {
+        color: grey;
+    }
+
+    img {
+        object-fit: cover;
+        padding: 0 0 5px 0;
+    }
+}
