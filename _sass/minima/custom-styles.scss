@@ -129,9 +129,9 @@ a:hover {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .logo-pattern {
-    .logo-pattern.home-wrapper {
+    .logo-pattern-wrapper {
       max-width: 92.5%;
     }
   }
@@ -151,7 +151,7 @@ a:hover {
   }
 
   #posts {
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 50%);
   }
 }
 
@@ -179,7 +179,7 @@ a:hover {
     min-height: 70%;
   }
 
-  .logo-pattern.home-wrapper {
+  .logo-pattern-wrapper {
     max-width: 90%;
   }
 
@@ -192,6 +192,13 @@ a:hover {
 
     a {
       padding: 20px 0;
+
+      img {
+        max-width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 
