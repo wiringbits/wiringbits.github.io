@@ -20,18 +20,21 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://wiringbits.net"
 # twitter_username: jekyllrb
-github_username:  wiringbits
+github_username: wiringbits
 google_analytics: UA-65008315-4
 
 # Build settings
 markdown: kramdown
 remote_theme: jekyll/minima
 plugins:
- - jekyll-remote-theme@2.5.1
+  - jekyll-remote-theme@2.5.1
 
 minima:
-  skin: dark
+  skin: classic
 
+sass:
+  sass_dir: _sass
+  style: compressed
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

@@ -1,0 +1,50 @@
+---
+layout: default
+title: Home
+permalink: /
+---
+
+<div class="company-logos">
+    <a href="https://kueski.com">
+        <img alt="kueski logo" src="assets/home/company_logos/kueski.png"/>
+    </a>
+
+    <a href="https://stakenet.io">
+        <img alt="stakenet logo" src="assets/home/company_logos/stakenet.png"/>
+    </a>
+
+
+    <a href="https://iohk.io">
+        <img alt="iohk logo" src="assets/home/company_logos/iohk.png"/>
+    </a>
+
+    <a href="https://www.samsung.com/us/ssic/">
+        <img alt="samsung logo" src="assets/home/company_logos/samsung.png"/>
+    </a>
+    <a href="https://www.coppel.com">
+        <img alt="coppel logo" src="assets/home/company_logos/coppel.png"/>
+    </a>
+
+    <a href="https://www.oracle.com/mx">
+        <img alt="oracle logo" src="assets/home/company_logos/oracle.png"/>
+    </a>
+</div>
+
+<div id="posts">
+    {% for post in site.posts %}
+        <div class="post-card">
+            <p>{{post.date | date_to_string }}</p>
+
+            {% if post.post_photo %}
+                <img alt="{{post.title}} photo" src={{post.post_photo}}/>
+            {% else %}
+                <img alt="placeholder" src="assets/home/post_placeholder.jpg">
+            {% endif %}
+            <a href="{{ post.url }}">
+                <h2>
+                    {{post.title}}
+                </h2>
+            </a>
+        </div>
+    {% endfor %}
+</div>
