@@ -5,6 +5,7 @@ a:hover {
 
 .wrapper {
   max-width: 65%;
+  padding: 0;
 }
 
 // nav
@@ -34,7 +35,7 @@ a:hover {
   color: white;
 
   .logo-pattern-wrapper {
-    @extend .wrapper;
+    margin-left: auto;
     max-width: 82.5%;
     margin-right: 0;
     padding: 0;
@@ -48,11 +49,15 @@ a:hover {
   .flex-right {
     flex: 55%;
     max-width: 60%;
+    object-fit: contain;
+    margin-bottom: auto;
   }
 
   .flex-left {
     flex: 45%;
     margin: auto;
+    padding: 10px 10px 10px 0;
+
     h1 {
       line-height: 1.2;
       font-weight: bold;
@@ -116,8 +121,86 @@ a:hover {
   }
 
   img {
+    object-fit: contain;
     padding: 0 0 5px 0;
-    height: 60%;
     width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .logo-pattern {
+    .logo-pattern-wrapper {
+      max-width: 92.5%;
+    }
+  }
+
+  .flex-container {
+    .flex-right {
+      flex: 45%;
+    }
+
+    .flex-left {
+      flex: 55%;
+    }
+  }
+
+  .wrapper {
+    max-width: 85%;
+  }
+
+  #posts {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 1000px) {
+  .flex-container {
+    .flex-right {
+      flex: 30%;
+      max-width: 50%;
+    }
+
+    .flex-left {
+      flex: 70%;
+      padding: 20px 20px 20px 0;
+    }
+  }
+}
+
+@media (max-width: 799px) {
+  .flex-right {
+    scale: 0;
+  }
+
+  .logo-pattern {
+    padding: 20px 0;
+    min-height: 70%;
+  }
+
+  .logo-pattern-wrapper {
+    max-width: 90%;
+  }
+
+  .wrapper {
+    max-width: 90%;
+  }
+
+  .company-logos {
+    flex-wrap: wrap;
+
+    a {
+      padding: 20px 0;
+    }
+  }
+
+  #posts {
+    grid-template-columns: auto;
+  }
+
+  .post-card {
+    margin: 10px 0;
+    h2 {
+      font-size: 25px;
+    }
   }
 }
