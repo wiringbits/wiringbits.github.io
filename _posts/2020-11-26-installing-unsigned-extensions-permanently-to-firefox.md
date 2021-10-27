@@ -3,7 +3,6 @@ layout: post
 title:  "Installing unsigned extensions permanently to Firefox"
 date:   2020-11-26 20:35:32 -0700
 categories: browser-extensions
-post_photo: /assets/slack.jpg
 ---
 
 If you have worked with browser extension on Firefox, you likely go to `about:debugging` for installing the extensions temporary, while useful for development, the extension gets removed once Firefox restarts.

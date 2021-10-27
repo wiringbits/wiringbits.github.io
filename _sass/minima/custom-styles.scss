@@ -3,7 +3,8 @@ a:hover {
   text-decoration: none;
 }
 
-.wrapper {
+.home-wrapper {
+  @extend .wrapper;
   max-width: 65%;
   padding: 0;
 }
@@ -21,7 +22,6 @@ a:hover {
 }
 
 .page-link {
-  font-weight: bold;
   font-size: 18px;
 
   &:hover {
@@ -59,12 +59,14 @@ a:hover {
     padding: 10px 10px 10px 0;
 
     h1 {
-      line-height: 1.2;
+      line-height: 1.3;
       font-weight: bold;
     }
 
     h3 {
       line-height: 1.6;
+      word-spacing: -1px;
+      padding: 10px 0;
     }
   }
 }
@@ -129,7 +131,7 @@ a:hover {
 
 @media (max-width: 1100px) {
   .logo-pattern {
-    .logo-pattern-wrapper {
+    .logo-pattern.home-wrapper {
       max-width: 92.5%;
     }
   }
@@ -144,7 +146,7 @@ a:hover {
     }
   }
 
-  .wrapper {
+  .home-wrapper {
     max-width: 85%;
   }
 
@@ -177,11 +179,11 @@ a:hover {
     min-height: 70%;
   }
 
-  .logo-pattern-wrapper {
+  .logo-pattern.home-wrapper {
     max-width: 90%;
   }
 
-  .wrapper {
+  .home-wrapper {
     max-width: 90%;
   }
 

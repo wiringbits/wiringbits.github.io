@@ -3,7 +3,6 @@ layout: post
 title:  "From Hibernate schema generation to Flyway in existing applications"
 date:   2021-07-25 09:35:32 -0700
 categories: java
-post_photo: /assets/slack.jpg
 ---
 
 Recently, we got to work in a couple of Java projects that depend on Hibernate to evolve the production SQL schema, this post explains the approach we followed in order to move to [Flyway](https://flywaydb.org/).

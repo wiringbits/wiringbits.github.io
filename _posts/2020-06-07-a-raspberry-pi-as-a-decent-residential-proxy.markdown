@@ -3,7 +3,6 @@ layout: post
 title:  "A Raspberry Pi as a decent residential proxy"
 date:   2020-06-07 14:35:32 -0700
 categories: wiringbits
-post_photo: /assets/slack.jpg
 ---
 
 One of our projects ([cazadescuentos.net](https://cazadescuentos.net)) uses web-scraping to scan several online stores to find discounts. Lately, we started supporting some stores that seem to block requests coming from common cloud proivdes (like AWS, DigitalOcean, etc), if you are curious, the websites are [BestBuy](https://www.bestbuy.com) and [Costco Mexico](https://www.costco.com.mx).
@@ -12,7 +11,7 @@ A popular workaround to mitigate this problem is to pay for a proxy service to s
 
 Hence, we ended up building our own residential proxy, right now being powered by an old Raspberry Pi model B, it's worth adding that it wasn't as simple as we expected, specially keeping the SSH tunnel available (more on this below).
 
-![The PI](/assets/simple-proxy-post/rpi-simple-proxy.jpg)
+![The PI](/assets/posts/simple-proxy/rpi-simple-proxy.jpg)
 
 ## Try it
 If you like to jump directly to the code or to play with it, we have open sourced the [simple-http-proxy](https://github.com/wiringbits/simple-http-proxy).
@@ -36,7 +35,7 @@ The approach is actually very simple:
 - As the Pi isn't easily accesible from the internet, it opens a SSH tunnel to the server that will connect to the proxy served by the pi.
 - Our scraper invokes the proxy as if it was running on localhost.
 
-![Simple proxy flow](/assets/simple-proxy-post/simple-proxy-flow.png)
+![Simple proxy flow](/assets/posts/simple-proxy/simple-proxy-flow.png)
 
 
 ## About security

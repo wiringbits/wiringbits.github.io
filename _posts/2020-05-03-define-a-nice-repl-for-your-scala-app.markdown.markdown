@@ -3,7 +3,6 @@ layout: post
 title:  "Define a nice repl for your scala app"
 date:   2020-05-03 14:35:32 -0700
 categories: scala
-post_photo: /assets/slack.jpg
 ---
 
 In this short post, I would like to explain how to use `sbt console` as a nice repl for your app, which is a common practice in interpreted languages (like Ruby, Python, JavaScript), I have been willing to do something similar on Scala for a while but until today I actually tried, gladly, it's surprisignly simple.

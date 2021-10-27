@@ -3,7 +3,6 @@ layout: post
 title:  "Notes about Play Framework and the ExecutionContext"
 date:   2020-03-22 14:35:32 -0700
 categories: scala playframework
-post_photo: /assets/slack.jpg
 ---
 
 In Scala, we talk a lot about non-blocking or asynchronous operations, and while using [Play Framework](https://www.playframework.com), you are encouraged to use those, which forces you to deal with `Future[T]` and its tightly coupled dependency, the `ExecutionContext`.
