@@ -3,6 +3,7 @@ layout: post
 title:  "Parsing postgres citext type from anorm"
 date:   2021-02-14 12:35:32 -0700
 categories: scala
+post_photo: assets/posts/parsing-postgres-citext/post_photo.jpg
 ---
 
 When working with Play Framework, using [anorm](https://playframework.github.io/anorm/) for the database layer is a common choice, while its a pretty handy library, it doesn't support lots of custom postgres features, like parsing results that use the [citext extension](https://www.postgresql.org/docs/current/citext.html). This post shows how to parse such `CITEXT` types.
