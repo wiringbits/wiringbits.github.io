@@ -3,6 +3,7 @@ layout: post
 title:  "Using the Facebook API to post on your own pages"
 date:   2020-08-10 20:35:32 -0700
 categories: wiringbits
+post_photo : assets/posts/using-facebook-api/post_photo.jpg
 ---
 
 The reason to write this post, it's because I found tricky to use the Facebook API to publish on my own pages.
@@ -32,7 +33,7 @@ You can't get a token unless you create an app, which is done on [developers.fac
 - Who can use this app? `Just me`.
 - Do you have a business managed account? `No` (in my case, I'm able to choose my page, but I had issues when choosing it).
 
-![img](/assets/facebook-pages-api-post/fb-create-app.png)
+![img](/assets/posts/facebook-pages-api/fb-create-app.png)
 
 Now just click on `Create App Id`, which requires you to solve a Captcha, after that, you should get your `App id` (take a note of it for later).
 
@@ -52,16 +53,16 @@ On the right, choose these options, and then, click on the `Generate Access Toke
 - Facebook App: `[Your app]`.
 - User or Page: `Get Token`.
 
-![img](/assets/facebook-pages-api-post/fb-graph-api-default-options.png)
+![img](/assets/posts/facebook-pages-api/fb-graph-api-default-options.png)
 <br/><br/>
 
 
 A popup should open, asking you for permission to login, which you should approve:
-![img](/assets/facebook-pages-api-post/fb-login-to-get-first-token.png)
+![img](/assets/posts/facebook-pages-api/fb-login-to-get-first-token.png)
 <br/><br/>
 
 The `Access Token` field now displays a long token, and, the `Permissions` lists includes `public_profile` only.
-![img](/assets/facebook-pages-api-post/fb-first-token.png)
+![img](/assets/posts/facebook-pages-api/fb-first-token.png)
 <br/><br/>
 
 
@@ -71,12 +72,12 @@ The `Access Token` field now displays a long token, and, the `Permissions` lists
 ### Add permissions to your short-lived user access token
 Assuming you are on the previous screen, click on the `Add a Permission` option, select `Events Groups Pages`, and then, choose `pages_manage_posts`, click on `Generate Access Token` again (note, that's the only permission I need to post on my page, if you plan to do something else, make sure to review which permissions you need to do that).
 
-![img](/assets/facebook-pages-api-post/fb-add-permission.png)
+![img](/assets/posts/facebook-pages-api/fb-add-permission.png)
 <br/><br/>
 
 You will be required to authorize the login again, but now, you are asked about which pages you will authorize to be managed by this token, choose your own, and click on `Next`.
 
-![img](/assets/facebook-pages-api-post/fb-authorize-page.png)
+![img](/assets/posts/facebook-pages-api/fb-authorize-page.png)
 <br/><br/>
 
 This time, you get a warning about Facebook not approving the permissions, the text being:
@@ -89,13 +90,13 @@ Submit for review now or learn more.
 
 Just ignore the warning, make sure the permission for creating content on the page is enabled, and, click on `Done`.
 
-![img](/assets/facebook-pages-api-post/fb-authorize-page-warning.png)
+![img](/assets/posts/facebook-pages-api/fb-authorize-page-warning.png)
 <br/><br/>
 
 
 Now you get a confirmation that your app got linked to your page, there is a hyperlink where you could go to remove such integration if you ever need to, click on the `Ok` button to close the popup.
 
-![img](/assets/facebook-pages-api-post/fb-app-linked.png)
+![img](/assets/posts/facebook-pages-api/fb-app-linked.png)
 <br/><br/>
 
 
@@ -112,13 +113,13 @@ Let's replace the following placeholders and invoke this API:
 
 To get the client secret, go to your app dashboard, which you can choose on the [My Apps](https://developers.facebook.com/apps/) menu, then, choose `Settings -> Basic` on the left menu:
 
-![img](/assets/facebook-pages-api-post/fb-app-settings.png)
+![img](/assets/posts/facebook-pages-api/fb-app-settings.png)
 <br/><br/>
 
 Then, click on the `Show` button that's next to the `App Secret` field 
 (you will likely need to enter your Facebook password to authenticate), that's your `[client-secret]`, use it on the next API call (I believe this is only available once you generated your first token, otherwise, the `App Secret` isn't available).
 
-![img](/assets/facebook-pages-api-post/fb-app-settings-basic.png)
+![img](/assets/posts/facebook-pages-api/fb-app-settings-basic.png)
 <br/><br/>
 
 Now, the actual call:
