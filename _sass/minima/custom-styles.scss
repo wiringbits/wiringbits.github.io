@@ -123,9 +123,10 @@ a:hover {
   }
 
   img {
-    object-fit: contain;
-    padding: 0 0 5px 0;
     width: 100%;
+    object-fit: cover;
+    height: 50%;
+    padding: 0 0 5px 0;
   }
 }
 

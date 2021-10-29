@@ -3,6 +3,7 @@ layout: post
 title:  "Reading fingerprints from devices on webapps"
 date:   2020-03-20 14:35:32 -0700
 categories: wiringbits
+post_photo: assets/posts/reading-fingerprint/post_photo.png
 ---
 
 Have you ever wondered how can you read a fingerprint from a device on a web app? If you are an experienced engineer, you may think it's obvious, but long time ago, it wasn't obvious to me that I ended up asking on [stackoverflow](https://stackoverflow.com/questions/25511693/how-to-capture-fingerprint-using-html-and-verifinger), and based on my experience, I wasn't alone.
