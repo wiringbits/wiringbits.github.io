@@ -36,7 +36,7 @@ permalink: /
             <p>{{post.date | date_to_string }}</p>
 
             {% if post.post_photo %}
-                <img alt="{{post.title}} photo" src={{post.post_photo}}/>
+                <img alt="{{post.title}} photo" src={{post.post_photo}}>
             {% else %}
                 <img alt="placeholder" src="assets/home/post_placeholder.jpg">
             {% endif %}
