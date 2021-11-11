@@ -159,5 +159,3 @@ Of course, the same remarks from Stripe/Slack apply.
 
 ## More
 By now, you should understand that the key point while verifying a signed request is to get the same data that was sent to you, which is simpler when parsing the request as bytes.
-
-The source code for this page can be found [here](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2021-05-01-verifying-signed-requests-in-play-framework-examples-for-stripe-slack-github.md).

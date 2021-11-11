@@ -19,5 +19,3 @@ A year ago (2019), we were required to do such a similar task, and one of junior
 The way to use this app, it's to run it locally on the users' computer, which allows your web app to read the fingerprint by asking the local server to do so.
 
 Hopefully it can help anyone that's stuck on this common task.
-
-Found an error? [Submit a PR](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-03-20-reading-fingerprints-from-devices-on-webapps.markdown).

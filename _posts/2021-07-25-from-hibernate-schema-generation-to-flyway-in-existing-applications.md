@@ -160,5 +160,3 @@ Now that you are ready, it is time to deploy the application and make sure it wo
 
 ## More
 I hope that this could be useful for people getting into a similar problem, when we got to deal with it, I didn't found a detailed explanation on how to proceed.
-
-The source code for this page can be found [here](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2021-07-25-from-hibernate-schema-generation-to-flyway-in-existing-applications.md).
