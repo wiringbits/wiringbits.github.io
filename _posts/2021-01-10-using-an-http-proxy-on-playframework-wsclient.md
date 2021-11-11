@@ -27,5 +27,3 @@ def f(ws: WSClient) = {
 ```
 
 That's it, far simpler than dealing with the Java way.
-
-The source code for this page can be found [here](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2021-01-10-using-an-http-proxy-on-playframework-wsclient.md).

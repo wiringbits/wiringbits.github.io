@@ -61,5 +61,3 @@ Hopefully this will reduce the number of scams on our community, and even better
 
 ### Discussions:
 - [Hackernews](https://news.ycombinator.com/item?id=23747592)
-
-Found an error? [We will appreciate if you submit a PR](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-07-05-writing-a-discord-bot-for-trying-to-ban-scammers.markdown).

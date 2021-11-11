@@ -33,5 +33,3 @@ Then, open a terminal to invoke `run-proxy`, and then, open another terminal to 
 ## More
 
 If you don't have any server to use as a proxy, [vultr](https://www.vultr.com) has servers starting from $2.50 and the [AWS free tier](https://aws.amazon.com/free/) includes EC2 instances that are enough.
-
-The source code for this page can be found [here](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2021-11-10-run-chrome-with-your-own-ssh-proxy.md).

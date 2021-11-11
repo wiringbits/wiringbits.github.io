@@ -41,6 +41,3 @@ If you have enabled the fatal-warnings compiler option (and most likely you shou
 val consoleDisabledOptions = Seq("-Xfatal-warnings", "-Ywarn-unused", "-Ywarn-unused-import")
 scalacOptions in (Compile, console) ~= (_ filterNot consoleDisabledOptions.contains)
 ```
-
-
-Found an error? [We will appreciate if you submit a PR](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-05-03-define-a-nice-repl-for-your-scala-app.markdown.markdown).
