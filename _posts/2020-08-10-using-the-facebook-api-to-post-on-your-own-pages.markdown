@@ -180,6 +180,3 @@ The page token we got should says:
 It's worth that you check the official [docs](https://developers.facebook.com/docs/pages/overview) for the pages API.
 
 Also, note that no one besides you will be able to see what you post until you switch to the live mode, by default your app is on development mode, see the official [docs](https://developers.facebook.com/docs/apps/#development-mode) for more details, once you switch to live mode, the token won't work unless your app has been verified.
-
-<br/>
-Found an error? [We will appreciate if you submit a PR](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-08-10-using-the-facebook-api-to-post-on-your-own-pages.markdown).

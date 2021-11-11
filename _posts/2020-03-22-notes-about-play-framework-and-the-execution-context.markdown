@@ -123,8 +123,3 @@ This is the approach we use for our projects, feel free to check these examples:
 - [DatabaseExecutionContext](https://github.com/X9Developers/block-explorer/blob/develop/server/app/com/xsn/explorer/executors/DatabaseExecutionContext.scala)
 - [ExecutorsModule](https://github.com/X9Developers/block-explorer/blob/develop/server/app/com/xsn/explorer/modules/ExecutorsModule.scala)
 - [The executors for testing](https://github.com/X9Developers/block-explorer/blob/develop/server/test/com/xsn/explorer/helpers/Executors.scala)
-
-
-
-
-Found an error? [We will appreciate if you submit a PR](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-03-22-notes-about-play-framework-and-the-execution-context.markdown).

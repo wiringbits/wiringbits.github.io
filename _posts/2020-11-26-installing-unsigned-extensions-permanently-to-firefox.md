@@ -45,5 +45,3 @@ Go to `about:addons`, and choose the `Install Add-on from file` option, choose t
 Go to `about:config`, change `xpinstall.signatures.required` to `true`.
 
 That's it, you have installed an unsigned extension permanently.
-
-The source code for this page can be found [here](https://github.com/wiringbits/wiringbits.github.io/blob/master/_posts/2020-11-26-installing-unsigned-extensions-permanently-to-firefox.md).
