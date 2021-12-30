@@ -17,7 +17,7 @@ As a summary:
 - Avoid using the default `ExecutionContext` for everything.
 - Avoid specific execution contexts that depend on akka, use a base trait instead.
 - Ensure that your specific execution contexts are singletons.
-- Ensure your tests use you specific execution contexts to avoid runtime errors.
+- Ensure your tests use your specific execution contexts to avoid runtime errors.
 
 
 ## Avoid the global ExecutionContext
