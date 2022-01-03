@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The history begins"
+title:  "The story begins"
 date:   2020-03-07 14:35:32 -0700
 categories: wiringbits
 post_photo: assets/posts/history-begins/post_photo.jpg
