@@ -13,7 +13,6 @@ permalink: /
         <img alt="stakenet logo" src="assets/home/company_logos/stakenet.png"/>
     </a>
 
-
     <a href="https://iohk.io">
         <img alt="iohk logo" src="assets/home/company_logos/iohk.png"/>
     </a>
@@ -30,6 +29,8 @@ permalink: /
     </a>
 </div>
 
+{% include testimonials.html %}
+
 <div id="posts">
     {% for post in site.posts %}
         <div class="post-card">
@@ -40,6 +41,7 @@ permalink: /
             {% else %}
                 <img alt="placeholder" src="assets/home/post_placeholder.jpg">
             {% endif %}
+
             <a href="{{ post.url }}">
                 <h2>
                     {{post.title}}

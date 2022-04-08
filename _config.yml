@@ -46,3 +46,20 @@ sass:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+testimonials:
+  - testimonial:
+      author: Author
+      position: Position
+      description: Description
+      image: assets/home/testimonials/reviewer/1.png
+  - testimonial:
+      author: Author
+      position: Position
+      description: Description
+      image: assets/home/testimonials/reviewer/1.png
+  - testimonial:
+      author: Author
+      position: Position
+      description: Description
+      image: assets/home/testimonials/reviewer/1.png
