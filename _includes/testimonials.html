@@ -5,15 +5,18 @@
 
 <div id="testimonials-cards">
     {% for testimonial in site.testimonials %}
-        <!-- TODO: Avoid writing testimonial.testimonial -->
         <div class="testimonial-card">
             <div class="testimonial-image-column">
-                <img src="{{ testimonial.testimonial.image }}" alt="{{ testimonial.testimonial.author }} reviewer photo" class="testimonial-card-image">
+                {% if testimonial.image %}
+                    <img src="{{ testimonial.image }}" alt="{{ testimonial.author }} reviewer photo" class="testimonial-card-image">
+                {% else %}
+                    <img src="assets/home/testimonials/reviewer/placeholder.png" alt="{{ testimonial.author }} reviewer photo" class="testimonial-card-image">
+                {% endif %}
             </div>
             <div class="testimonial-text-column">
-                <p class="testimonial-author">{{ testimonial.testimonial.author }}</p>
-                <p>{{ testimonial.testimonial.position }}</p>
-                <p class="testimonial-text">{{ testimonial.testimonial.description }}</p>
+                <p class="testimonial-author">{{ testimonial.author }}</p>
+                <p>{{ testimonial.position }}</p>
+                <p class="testimonial-text">{{ testimonial.description }}</p>
             </div>
         </div>
     {% endfor %}
@@ -24,6 +27,6 @@
 <script type="text/javascript" src="assets/slick/slick.min.js"></script>
 <script>
     $(document).ready(function() { 
-        $('#testimonials-cards').slick({infinite: true, dots: true});
+        $('#testimonials-cards').slick({ infinite: true, dots: true, autoplay: true, autoplaySpeed: 2000 });
     });
 </script>

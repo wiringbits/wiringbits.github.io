@@ -48,18 +48,12 @@ sass:
 #   - vendor/ruby/
 
 testimonials:
-  - testimonial:
-      author: Author
-      position: Position
-      description: Description
-      image: assets/home/testimonials/reviewer/1.png
-  - testimonial:
-      author: Author
-      position: Position
-      description: Description
-      image: assets/home/testimonials/reviewer/1.png
-  - testimonial:
-      author: Author
-      position: Position
-      description: Description
-      image: assets/home/testimonials/reviewer/1.png
+  - author: Author
+    position: Position
+    description: Description 
+  - author: Author
+    position: Position
+    description: Description
+  - author: Author
+    position: Position
+    description: Description
