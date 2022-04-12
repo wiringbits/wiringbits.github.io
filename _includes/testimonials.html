@@ -15,7 +15,7 @@
             </div>
             <div class="testimonial-text-column">
                 <p class="testimonial-author">{{ testimonial.author }}</p>
-                <p>{{ testimonial.position }}</p>
+                <p class="testimonial-position">{{ testimonial.position }}</p>
                 <p class="testimonial-text">{{ testimonial.description }}</p>
             </div>
         </div>
@@ -27,6 +27,6 @@
 <script type="text/javascript" src="assets/slick/slick.min.js"></script>
 <script>
     $(document).ready(function() { 
-        $('#testimonials-cards').slick({ infinite: true, dots: true, autoplay: true, autoplaySpeed: 10000 });
+        $("#testimonials-cards").slick({ infinite: true, dots: true, autoplay: true, autoplaySpeed: 10000 });
     });
 </script>
