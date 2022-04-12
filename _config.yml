@@ -48,12 +48,11 @@ sass:
 #   - vendor/ruby/
 
 testimonials:
-  - author: Author
-    position: Position
-    description: Description 
-  - author: Author
-    position: Position
-    description: Description
-  - author: Author
-    position: Position
-    description: Description
+  - author: Michael Bruny-Groth
+    position: Logo Package Founder
+    description: Alexis at Wiringbits has assembled a great team of development talent. Our project included web app development and niche Adobe extension development. We were delighted with the quality of service we received and would not hesitate to recommend Wiringbits for any web or software development.
+    image: assets/home/testimonials/reviewer/michael-bruny.jpg
+  - author: Cesar Diaz
+    position: Bowhead Health CTO
+    description: Wiringbits mobile development service was super helpful, they allowed us to extend the team in a very short time. Their availability to support us exceeded our expectations, they were able to add redundancy to the team in an emergency case, additionally they were always in constant communication with the Bowhead team in a professional and friendly way.
+    image: assets/home/testimonials/reviewer/cesar-diaz.jpg
