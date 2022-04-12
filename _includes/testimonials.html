@@ -1,0 +1,32 @@
+<h3 id="testimonials">Testimonials</h3>
+
+<link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css"/>
+
+<div id="testimonials-cards">
+    {% for testimonial in site.testimonials %}
+        <div class="testimonial-card">
+            <div class="testimonial-image-column">
+                {% if testimonial.image %}
+                    <img src="{{ testimonial.image }}" alt="{{ testimonial.author }} reviewer photo" class="testimonial-card-image">
+                {% else %}
+                    <img src="assets/home/testimonials/reviewer/placeholder.png" alt="{{ testimonial.author }} reviewer photo" class="testimonial-card-image">
+                {% endif %}
+            </div>
+            <div class="testimonial-text-column">
+                <p class="testimonial-author">{{ testimonial.author }}</p>
+                <p class="testimonial-position">{{ testimonial.position }}</p>
+                <p class="testimonial-text">{{ testimonial.description }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript" src="assets/jquery/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="assets/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function() { 
+        $("#testimonials-cards").slick({ infinite: true, dots: true, autoplay: true, autoplaySpeed: 10000 });
+    });
+</script>

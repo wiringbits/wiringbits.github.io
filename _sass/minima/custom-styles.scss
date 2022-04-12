@@ -94,7 +94,7 @@ a:hover {
   justify-content: space-evenly;
   display: flex;
   flex-wrap: nowrap;
-  padding: 0 0 20px 0;
+  padding-bottom: 40px;
 
   a {
     padding: 0 10px;
@@ -128,6 +128,63 @@ a:hover {
     height: 50%;
     padding: 0 0 5px 0;
   }
+}
+
+#testimonials {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#testimonials-cards {
+  max-width: 50%;
+  margin: 5px auto 30px auto;
+}
+
+// carousel arrow color
+.slick-prev::before,
+.slick-next::before {
+  color: black !important;
+}
+
+.testimonial-card {
+  padding: 12px 0;
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.testimonial-image-column {
+  max-width: 8%;
+  align-self: center;
+}
+
+.testimonial-text-column {
+  margin-left: 15px;
+
+  p {
+    margin: 0;
+    word-spacing: -1px;
+  }
+}
+
+.testimonial-author {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.testimonial-position {
+  font-weight: 600;
+}
+
+.testimonial-text {
+  line-height: 1.4;
+}
+
+.testimonial-card-image {
+  display: block;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 @media (max-width: 1200px) {
@@ -166,6 +223,15 @@ a:hover {
     .flex-left {
       flex: 70%;
       padding: 20px 20px 20px 0;
+    }
+  }
+
+  #testimonials-cards {
+    flex-direction: column;
+    max-width: 90%;
+
+    p {
+      max-width: 100%;
     }
   }
 }
@@ -212,5 +278,9 @@ a:hover {
     h2 {
       font-size: 25px;
     }
+  }
+
+  .testimonial-image-column {
+    max-width: 15%;
   }
 }
