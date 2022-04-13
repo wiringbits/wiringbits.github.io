@@ -56,3 +56,11 @@ testimonials:
     position: Bowhead Health CTO
     description: Wiringbits mobile development service was super helpful, they allowed us to extend the team in a very short time. Their availability to support us exceeded our expectations, they were able to add redundancy to the team in an emergency case, additionally they were always in constant communication with the Bowhead team in a professional and friendly way.
     image: assets/home/testimonials/reviewer/cesar-diaz.jpg
+  - author: Ilia Podavalkin
+    position: CEO at Scalamandra
+    description: My team inherited a project created by Wiringbits, which was a smooth handover, the project was nicely documented and organized that it was simple for my team to continue working on it. 
+    image: assets/home/testimonials/reviewer/ilia-podavalkin.jpg
+  - author: Phillip
+    position: Manager PM IT Consulting at Hydranet
+    description: Alex and his team were tasked with developing several complex core applications for a crypto project, including a blockchain explorer, a public order book and a layer 2 channel rental service. Besides the highly professional implementation, i would like to emphasise the communication and availability of everyone involved, which went far beyond what was expected.  
+    image: assets/home/testimonials/reviewer/hydra-net.jpg
