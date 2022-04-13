@@ -157,6 +157,7 @@ a:hover {
 .testimonial-image-column {
   max-width: 8%;
   align-self: center;
+  width: 100%;
 }
 
 .testimonial-text-column {
@@ -182,9 +183,7 @@ a:hover {
 }
 
 .testimonial-card-image {
-  display: block;
   border-radius: 50%;
-  margin-right: 5px;
 }
 
 @media (max-width: 1200px) {
@@ -227,12 +226,7 @@ a:hover {
   }
 
   #testimonials-cards {
-    flex-direction: column;
     max-width: 90%;
-
-    p {
-      max-width: 100%;
-    }
   }
 }
 
