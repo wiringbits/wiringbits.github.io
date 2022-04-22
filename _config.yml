@@ -64,3 +64,7 @@ testimonials:
     position: Manager PM IT Consulting at Hydranet
     description: Alex and his team were tasked with developing several complex core applications for a crypto project, including a blockchain explorer, a public order book and a layer 2 channel rental service. Besides the highly professional implementation, i would like to emphasise the communication and availability of everyone involved, which went far beyond what was expected.  
     image: assets/home/testimonials/reviewer/hydra-net.jpg
+  - author: John Ro
+    position: SwanFinance CEO
+    description: Alex and his team were super helpful and professional in helping us to fix issues with our existing platform -built by previous developers- They were able to pinpoint the issues quickly and provide the fixes in an efficient manner. They were also very quick with their responses whenever I had questions or inquiries. I highly recommend Alex and his team.
+    image: assets/home/testimonials/reviewer/john-ro.jpeg
