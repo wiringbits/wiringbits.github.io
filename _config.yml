@@ -68,3 +68,7 @@ testimonials:
     position: SwanFinance CEO
     description: Alex and his team were super helpful and professional in helping us to fix issues with our existing platform -built by previous developers- They were able to pinpoint the issues quickly and provide the fixes in an efficient manner. They were also very quick with their responses whenever I had questions or inquiries. I highly recommend Alex and his team.
     image: assets/home/testimonials/reviewer/john-ro.jpeg
+  - author: Sang Lee
+    position: Engineering Manager at CircleIn
+    description: Alexis and his team at Wiringbits were super productive from day one. They helped us build new features, bring up potential issues with possible solutions, and improved our code quality and development process. They were always available to talk when needed and communication was great. We would definitely work with them again in the future if we could.
+    image: assets/home/testimonials/reviewer/sang-lee.jpeg
