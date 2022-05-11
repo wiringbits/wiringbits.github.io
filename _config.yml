@@ -48,6 +48,10 @@ sass:
 #   - vendor/ruby/
 
 testimonials:
+  - author: Mark Griffin
+    position: UX Foundry Product Manager, Atala PRISM, IOHK
+    description: Cesar from Wiringbits took over the Atala PRISM Browser Wallet development, a key tool that sits on top our Atala PRISM SDK, improving its quality and user experience considerably. Cesar also created our Credentials Verification Portal which will be come a core tool for the PRISM ecosystem. Cesar delivered quality code on time and also provided advice on new features and functionality that would provide value to end-users. I would be happy to recommend Wiringbits as a company to work with.
+    image: assets/home/testimonials/reviewer/mark-griffin.jpeg
   - author: Sang Lee
     position: Engineering Manager at CircleIn
     description: Alexis and his team at Wiringbits were super productive from day one. They helped us build new features, bring up potential issues with possible solutions, and improved our code quality and development process. They were always available to talk when needed and communication was great. We would definitely work with them again in the future if we could.
