@@ -22,6 +22,10 @@ One of the goals for this website is to try writing a post per month.
 - We aren't a 100% Scala shop anymore, we started working in more diverse projects (Java/Kotlin/React/TypeScript/etc).
 - We finally got a wonderful logo.
 
+## Jun/2022 Update
+
+In order to simplify the payment processes for our customers, we ended up incorporating a company in the United States.
+
 
 ### Logo
 

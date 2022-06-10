@@ -4,7 +4,7 @@ layout: home
 
 Welcome to the wiringbits website, here you can find details [about us](/about) and our blog.
 
-We are a fully remote company (everyone works from home) based in Mexico, our expertise is building web applications and blockchain based apps.
+We are a fully remote company (everyone works from home) based in the United Stated and Mexico, our expertise is building web applications and blockchain based apps.
 
 Also, we help companies and individuals with mentorship:
 - Stop worrying when hiring freelancers or agencies, we'll help you to find potential problems soon, instead of waiting until it's too late. We'll make sure that they can deliver what they promosed.

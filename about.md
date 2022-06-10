@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 # Company
-While wiringbits is a company based in Culiacan, Mexico, there is no office, everyone works remotely.
+While wiringbits is a company registed in the United States and Mexico, there is no office, everyone works remotely.
 
 We strive for great quality on the software we built, and try to open source everything we can.
 
