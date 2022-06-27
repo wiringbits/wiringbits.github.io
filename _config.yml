@@ -76,3 +76,7 @@ testimonials:
     position: SwanFinance CEO
     description: Alex and his team were super helpful and professional in helping us to fix issues with our existing platform -built by previous developers- They were able to pinpoint the issues quickly and provide the fixes in an efficient manner. They were also very quick with their responses whenever I had questions or inquiries. I highly recommend Alex and his team.
     image: assets/home/testimonials/reviewer/john-ro.jpeg
+  - author: Tim Payne
+    position: Boardrs CEO
+    description: Alexis and his team were highly professional, quick to respond to any questions, provided considered solutions and delivered on time. Wiringbits simplified our application deployment, completed numerous frontend tasks to an exact specification, offered precise architectural solutions to code and communicted seamlessly  with our team. I highly recommend their work ethic and approach and will definitely work with them in the future. Thank you Wiringbits!
+    image: assets/home/testimonials/reviewer/boardrs.jpg
