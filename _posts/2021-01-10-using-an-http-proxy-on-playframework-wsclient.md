@@ -6,7 +6,7 @@ categories: scala
 post_photo: assets/posts/using-http-proxy/post_photo.jpg
 ---
 
-If you ever had the need to use http proxies from your JVM-based apps, you likely faced the pain involed with the Java [Authenticator](https://docs.oracle.com/javase/8/docs/api/java/net/Authenticator.html). Gladly, [Play Framework's WSClient](https://www.playframework.com/documentation/2.8.x/ScalaWS) has a cleaner way/
+If you ever had the need to use http proxies from your JVM-based apps, you likely faced the pain involved with the Java [Authenticator](https://docs.oracle.com/javase/8/docs/api/java/net/Authenticator.html). Gladly, [Play Framework's WSClient](https://www.playframework.com/documentation/2.8.x/ScalaWS) has a cleaner way/
 
 Instead of polluting the global scope with custom authenticators, you just need to create an instance of `play.api.libs.ws.WSProxyServer`, which can be set to every request while using the `WSClient`, like this:
 

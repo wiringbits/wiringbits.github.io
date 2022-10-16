@@ -33,7 +33,7 @@ curl -X POST \
 The approach is actually very simple:
 - The Raspberry Pi runs a simple HTTP proxy.
 - The Pi is connected to the internet on a router exclusive for it.
-- As the Pi isn't easily accesible from the internet, it opens a SSH tunnel to the server that will connect to the proxy served by the pi.
+- As the Pi isn't easily accessible from the internet, it opens a SSH tunnel to the server that will connect to the proxy served by the pi.
 - Our scraper invokes the proxy as if it was running on localhost.
 
 ![Simple proxy flow](/assets/posts/simple-proxy/simple-proxy-flow.png)
