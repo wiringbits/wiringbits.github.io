@@ -41,6 +41,8 @@ Our team has been involved in projects with Startups and Big companies, like:
 
 ### Tech talks
 Our team members have participating presenting technical talks on several events and companies, some of them being:
+
+- [A Practical Skeleton for Your Next Scala Scala js Web Application](https://www.youtube.com/watch?v=xWGMr0AsAMU) on [ScalaCon](https://www.scalacon.org/) - October 2022.
 - [Atala - An enterprise solution by IOHK](https://youtu.be/3POXkqhbYeo?t=10820) on [Talent Land 2019](https://www.talent-land.mx/) - in Spanish.
 - Permissioned Blockchains: IOHK's Vision for [VivaLaCrypto 2018](https://www.vivalacrypto.mx/) - No recording, nor slides.
 - [A practical Scala introduction](https://www.youtube.com/watch?v=tIwr9AhCQYs) for [Blue Trail Software](https://www.bluetrail.software/) - 2017
