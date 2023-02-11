@@ -80,3 +80,7 @@ testimonials:
     position: Boardrs CEO
     description: Alexis and his team were highly professional, quick to respond to any questions, provided considered solutions and delivered on time. Wiringbits simplified our application deployment, completed numerous frontend tasks to an exact specification, offered precise architectural solutions to code and communicted seamlessly  with our team. I highly recommend their work ethic and approach and will definitely work with them in the future. Thank you Wiringbits!
     image: assets/home/testimonials/reviewer/boardrs.jpg
+  - author: Rick
+    position: Project Manager at Guide University
+    description: Alex has been essential to our workflow process, his tooling has brought major improvements both internal with dev ops and external when showcasing clients and partners. Him and his team are readily available for support, and have in depth knowledge of all stages of development. Having worked with him on early architecture, final UX delivery and highly technical troubleshooting, I highly recommend his team for any stage of your project
+    image: assets/home/testimonials/reviewer/guide-university.jpg
