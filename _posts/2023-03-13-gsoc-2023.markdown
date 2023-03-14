@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Participating on Google Summer of Code 2023"
+date:   2023-03-13 12:35:32 -0700
+categories: scala
+post_photo: assets/posts/gsoc-2023/post_photo.png
+---
+
+We got exciting news! We are participating on [Google Summer of Code 2023](https://summerofcode.withgoogle.com/) as part of [Scala Center](https://summerofcode.withgoogle.com/programs/2023/organizations/scala-center).
+
+We are thrilled to get this opportunity, if you are a student, be sure to review our [proposal]( https://github.com/scalacenter/GoogleSummerOfCode/blob/main/README.md#scala-webapp-template).
+
+## Context
+
+In other languages, there are frameworks that allow developers to get started fast, for example, Python has Django, Ruby has Rails, PHP has Laravel. Unfortunately, Scala does not have any similar template/framework.
+
+This is why we have open sourced our internal [webapp template](https://github.com/wiringbits/scala-webapp-template/) (built with Scala/Scala.js), we are interested in getting more developers into Scala/Scala.js, and, we believe that a template like this can be a good reference point for new Scala users.
+
+While our template is usable (it gets the job done), the overall developer experience could be better.
+
+Our proposal aims to remove many of the existing pain points with our template, for example, creating an api client and swagger definitions is done manually which is annoying and unnecessary.
+
+At last, uur webapp template intends to bring a nice experience to developers who haven't worked with Scala, don't be shy to apply even if you haven't worked much with Scala.
+
+Let's see where we get together!
