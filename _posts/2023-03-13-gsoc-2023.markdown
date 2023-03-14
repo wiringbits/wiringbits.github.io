@@ -20,6 +20,6 @@ While our template is usable (it gets the job done), the overall developer exper
 
 Our proposal aims to remove many of the existing pain points with our template, for example, creating an api client and swagger definitions is done manually which is annoying and unnecessary.
 
-At last, uur webapp template intends to bring a nice experience to developers who haven't worked with Scala, don't be shy to apply even if you haven't worked much with Scala.
+At last, our webapp template intends to bring a nice experience to developers who haven't worked with Scala, don't be shy to apply even if you haven't worked much with Scala.
 
 Let's see where we get together!
