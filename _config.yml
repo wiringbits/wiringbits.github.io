@@ -84,3 +84,7 @@ testimonials:
     position: Project Manager at Guide University
     description: Alex has been essential to our workflow process, his tooling has brought major improvements both internal with dev ops and external when showcasing clients and partners. Him and his team are readily available for support, and have in depth knowledge of all stages of development. Having worked with him on early architecture, final UX delivery and highly technical troubleshooting, I highly recommend his team for any stage of your project
     image: assets/home/testimonials/reviewer/guide-university.jpg
+  - author: Bowen C
+    position: Non-profit webapp founder
+    description: Alexis is a true lifesaver! After my web developer left our project, I hired a new developer who turned out to be a disaster and ended up deleting our site from the server. Although we permanently lost our user data, I fortunately found Alexis, who was able to restore our website from the repository on GitLab in a matter of a few hours. And because I told Alexis that it was urgent, he was able to do it on the weekend no less. I’ve continued to work with Alexis since then, as I find him to be very straightforward and honest in his communications with me.
+    image: assets/home/testimonials/reviewer/placeholder.png
