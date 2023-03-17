@@ -48,6 +48,14 @@ sass:
 #   - vendor/ruby/
 
 testimonials:
+  - author: Brian Sage
+    position: Founder & CEO at Sage Digital
+    description: Alexis was invaluable to our project, but, more crucially, he was willing to go the extra mile with everything we needed help with. His ability to quickly understand our project's needs and then execute helped us rescue an important blockchain project for our client, and we couldn't have done it without his help and great attitude.
+    image: assets/home/testimonials/reviewer/brian-sage.png
+  - author: Bowen C
+    position: Non-profit webapp founder
+    description: Alexis is a true lifesaver! After my web developer left our project, I hired a new developer who turned out to be a disaster and ended up deleting our site from the server. Although we permanently lost our user data, I fortunately found Alexis, who was able to restore our website from the repository on GitLab in a matter of a few hours. And because I told Alexis that it was urgent, he was able to do it on the weekend no less. I’ve continued to work with Alexis since then, as I find him to be very straightforward and honest in his communications with me.
+    image: assets/home/testimonials/reviewer/placeholder.png
   - author: Mark Griffin
     position: UX Foundry Product Manager, Atala PRISM, IOHK
     description: Cesar from Wiringbits took over the Atala PRISM Browser Wallet development, a key tool that sits on top our Atala PRISM SDK, improving its quality and user experience considerably. Cesar also created our Credentials Verification Portal which will be come a core tool for the PRISM ecosystem. Cesar delivered quality code on time and also provided advice on new features and functionality that would provide value to end-users. I would be happy to recommend Wiringbits as a company to work with.
@@ -84,11 +92,3 @@ testimonials:
     position: Project Manager at Guide University
     description: Alex has been essential to our workflow process, his tooling has brought major improvements both internal with dev ops and external when showcasing clients and partners. Him and his team are readily available for support, and have in depth knowledge of all stages of development. Having worked with him on early architecture, final UX delivery and highly technical troubleshooting, I highly recommend his team for any stage of your project
     image: assets/home/testimonials/reviewer/guide-university.jpg
-  - author: Bowen C
-    position: Non-profit webapp founder
-    description: Alexis is a true lifesaver! After my web developer left our project, I hired a new developer who turned out to be a disaster and ended up deleting our site from the server. Although we permanently lost our user data, I fortunately found Alexis, who was able to restore our website from the repository on GitLab in a matter of a few hours. And because I told Alexis that it was urgent, he was able to do it on the weekend no less. I’ve continued to work with Alexis since then, as I find him to be very straightforward and honest in his communications with me.
-    image: assets/home/testimonials/reviewer/placeholder.png
-  - author: Brian Sage
-    position: Founder & CEO at Sage Digital
-    description: Alexis was invaluable to our project, but, more crucially, he was willing to go the extra mile with everything we needed help with. His ability to quickly understand our project's needs and then execute helped us rescue an important blockchain project for our client, and we couldn't have done it without his help and great attitude.
-    image: assets/home/testimonials/reviewer/brian-sage.png
