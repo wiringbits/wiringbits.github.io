@@ -1,4 +1,23 @@
 <head>
+    <!-- NOTE: This must be the first script on the page to get the widget working -->
+    <script>
+        !function(e, n, i, t, r, a, g) {
+            e.RingblazeObject = "ringblaze";
+            var c = function() {
+                (e.ringblaze.q = e.ringblaze.q || []).push(arguments)
+            };
+            e.ringblaze = e.ringblaze || c, e.ringblaze.widget = e.ringblaze.widget || {
+                init: function(e) {
+                    c("init", e)
+                }
+            }, e.ringblaze.l = 1 * new Date, a = n.createElement("script"), g = n.getElementsByTagName("script")[0], a.async = 1, a.src = "https://cdn.ringblaze.com/widget.js", g.parentNode.insertBefore(a, g)
+        }(window, document);
+    
+        ringblaze.widget.init({
+            GroupId: 'f388c518-f8a9-40fe-973f-e364bdb616d8'
+        });
+    </script>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
