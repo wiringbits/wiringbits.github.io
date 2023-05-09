@@ -93,6 +93,6 @@ The [first execution](https://github.com/wiringbits/scala-cli-multi-module-demo/
 
 While scala-cli does not advertise itself as a build-tool, we saw that it can be a viable option for small projects.
 
-I'm keep to try it on bigger projects and see how far we can go, could it possible be as nice for a simple fullstack Scala application?
+I'm keen to try it on bigger projects and see how far we can go, could it possible be as nice for a simple fullstack Scala application?
 
 Thanks.
