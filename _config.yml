@@ -56,6 +56,10 @@ testimonials:
     position: Founder & CEO at Sage Digital
     description: Alexis was invaluable to our project, but, more crucially, he was willing to go the extra mile with everything we needed help with. His ability to quickly understand our project's needs and then execute helped us rescue an important blockchain project for our client, and we couldn't have done it without his help and great attitude.
     image: assets/home/testimonials/reviewer/brian-sage.png
+  - author: Alex Szilagyi
+    position: Founder at TechStackApps
+    description: Alexis and his expertise offered us great help in terms of Scala development and debugging! We've managed to achieve great results in crazy short amount of time! I would recommend it to anyone which needs an expert in Scala development! Since we've met Alexis we kept the collaboration very close and we count on him as one of our valuable colleague!
+    image: assets/home/testimonials/reviewer/alex-szilagyi.jpeg
   - author: Bowen C
     position: Non-profit webapp founder
     description: Alexis is a true lifesaver! After my web developer left our project, I hired a new developer who turned out to be a disaster and ended up deleting our site from the server. Although we permanently lost our user data, I fortunately found Alexis, who was able to restore our website from the repository on GitLab in a matter of a few hours. And because I told Alexis that it was urgent, he was able to do it on the weekend no less. I’ve continued to work with Alexis since then, as I find him to be very straightforward and honest in his communications with me.
