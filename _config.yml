@@ -100,3 +100,7 @@ testimonials:
     position: Project Manager at Guide University
     description: Alex has been essential to our workflow process, his tooling has brought major improvements both internal with dev ops and external when showcasing clients and partners. Him and his team are readily available for support, and have in depth knowledge of all stages of development. Having worked with him on early architecture, final UX delivery and highly technical troubleshooting, I highly recommend his team for any stage of your project
     image: assets/home/testimonials/reviewer/guide-university.jpg
+  - author: Brittney Blum
+    position: Resource Manager at Burwood Group
+    description: Alexis is very knowledgeable and a pleasure to work with. Alexis took time to explain why and code quality is always very high. Would hire again.
+    image: assets/home/testimonials/reviewer/brittney-blum.jpeg
