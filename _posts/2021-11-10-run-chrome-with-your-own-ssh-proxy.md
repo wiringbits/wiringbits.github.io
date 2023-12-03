@@ -29,6 +29,11 @@ Then, open a terminal to invoke `run-proxy`, and then, open another terminal to 
 
 `run-proxy` opens a socks5 proxy in `localhost:2000`, while `proxied-chrome` creates a new chrome session with a specific directory for storing the chrome data, which is handy to separate the work done for a specific project.
 
+**NOTE**: The `proxied-chrome` command won't work in MacOS, I got the next command working but you need to make sure that Chrome is closed when invoking it, this means that you either use the normal profile or the proxied profile:
+
+```shell
+alias proxied-chrome='open -a "Google Chrome" --args --user-data-dir="$HOME/chrome-proxy-profile" --proxy-server="socks5://localhost:2000"'
+```
 
 ## More
 
