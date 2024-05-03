@@ -165,7 +165,7 @@ These commands will be helpful:
 
 1. Check the service status: `service audiocraft status`
 2. Stop the service: `service audiocraft stop`
-3. Restart the service: `service audiocraft stop`
+3. Restart the service: `service audiocraft restart`
 4. Check the logs `journalctl -u audiocraft -f`
 
 Verify that AudioCraft is working (see step 3 for alternatives), then, run `systemctl enable audiocraft` to start AudioCraft when the server starts.
