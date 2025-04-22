@@ -27,7 +27,7 @@ google_analytics: UA-65008315-4
 markdown: kramdown
 remote_theme: jekyll/minima
 plugins:
-  - jekyll-remote-theme@2.5.1
+- jekyll-remote-theme # add this line to the plugins list if you already have one
 
 minima:
   skin: classic
