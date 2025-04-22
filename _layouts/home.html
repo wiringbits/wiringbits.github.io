@@ -4,23 +4,24 @@ title: Home
 permalink: /
 ---
 
-<div class="h-[1px] bg-gray-500 w-full"></div>
+<div class="h-[1px] bg-[--color-border] w-full"></div>
 
 {% include header-brand.html %}
 
-<div class="h-[1px] bg-gray-500 w-full"></div>
+<div class="h-[1px] bg-[--color-border] w-full"></div>
 
-{% include list-logos.html %}
+<main class="contents" aria-label="Content">
+    <!-- {% include list-logos.html %} -->
 
-<main class="flex justify-center" aria-label="Content">
-    <div class="max-w-lg flex flex-col gap-4 items-center">
-
-
+    <div class="my-8">
         {% include slide-testimonials.html %}
-
-        {% include list-posts.html %}
-
-        {% include email_signup.html %}
     </div>
 
+    <div class="flex justify-center">
+        <div class="max-w-lg flex flex-col gap-4 items-center">
+            {% include list-posts.html %}
+        </div>
+    </div>
+
+    {% include email_signup.html %}
 </main>
