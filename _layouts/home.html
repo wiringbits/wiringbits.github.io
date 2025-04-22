@@ -4,8 +4,16 @@ title: Home
 permalink: /
 ---
 
-{% include list-logos.html %}
+{% include logo_pattern.html %}
 
-{% include slide-testimonials.html %}
+<main class="page-content" aria-label="Content">
+    <div class="home-wrapper">    
+        {% include list-logos.html %}
+    
+        {% include slide-testimonials.html %}
 
-{% include list-posts.html %}
+        {% include list-posts.html %}
+    
+        {% include email_signup.html %}
+    </div>
+</main>

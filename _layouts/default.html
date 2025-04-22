@@ -1,26 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {%- include head.html -%}
 
-<body>
+<body un-cloak>
 
     {% include header.html %}
 
-    <main class="page-content" aria-label="Content">
-        
-        {% if layout.title == "Home" %}
-        <div class="home-wrapper">
-            {{ content }}
-        </div>
-        {% else %}
-        <div class="wrapper">
-            {{ content }}
-        </div>
-        {% endif %}
-
-        {% include email_signup.html %}
-    </main>
+    {{ content}}
 
     {%- include footer.html -%}
 
