@@ -1,36 +1,49 @@
-<div class="text-blue" id="testimonials">
-    Testimonials
-</div>
+<link href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/css/glide.core.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/css/glide.theme.min.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="assets/slick/slick.css" />
-<link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css" />
+<script type="module">
+    import Glide, { Autoplay, Controls } from 'https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/glide.modular.esm.js'
+    console.log(Glide, Controls);
 
-<div id="testimonials-cards">
-    {% for testimonial in site.data.testimonials %}
-    <div class="testimonial-card">
-        <div class="testimonial-image-column">
-            {% if testimonial.image %}
-            <img src="{{ testimonial.image }}" alt="{{ testimonial.author }} reviewer photo"
-                class="testimonial-card-image">
-            {% else %}
-            <img src="assets/home/testimonials/reviewer/placeholder.png" alt="{{ testimonial.author }} reviewer photo"
-                class="testimonial-card-image">
-            {% endif %}
-        </div>
-        <div class="testimonial-text-column">
-            <p class="testimonial-author">{{ testimonial.author }}</p>
-            <p class="testimonial-position">{{ testimonial.position }}</p>
-            <p class="testimonial-text">{{ testimonial.description }}</p>
+    const gApi = setTimeout(() => {
+        new Glide('.glide', {
+            perView: 3,
+            autoplay: 3500,
+            animationDuration: 350,
+            hoverpause: true,
+            peek: 150
+        }).mount({ Autoplay, Controls })
+        window.dispatchEvent(new Event('resize'))
+    }, 1)
+</script>
+
+<div class="glide w-full">
+    <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+            {% for testimonial in site.data.testimonials %}
+            <li class="glide__slide ">
+                <div
+                    class="w-full max-w-[350px] flex flex-col w-md rounded-md border border-solid border-[--color-border] overflow-hidden">
+                    <div class="bg-[--color-gray-2] p-2 flex items-center gap-2">
+                        <img class="aspect-square size-10 rounded-full" {% if testimonial.image %}
+                            src="{{ testimonial.image }}" {% else %}
+                            src="assets/home/testimonials/reviewer/placeholder.png" {% endif %}
+                            alt="photo {{ testimonial.author }} " />
+                        <div class="flex flex-col gap-0 text-gray">
+                            <span class="text-lg font-semibold">{{ testimonial.author }}</span>
+                            <span class="text-md leading-none">{{ testimonial.position }}</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-md text-md">
+                        {{ testimonial.description }}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">⇐</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">⇒</button>
         </div>
     </div>
-    {% endfor %}
 </div>
-
-<script type="text/javascript" src="assets/jquery/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/jquery/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/slick/slick.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#testimonials-cards").slick({ infinite: true, dots: true, autoplay: true, autoplaySpeed: 10000 });
-    });
-</script>
