@@ -4,18 +4,23 @@ title: Home
 permalink: /
 ---
 
-<div class="h-[1px] bg-white w-full"></div>
+<div class="h-[1px] bg-gray-500 w-full"></div>
 
 {% include header-brand.html %}
 
-<main class="page-content" aria-label="Content">
-    <div class="home-wrapper">    
-        {% include list-logos.html %}
-    
+<div class="h-[1px] bg-gray-500 w-full"></div>
+
+{% include list-logos.html %}
+
+<main class="flex justify-center" aria-label="Content">
+    <div class="max-w-lg flex flex-col gap-4 items-center">
+
+
         {% include slide-testimonials.html %}
 
         {% include list-posts.html %}
-    
+
         {% include email_signup.html %}
     </div>
+
 </main>
