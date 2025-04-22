@@ -3,27 +3,49 @@
 
 <script type="module">
     import Glide, { Autoplay, Controls } from 'https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/glide.modular.esm.js'
-    console.log(Glide, Controls);
+    console.log({ Glide, Controls });
 
     const gApi = setTimeout(() => {
         new Glide('.glide', {
-            perView: 3,
+            type: 'carousel',
             autoplay: 3500,
             animationDuration: 350,
             hoverpause: true,
-            peek: 150
-        }).mount({ Autoplay, Controls })
+            gap:40,
+            perView: 3,
+            // peek broke responsive
+            peek: 150,
+            // breakpoints: {
+            //     800: {
+            //         perView: 1
+            //     },
+            //     1200: {
+            //         perView: 2
+            //     }
+            // }
+        }).mount({
+            // Breakpoints,
+            Autoplay,
+            Controls
+        })
         window.dispatchEvent(new Event('resize'))
     }, 1)
 </script>
 
-<div class="glide w-full">
-    <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-            {% for testimonial in site.data.testimonials %}
-            <li class="glide__slide ">
-                <div
-                    class="w-full max-w-[350px] flex flex-col w-md rounded-md border border-solid border-[--color-border] overflow-hidden">
+<style>
+    .glide__slides {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="flex justify-center px-8">
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for testimonial in site.data.testimonials %}
+                <li
+                    class="glide__slide flex flex-col w-md rounded-md border border-solid border-[--color-border] overflow-hidden">
                     <div class="bg-[--color-gray-2] p-2 flex items-center gap-2">
                         <img class="aspect-square size-10 rounded-full" {% if testimonial.image %}
                             src="{{ testimonial.image }}" {% else %}
@@ -37,13 +59,13 @@
                     <div class="p-4 rounded-md text-md">
                         {{ testimonial.description }}
                     </div>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">⇐</button>
-            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">⇒</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">⇐</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">⇒</button>
+            </div>
         </div>
     </div>
 </div>
