@@ -10,17 +10,19 @@ permalink: /
 
 <div class="h-[1px] bg-[--color-border] w-full"></div>
 
-<main class="contents" aria-label="Content">
-    <!-- {% include list-logos.html %} -->
+<main class="flex flex-col justify-center" aria-label="Content">
+    <div class="my-10"></div>
 
-    <div class="my-8">
-        {% include slide-testimonials.html %}
-    </div>
+    {% include list-logos.html %}
 
-    <div class="flex justify-center">
-        <div class="max-w-lg flex flex-col gap-4 items-center">
-            {% include list-posts.html %}
-        </div>
+    <div class="my-10"></div>
+
+    {% include slide-testimonials.html %}
+
+    <div class="my-10"></div>
+
+    <div class="max-w-lg flex flex-col gap-4 items-center">
+        {% include list-posts.html %}
     </div>
 
     {% include email_signup.html %}
