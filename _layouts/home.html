@@ -4,8 +4,6 @@ title: Home
 permalink: /
 ---
 
-<div class="h-[1px] bg-[--color-border] w-full"></div>
-
 {% include header-brand.html %}
 
 <div class="h-[1px] bg-[--color-border] w-full"></div>
@@ -25,8 +23,10 @@ permalink: /
 
     <div class="my-10"></div>
 
-    <div class="max-w-lg flex flex-col gap-4 items-center">
-        {% include list-posts.html %}
+    <div class="flex justify-center">
+        <div class="max-w-4xl">
+            {% include list-posts.html %}
+        </div>
     </div>
 
     {% include email_signup.html %}

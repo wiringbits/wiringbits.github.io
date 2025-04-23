@@ -4,13 +4,15 @@
 {%- include head.html -%}
 
 <body un-cloak>
-
     {% include header-nav.html %}
+
+    <div class="h-[1px] bg-[--color-border] w-full"></div>
 
     {{ content}}
 
-    {%- include footer.html -%}
+    <div class="h-[1px] bg-[--color-border] w-full"></div>
 
+    {%- include footer.html -%}
 </body>
 
 </html>

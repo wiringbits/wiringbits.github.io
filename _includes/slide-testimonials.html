@@ -61,9 +61,9 @@
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 {% for testimonial in site.data.testimonials %}
-                <li
-                    class="glide__slide flex flex-col w-md rounded-md border border-solid border-[--color-border] overflow-hidden">
-                    <div class="bg-[--color-gray-2] p-2 flex items-center gap-2">
+                <li class="glide__slide flex flex-col w-md rounded-md border border-solid border-[--color-border] overflow-hidden"
+                    style="box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);">
+                    <div class="bg-[--color-gray-2] p-2 flex items-center gap-2 drop-shadow-none">
                         <img class="aspect-square size-10 rounded-full" {% if testimonial.image %}
                             src="{{ testimonial.image }}" {% else %}
                             src="assets/home/testimonials/reviewer/placeholder.png" {% endif %}
