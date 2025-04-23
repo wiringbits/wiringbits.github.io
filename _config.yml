@@ -27,10 +27,10 @@ google_analytics: UA-65008315-4
 markdown: kramdown
 remote_theme: jekyll/minima
 plugins:
-  - jekyll-remote-theme@2.5.1
+- jekyll-remote-theme # add this line to the plugins list if you already have one
 
 minima:
-  skin: classic
+  skin: dark
 
 sass:
   sass_dir: _sass
@@ -46,65 +46,3 @@ sass:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-testimonials:
-  - author: Nick Hitch
-    position: CALENDA Co-Founder
-    image: assets/home/testimonials/reviewer/placeholder.png
-    description: Wiringbits came highly recommended by a fellow startup developer, and we couldn't be more grateful for the introduction. From the start, Alexis has been exceptional in maintaining clear and proactive communication, ensuring that any issues are swiftly addressed. The developer we're working with perfectly aligns with our development style, making collaboration seamless and efficient. Additionally, the flexibility Wiringbits offers in development resources has been invaluable to our growing needs. We highly recommend them to any team looking for reliable and adaptable web development expertise!
-  - author: Joe Scharf
-    position: Principal at Da Primus Consulting
-    image: assets/home/testimonials/reviewer/joe-scharf.jpg
-    description: Alexis played a pivotal role in the successful migration of our web3 application, which led to substantial cost savings and a simplification of our overall infrastructure. Throughout the project, Alexis demonstrated exceptional responsiveness and clear communication, ensuring that the project status and timelines were always transparent and easily understandable. His extensive experience proved invaluable as it enabled us to address a variety of issues related to blockchain integrations across multiple vendors. Alexis consistently proposed solutions that were both practical and innovative, illustrating his commitment to our project's success above his own billable hours. I highly recommend Alexis and look forward to working with him again in the future.
-  - author: Brian Sage
-    position: Founder & CEO at Sage Digital
-    description: Alexis was invaluable to our project, but, more crucially, he was willing to go the extra mile with everything we needed help with. His ability to quickly understand our project's needs and then execute helped us rescue an important blockchain project for our client, and we couldn't have done it without his help and great attitude.
-    image: assets/home/testimonials/reviewer/brian-sage.png
-  - author: Alex Szilagyi
-    position: Founder at TechStackApps
-    description: Alexis and his expertise offered us great help in terms of Scala development and debugging! We've managed to achieve great results in crazy short amount of time! I would recommend it to anyone which needs an expert in Scala development! Since we've met Alexis we kept the collaboration very close and we count on him as one of our valuable colleague!
-    image: assets/home/testimonials/reviewer/alex-szilagyi.jpeg
-  - author: Bowen C
-    position: Non-profit webapp founder
-    description: Alexis is a true lifesaver! After my web developer left our project, I hired a new developer who turned out to be a disaster and ended up deleting our site from the server. Although we permanently lost our user data, I fortunately found Alexis, who was able to restore our website from the repository on GitLab in a matter of a few hours. And because I told Alexis that it was urgent, he was able to do it on the weekend no less. I’ve continued to work with Alexis since then, as I find him to be very straightforward and honest in his communications with me.
-    image: assets/home/testimonials/reviewer/placeholder.png
-  - author: Mark Griffin
-    position: UX Foundry Product Manager, Atala PRISM, IOHK
-    description: Cesar from Wiringbits took over the Atala PRISM Browser Wallet development, a key tool that sits on top our Atala PRISM SDK, improving its quality and user experience considerably. Cesar also created our Credentials Verification Portal which will be come a core tool for the PRISM ecosystem. Cesar delivered quality code on time and also provided advice on new features and functionality that would provide value to end-users. I would be happy to recommend Wiringbits as a company to work with.
-    image: assets/home/testimonials/reviewer/mark-griffin.jpeg
-  - author: Sang Lee
-    position: Engineering Manager at CircleIn
-    description: Alexis and his team at Wiringbits were super productive from day one. They helped us build new features, bring up potential issues with possible solutions, and improved our code quality and development process. They were always available to talk when needed and communication was great. We would definitely work with them again in the future if we could.
-    image: assets/home/testimonials/reviewer/sang-lee.jpeg
-  - author: Michael Bruny-Groth
-    position: Logo Package Founder
-    description: Alexis at Wiringbits has assembled a great team of development talent. Our project included web app development and niche Adobe extension development. We were delighted with the quality of service we received and would not hesitate to recommend Wiringbits for any web or software development.
-    image: assets/home/testimonials/reviewer/michael-bruny.jpg
-  - author: Cesar Diaz
-    position: Bowhead Health CTO
-    description: Wiringbits mobile development service was super helpful, they allowed us to extend the team in a very short time. Their availability to support us exceeded our expectations, they were able to add redundancy to the team in an emergency case, additionally they were always in constant communication with the Bowhead team in a professional and friendly way.
-    image: assets/home/testimonials/reviewer/cesar-diaz.jpg
-  - author: Ilia Podavalkin
-    position: CEO at Scalamandra
-    description: My team inherited a project created by Wiringbits, which was a smooth handover, the project was nicely documented and organized that it was simple for my team to continue working on it. 
-    image: assets/home/testimonials/reviewer/ilia-podavalkin.jpg
-  - author: Phillip
-    position: Manager PM IT Consulting at Hydranet
-    description: Alex and his team were tasked with developing several complex core applications for a crypto project, including a blockchain explorer, a public order book and a layer 2 channel rental service. Besides the highly professional implementation, i would like to emphasise the communication and availability of everyone involved, which went far beyond what was expected.  
-    image: assets/home/testimonials/reviewer/hydra-net.jpg
-  - author: John Ro
-    position: SwanFinance CEO
-    description: Alex and his team were super helpful and professional in helping us to fix issues with our existing platform -built by previous developers- They were able to pinpoint the issues quickly and provide the fixes in an efficient manner. They were also very quick with their responses whenever I had questions or inquiries. I highly recommend Alex and his team.
-    image: assets/home/testimonials/reviewer/john-ro.jpeg
-  - author: Tim Payne
-    position: Boardrs CEO
-    description: Alexis and his team were highly professional, quick to respond to any questions, provided considered solutions and delivered on time. Wiringbits simplified our application deployment, completed numerous frontend tasks to an exact specification, offered precise architectural solutions to code and communicted seamlessly  with our team. I highly recommend their work ethic and approach and will definitely work with them in the future. Thank you Wiringbits!
-    image: assets/home/testimonials/reviewer/boardrs.jpg
-  - author: Rick
-    position: Project Manager at Guide University
-    description: Alex has been essential to our workflow process, his tooling has brought major improvements both internal with dev ops and external when showcasing clients and partners. Him and his team are readily available for support, and have in depth knowledge of all stages of development. Having worked with him on early architecture, final UX delivery and highly technical troubleshooting, I highly recommend his team for any stage of your project
-    image: assets/home/testimonials/reviewer/guide-university.jpg
-  - author: Brittney Blum
-    position: Resource Manager at Burwood Group
-    description: Alexis is very knowledgeable and a pleasure to work with. Alexis took time to explain why and code quality is always very high. Would hire again.
-    image: assets/home/testimonials/reviewer/brittney-blum.jpeg

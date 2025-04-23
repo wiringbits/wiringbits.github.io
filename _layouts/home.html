@@ -4,48 +4,30 @@ title: Home
 permalink: /
 ---
 
-<div class="company-logos">
-    <a href="https://kueski.com">
-        <img alt="kueski logo" src="assets/home/company_logos/kueski.png"/>
-    </a>
+{% include header-brand.html %}
 
-    <a href="https://stakenet.io">
-        <img alt="stakenet logo" src="assets/home/company_logos/stakenet.png"/>
-    </a>
+<div class="h-[1px] bg-[--color-border] w-full"></div>
 
-    <a href="https://iohk.io">
-        <img alt="iohk logo" src="assets/home/company_logos/iohk.png"/>
-    </a>
+<main class="flex flex-col justify-center" aria-label="Content">
+    <div class="my-10"></div>
 
-    <a href="https://www.samsung.com/us/ssic/">
-        <img alt="samsung logo" src="assets/home/company_logos/samsung.png"/>
-    </a>
-    <a href="https://www.coppel.com">
-        <img alt="coppel logo" src="assets/home/company_logos/coppel.png"/>
-    </a>
+    {% include list-logos.html %}
 
-    <a href="https://www.oracle.com/mx">
-        <img alt="oracle logo" src="assets/home/company_logos/oracle.png"/>
-    </a>
-</div>
+    <div class="my-10"></div>
 
-{% include testimonials.html %}
+    {% include slide-testimonials.html %}
 
-<div id="posts">
-    {% for post in site.posts %}
-        <div class="post-card">
-            <p>{{post.date | date_to_string }}</p>
+    <div class="my-10"></div>
 
-            {% if post.post_photo %}
-                <img alt="{{post.title}} photo" src={{post.post_photo}}>
-            {% else %}
-                <img alt="placeholder" src="assets/home/post_placeholder.jpg">
-            {% endif %}
-            <a href="{{ post.url }}">
-                <h2>
-                    {{post.title}}
-                </h2>
-            </a>
+    {% include table-stacks.html %}
+
+    <div class="my-10"></div>
+
+    <div class="flex justify-center">
+        <div class="max-w-4xl">
+            {% include list-posts.html %}
         </div>
-    {% endfor %}
-</div>
+    </div>
+
+    {% include email_signup.html %}
+</main>

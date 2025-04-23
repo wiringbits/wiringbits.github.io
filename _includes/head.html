@@ -1,34 +1,44 @@
 <head>
     <!-- NOTE: This must be the first script on the page to get the widget working -->
     <script>
-        !function(e, n, i, t, r, a, g) {
+        !function (e, n, i, t, r, a, g) {
             e.RingblazeObject = "ringblaze";
-            var c = function() {
+            var c = function () {
                 (e.ringblaze.q = e.ringblaze.q || []).push(arguments)
             };
             e.ringblaze = e.ringblaze || c, e.ringblaze.widget = e.ringblaze.widget || {
-                init: function(e) {
+                init: function (e) {
                     c("init", e)
                 }
             }, e.ringblaze.l = 1 * new Date, a = n.createElement("script"), g = n.getElementsByTagName("script")[0], a.async = 1, a.src = "https://cdn.ringblaze.com/widget.js", g.parentNode.insertBefore(a, g)
         }(window, document);
-    
+
         ringblaze.widget.init({
             GroupId: 'f388c518-f8a9-40fe-973f-e364bdb616d8'
         });
     </script>
-    
+
     <meta name="ahrefs-site-verification" content="98a1eabcb98fc5531d2ebe80aaf198f1a6317648849b9478e0900af17551b6a7">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- unocss (tailwind 3 preset)w -->
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+    <style>
+        [un-cloak] {
+            display: none;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <!-- alpinejs -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {%- seo -%}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
     {%- feed_meta -%}
     {%- if jekyll.environment == 'production' and site.google_analytics -%}
-      {%- include google-analytics.html -%}
+    {%- include google-analytics.html -%}
     {%- endif -%}
-  
-    {%- include custom-head.html -%}
-    
 </head>

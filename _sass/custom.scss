@@ -1,0 +1,14 @@
+body {
+   font-family: 'JetBrains Mono';
+}
+
+:root {
+   // https://spectrum.adobe.com/page/color-palette/
+   --color-gray-0: #000000; // --spectrum-global-color-gray-50
+   --color-gray-1: #1d1d1d; // --spectrum-global-color-gray-100
+   --color-gray-2: #303030; // --spectrum-global-color-gray-200
+   --color-gray-3: #4b4b4b; // --spectrum-global-color-gray-300
+   --color-gray-4: #6a6a6a; // --spectrum-global-color-gray-400
+
+   --color-border: var(--color-gray-4);
+}

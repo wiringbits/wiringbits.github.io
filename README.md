@@ -4,6 +4,14 @@ To run locally execute `bundle install` and then `bundle exec jekyll serve`
 
 It is recommended to use [rbenv](https://github.com/rbenv/rbenv) which picks the right Ruby version automatically.
 
+Linux:
+The fastest way is to get ruby 3.x
+```sh
+sudo apt-get install ruby-full ruby-bundler
+echo 'export GEM_HOME=$HOME/.gem' >> $HOME/.bashrc
+```
+
+
 ### Floating logo
 
 To add the minified logo branding to a wirinbits network site add the following html to the head section

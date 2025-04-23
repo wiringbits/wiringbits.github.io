@@ -1,0 +1,88 @@
+<link href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/css/glide.core.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/css/glide.theme.min.css" rel="stylesheet">
+
+<script type="module">
+    import Glide, { Autoplay, Controls } from 'https://cdn.jsdelivr.net/npm/@glidejs/glide@3.7/dist/glide.modular.esm.js'
+    console.log({ Glide, Controls });
+
+    const gApi = setTimeout(() => {
+        new Glide('.glide', {
+            type: 'carousel',
+            autoplay: 3500,
+            animationDuration: 350,
+            hoverpause: true,
+            gap: 40,
+            perView: 3,
+            // peek broke responsive
+            peek: 150,
+            // breakpoints: {
+            //     800: {
+            //         perView: 1
+            //     },
+            //     1200: {
+            //         perView: 2
+            //     }
+            // }
+        }).mount({
+            // Breakpoints,
+            Autoplay,
+            Controls
+        })
+        window.dispatchEvent(new Event('resize'))
+    }, 1)
+</script>
+
+<style>
+    .glide__slides {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="flex justify-center">
+    <div class="flex items-center gap-4 text-green">
+        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-sparkles">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+                d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z" />
+        </svg>
+        <span class="text-4xl font-bold">
+            Testimonials
+        </span>
+    </div>
+</div>
+
+<div class="my-4"></div>
+
+<div class="flex justify-center px-8">
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for testimonial in site.data.testimonials %}
+                <li class="glide__slide flex flex-col w-md rounded-md border border-solid border-[--color-border] overflow-hidden"
+                    style="box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);">
+                    <div class="bg-[--color-gray-2] p-2 flex items-center gap-2 drop-shadow-none">
+                        <img class="aspect-square size-10 rounded-full" {% if testimonial.image %}
+                            src="{{ testimonial.image }}" {% else %}
+                            src="assets/home/testimonials/reviewer/placeholder.png" {% endif %}
+                            alt="photo {{ testimonial.author }} " />
+                        <div class="flex flex-col gap-0 text-gray">
+                            <span class="text-lg font-semibold">{{ testimonial.author }}</span>
+                            <span class="text-md leading-none">{{ testimonial.position }}</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-md text-md">
+                        {{ testimonial.description }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">⇐</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">⇒</button>
+            </div>
+        </div>
+    </div>
+</div>
