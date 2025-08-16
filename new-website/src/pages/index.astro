@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// Get recent blog posts for featured section
+const posts = (await getCollection('blog'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+
+// Get recent projects for featured section
+const projects = (await getCollection('projects'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+
+// Get testimonials
+const allTestimonials = await getCollection('testimonials');
+// Shuffle and select 3 random testimonials
+const testimonials = allTestimonials
+    .sort(() => Math.random() - 0.5);
+
+
+import ProfileImage from '../assets/profile.jpg';
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <div class="mb-8">
+                    <Image src={ProfileImage}
+                        alt="Alexis Hernandez"
+                        class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg"
+                    />
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                        Hi, I'm <span class="text-blue-400 animate-pulse-glow">Alexis Hernandez</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                        Experienced Sotware Consultant
+                    </p>
+                </div>
+                <div class="max-w-4xl mx-auto text-lg text-gray-300 leading-relaxed">
+                    <p class="mb-6">
+                        I have been programming for 18+ years.
+                        <br>
+                        I got into this the hard way -Trying to reverse engineer the firmware from my Sony Ericsson-
+                        which led me to learn Assembler by myself while living in a rural area with no internet access...
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <!-- TODO
+                        <a href="/about" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">Continue reading</a>
+                        -->
+                        <a href="#contact" class="border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blog Posts -->
+    <!-- TODO
+    <section id="blog" class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Blog Posts</h2>
+                <p class="text-gray-300 text-lg"></p>
+                <a href="/blog" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All →</a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                {posts.map((post) => (
+                    <article class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">{post.data.title}</h3>
+                            <p class="text-gray-300 mb-4">{post.data.description}</p>
+                            <a href={`/blog/${post.id}/`} class="text-blue-400 hover:underline font-semibold">Read More →</a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Projects Section -->
+    <!-- TODO
+    <section id="projects" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-gray-300 text-lg">Open source contributions and personal projects</p>
+                <a href="/projects" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All Projects →</a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                {projects.map((project) => (
+                    <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">{project.data.title}</h3>
+                            <p class="text-gray-300 mb-4">{project.data.description}</p>
+                            <a href={`/projects/${project.id}/`} class="text-blue-400 hover:underline font-semibold">View Project →</a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Conference Talks -->
+    <section id="talks" class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Conference Talks</h2>
+                <p class="text-gray-300 text-lg">Speaking at international conferences around the world</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full"
+                            src="https://www.youtube.com/embed/SJxEXAkxD3I" 
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2"> Welcome to Scala 2.7.7... in 2024 </h3>
+                        <p class="text-gray-300 mb-2">ScalaIO 2024</p>
+                        <p class="text-sm text-gray-500">Paris, France</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full"
+                            src="https://www.youtube.com/embed/TcKRe-sTJQY"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">A Year With Scala-CLI As Our Build-Tool</h3>
+                        <p class="text-gray-300 mb-2">Functional Scala 2023</p>
+                        <p class="text-sm text-gray-500">London, United Kingdom</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full"
+                            src="https://www.youtube.com/embed/9ePQwMA_g_w"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Scala.js As A Simple Entry Point To Get People Into Scala</h3>
+                        <p class="text-gray-300 mb-2">Functional Scala 2022</p>
+                        <p class="text-sm text-gray-500"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Testimonials</h2>
+                <p class="text-gray-300 text-lg">What colleagues and clients say about working with me</p>
+                <a href="/testimonials" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All Testimonials →</a>
+            </div>
+            
+            <!-- Swiper Container -->
+            <div class="swiper testimonials-swiper max-w-4xl mx-auto">
+                <div class="swiper-wrapper">
+                    {testimonials.map((testimonial, index) => {
+                        const fullText = testimonial.body;
+                        const isLong = fullText.length > 200;
+                        const truncatedText = isLong ? fullText.substring(0, 200).trim() : fullText;
+                        return (
+                            <div class="swiper-slide">
+                                <div class="bg-gray-800 rounded-lg p-8 shadow-lg mx-4">
+                                    <div class="mb-6 text-center">
+                                        <svg class="w-10 h-10 text-blue-500 mb-4 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="text-gray-300 mb-8 italic text-lg text-center leading-relaxed">
+                                        "
+                                        <span class="testimonial-text whitespace-pre-line" data-full-text={fullText} data-truncated-text={truncatedText}>
+                                            {isLong ? truncatedText : fullText}
+                                        </span>
+                                        {isLong && (
+                                            <span class="testimonial-toggle text-blue-400 hover:text-blue-300 cursor-pointer ml-1 font-normal not-italic" data-expanded="false">
+                                                (...)
+                                            </span>
+                                        )}
+                                        "
+                                    </div>
+                                    <div class="flex items-center justify-center">
+                                        <Image src={testimonial.data.image} alt={testimonial.data.author} class="w-12 h-12 rounded-full mr-4 object-cover" width={48} height={48} />
+                                        <div>
+                                            <p class="font-semibold text-white">{testimonial.data.author}</p>
+                                            <p class="text-sm text-gray-400">{testimonial.data.position}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+                
+                <!-- Navigation -->
+                <div class="swiper-button-next !text-blue-400 !text-2xl after:!text-2xl"></div>
+                <div class="swiper-button-prev !text-blue-400 !text-2xl after:!text-2xl"></div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination !bottom-0 [&_.swiper-pagination-bullet]:!bg-gray-600 [&_.swiper-pagination-bullet-active]:!bg-blue-500"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for anchor links
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Load Swiper JS and initialize
+            const swiperScript = document.createElement('script');
+            swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+            swiperScript.onload = () => {
+                // Initialize Swiper for testimonials
+                const swiper = new Swiper('.testimonials-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 1,
+                    },
+                }
+            });
+
+                // Handle expandable text functionality
+                const toggles = document.querySelectorAll('.testimonial-toggle');
+                
+                toggles.forEach(toggle => {
+                    toggle.addEventListener('click', () => {
+                        const textElement = toggle.previousElementSibling;
+                        const isExpanded = toggle.getAttribute('data-expanded') === 'true';
+                        const fullText = textElement.getAttribute('data-full-text');
+                        const truncatedText = textElement.getAttribute('data-truncated-text');
+                        
+                        if (isExpanded) {
+                            textElement.textContent = truncatedText;
+                            toggle.textContent = '(...)';
+                            toggle.setAttribute('data-expanded', 'false');
+                        } else {
+                            textElement.textContent = fullText;
+                            toggle.textContent = ' Show less';
+                            toggle.setAttribute('data-expanded', 'true');
+                        }
+                    });
+                });
+            };
+            document.head.appendChild(swiperScript);
+
+        });
+    </script>
+</BaseLayout>

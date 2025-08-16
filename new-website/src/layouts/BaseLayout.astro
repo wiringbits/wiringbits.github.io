@@ -1,0 +1,39 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ParticleCanvas from '../components/ParticleCanvas.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+	description: string;
+	showParticles?: boolean;
+}
+
+const { title, description, showParticles = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="bg-gray-900 text-gray-100 transition-colors duration-300">
+		<!-- Particle Canvas -->
+		{showParticles && <ParticleCanvas />}
+		
+		<!-- Header -->
+		<Header />
+		
+		<!-- Main Content -->
+		<main class="relative z-10">
+			<slot />
+		</main>
+		
+		<!-- Footer -->
+		<Footer />
+		
+	</body>
+</html>
