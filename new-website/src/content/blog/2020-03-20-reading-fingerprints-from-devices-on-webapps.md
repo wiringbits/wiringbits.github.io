@@ -10,6 +10,7 @@ permalink: "wiringbits/2020/03/20/reading-fingerprints-from-devices-on-webapps.h
 Have you ever wondered how can you read a fingerprint from a device on a web app? If you are an experienced engineer, you may think it's obvious, but long time ago, it wasn't obvious to me that I ended up asking on [stackoverflow](https://stackoverflow.com/questions/25511693/how-to-capture-fingerprint-using-html-and-verifinger), and based on my experience, I wasn't alone.
 
 The problem is that for security reasons, web browsers aren't allowed to access peripheral devices, which include USB devices (at least that was the true for a long time), back then, the options were the following:
+
 - Use an embedded privileged app on the webpage (like applets running on Java, or ActiveX, etc), this app can captures the fingerprint and sends it to the JavaScript code running on the website.
 - Use local http server that reads the fingerprint, which means that the webapp talks to its own server and the local server that actually connects to the fingerprint reader.
 

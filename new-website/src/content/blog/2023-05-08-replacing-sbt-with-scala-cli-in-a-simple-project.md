@@ -7,6 +7,7 @@ categories: ["scala"]
 permalink: "blog/replacing-sbt-with-scala-cli-in-a-simple-project"
 ---
 
+
 This is a somewhat controversial post because we got to use [scala-cli](https://scala-cli.virtuslab.org) outside its purpose, as a build-tool for a multi-module project.
 
 ![scala-cli-is-not-a-build-tool](../../assets/posts/scala-cli-replacing-sbt/scala-cli-is-not-a-build-tool.png)
@@ -41,15 +42,15 @@ This is the file structure:
 
 ```shell
 ├── common
-│   ├── SharedCode.scala
-│   └── SharedCode.test.scala
+│   ├── SharedCode.scala
+│   └── SharedCode.test.scala
 ├── LICENSE
 ├── module-1
-│   ├── App.scala
-│   └── package.sh
+│   ├── App.scala
+│   └── package.sh
 ├── module-2
-│   ├── App.scala
-│   └── package.sh
+│   ├── App.scala
+│   └── package.sh
 └── README.md
 
 3 directories, 8 files

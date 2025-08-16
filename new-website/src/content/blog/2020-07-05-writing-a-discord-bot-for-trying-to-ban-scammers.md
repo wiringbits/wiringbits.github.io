@@ -23,6 +23,7 @@ I must admit that I thought it was a task for half a day but I likely ended up i
 
 
 ## Try it
+
 Just go to the [discord-scammer-detector-bot](https://github.com/wiringbits/discord-scammer-detector-bot) project, and follow the instructions to get the Bot running.
 
 You still need to create a [Discord app](https://discord.com/developers/applications), transform it to a bot, and set the token on the project.
@@ -49,8 +50,11 @@ But, that's not enough, because the scammer can just use more than 2 invisible c
 
 I plan to keep polishing the detection rules for a while, for now, instead of kicking users out, potential scammers get posted in a channel to let the admins handle it manually, eventually, the bot should get good enough to kick them out.
 
+
 ## Future
+
 There are lots of possibilities to improve this bot, the time will tell what gets implemented, for example:
+
 - Ban potential scammers automatically
 - Detect team members from the discord servers instead of requiring the members to be placed in the config file.
 - Analyze existing members when the bot gets installed.
@@ -60,4 +64,5 @@ There are lots of possibilities to improve this bot, the time will tell what get
 Hopefully this will reduce the number of scams on our community, and even better, in other communities too.
 
 ### Discussions:
+
 - [Hackernews](https://news.ycombinator.com/item?id=23747592)

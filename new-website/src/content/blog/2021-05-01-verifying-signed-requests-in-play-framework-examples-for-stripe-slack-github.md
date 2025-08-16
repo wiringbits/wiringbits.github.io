@@ -49,85 +49,114 @@ POST /webhooks/stripe controllers.WebhooksController.stripeWebhook()
 ```
 
 ### Slack
-The Slack case is a bit more complex, because they don't provide a Java SDK for verifying the signature, but, it's not too hard to implement:
+Depending on how you integrate with slack, you may need to handle Slack requests in many urls, this is one example on how to verify that those requests came from Slack.
 
 ```scala
-  def slackWebhook() = Action.async(parse.byteString) { request =>
-    val rawRequest = request.body.toArray
-    val payload = new String(rawRequest, "UTF-8")
-    val timestampMaybe = request.headers.get("X-Slack-Request-Timestamp")
-    val signatureMaybe = request.headers.get("X-Slack-Signature")
-
-    (timestampMaybe, signatureMaybe) match {
-      case (Some(timestamp), Some(signature)) =>
-        val isValid = verifySlackSignature(timestamp, payload, signature, config.slackSigningSecret)
-        if (isValid) {
-          // Process the webhook
-          Future.successful(Ok("OK"))
-        } else {
-          Future.successful(BadRequest("Invalid signature"))
-        }
-
-      case _ => Future.successful(BadRequest("Invalid request"))
-    }
-  }
-
-  private def verifySlackSignature(timestamp: String, payload: String, signature: String, signingSecret: String): Boolean = {
-    val baseString = s"v0:$timestamp:$payload"
-    val expectedSignature = s"v0=${hmacSha256(baseString, signingSecret)}"
-    signature == expectedSignature
-  }
-
-  private def hmacSha256(data: String, key: String): String = {
+  def isSlackSignatureValid(timestamp: String, body: String, slackSignature: String): Boolean = {
     import javax.crypto.Mac
     import javax.crypto.spec.SecretKeySpec
-    import java.nio.charset.StandardCharsets
+    import javax.xml.bind.DatatypeConverter
+
+    val secret = new SecretKeySpec(config.slackSigningSecret.getBytes, "HmacSHA256")
+    val payload = s"v0:$timestamp:$body"
 
     val mac = Mac.getInstance("HmacSHA256")
-    val secretKeySpec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "HmacSHA256")
-    mac.init(secretKeySpec)
-    val hash = mac.doFinal(data.getBytes(StandardCharsets.UTF_8))
-    hash.map("%02x".format(_)).mkString
+    mac.init(secret)
+
+    val signatureBytes = mac.doFinal(payload.getBytes)
+    val expectedSignature = s"v0=${DatatypeConverter.printHexBinary(signatureBytes).toLowerCase}"
+    slackSignature == expectedSignature
+  }
+
+  def slackRequest() = Action.async(parse.byteString) { request =>
+    val timestampOpt = request.headers.get("X-Slack-Request-Timestamp")
+    val signatureOpt = request.headers.get("X-Slack-Signature")
+
+    (timestampOpt, signatureOpt) match {
+      case (Some(timestamp), Some(signature)) =>
+        Future {
+          val valid = isSlackSignatureValid(timestamp, new String(request.body.toArray, "UTF-8"), signature)
+          logger.debug(s"Request accepted: $valid")
+          if (valid) {
+            val body = FormUrlEncodedParser.parse(new String(request.body.toArray))
+            // let's do something with the request body
+            Ok("")
+          } else {
+            Forbidden
+          }
+        }
+
+      case (None, _) =>
+        logger.debug("Rejecting request without timestamp")
+        Future.successful(Forbidden)
+
+      case (_, None) =>
+        logger.debug("Rejecting request without signature")
+        Future.successful(Forbidden)
+    }
   }
 ```
 
+First, the `isSlackSignatureValid` function is defined, and then, such function is invoked with the request body parsed from the raw bytes.
+
+The same points from Stripe apply, getting the request as bytes is what matters the most, also, run the signature verification in a custom execution context.
+
+At last, its worth adding that `DatatypeConverter` is used for simplicity but such class doesn't exist in the newest Java versions.
+
+
 ### Github
-The Github case is similar to Slack, but they use a different header and algorithm:
+Github uses a very similar approach to Slack, the main difference is that the request body is a JSON, and the usage of SHA1 instead of SHA256, but, overall, the trick is the same, parse the request as bytes:
 
 ```scala
-  def githubWebhook() = Action.async(parse.byteString) { request =>
-    val rawRequest = request.body.toArray
-    val payload = new String(rawRequest, "UTF-8")
-    val signatureMaybe = request.headers.get("X-Hub-Signature-256")
+  def doHMACSHA1(value: Array[Byte], secretKey: String): String = {
+    import javax.crypto.Mac
+    import javax.crypto.spec.SecretKeySpec
+    import javax.xml.bind.DatatypeConverter
+    val signingKey = new SecretKeySpec(secretKey.getBytes, "HmacSHA1")
+    val mac = Mac.getInstance("HmacSHA1")
+    mac.init(signingKey)
+    val rawHmac = mac.doFinal(value)
+    DatatypeConverter.printHexBinary(rawHmac)
+  }
 
-    signatureMaybe match {
-      case Some(signature) =>
-        val isValid = verifyGithubSignature(payload, signature, config.githubWebhookSecret)
-        if (isValid) {
-          // Process the webhook
-          Future.successful(Ok("OK"))
-        } else {
-          Future.successful(BadRequest("Invalid signature"))
-        }
-
-      case _ => Future.successful(BadRequest("Invalid request"))
+  def verifyGithubSignature(githubSecret: String, githubDigest: String, data: Array[Byte]): Unit = {
+    val ourDigest = doHMACSHA1(data, githubSecret)
+    if (ourDigest equalsIgnoreCase githubDigest) {
+      ()
+    } else {
+      throw new RuntimeException(
+        s"Invalid hmac from github, expected = $ourDigest, github = $githubDigest"
+      )
     }
   }
 
-  private def verifyGithubSignature(payload: String, signature: String, secret: String): Boolean = {
-    val expectedSignature = s"sha256=${hmacSha256(payload, secret)}"
-    signature == expectedSignature
+  def githubHandler(): Action[ByteString] = Action.async(parse.byteString) { implicit request =>
+    val rawRequest = request.body.toArray
+
+    val signature = request.headers
+      .get("HTTP_X_HUB_SIGNATURE")
+      .getOrElse("sha1=")
+      .split("=")
+      .lift(1)
+      .getOrElse("")
+    
+    for {
+      _ <- Future {
+        verifyGithubSignature(
+          githubSecret = config.githubSecret,
+          githubDigest = signature,
+          data = rawRequest
+        )
+      }
+
+      // We trust that github sent the request because the signature matches, so, we must get JSON
+      json = Json.parse(rawRequest)
+      githubEvent = request.headers.get("X-GitHub-Event")
+    } yield Ok("")
   }
 ```
 
+Of course, the same remarks from Stripe/Slack apply.
+
 ## More
-If you are working with other services, the pattern is usually the same:
-1. Read the request as bytes using `parse.byteString`
-2. Get the signature from the headers
-3. Compute the expected signature using the service's algorithm
-4. Compare the signatures
-
-Remember to always use a constant-time comparison for the signatures to avoid timing attacks, though for simplicity, the examples above use simple string comparison.
-
-## Conclusion
-Verifying signed requests is crucial for webhook security. The key is to read the raw bytes and avoid any parsing that might alter the request body before signature verification.
+By now, you should understand that the key point while verifying a signed request is to get the same data that was sent to you, which is simpler when parsing the request as bytes.

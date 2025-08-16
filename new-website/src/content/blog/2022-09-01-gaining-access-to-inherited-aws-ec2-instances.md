@@ -50,15 +50,8 @@ Then, follow the process to put such user data into the inherited instance, it i
 
 Once the instance start, you could ssh into the instance.
 
-## More
+Be aware that the process could get more complex if the instance prevents root login over ssh but you can tweak the script to enable that.
 
-This approach works because:
-- User data scripts run as root during instance startup
-- You can modify SSH authorized keys to grant yourself access
-- The instance doesn't need to be running when you modify the user data
+## Conclusion
 
-Remember to:
-- Stop the instance before modifying user data
-- Replace the placeholder SSH key with your actual public key
-- Start the instance after updating the user data
-- Remove the user data script after gaining access for security
+It can be scary to not have access to an inherited server, still, most cloud providers have reasonable alternatives to recover such an access.

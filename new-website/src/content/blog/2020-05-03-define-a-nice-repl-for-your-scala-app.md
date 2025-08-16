@@ -12,6 +12,7 @@ In this short post, I would like to explain how to use `sbt console` as a nice r
 As you very likely know, running `sbt console` in a project gives you a [Scala repl](https://docs.scala-lang.org/overviews/repl/overview.html) which includes your app sources as well as it's dependencies (see the [official sbt docs](https://www.scala-sbt.org/1.x/docs/Command-Line-Reference.html#Configuration-level+tasks)). While this is handy, it misses specific details for your app, like commonly required methods while experimenting.
 
 The way to get this involves a couple of sbt options:
+
 - [Run a initialization script when entering the scala repl](https://www.scala-sbt.org/1.x/docs/Howto-Scala.html#Define+the+initial+commands+evaluated+when+entering+the+Scala+REPL)
 - [Exclude files from being compiled](https://www.scala-sbt.org/1.x/docs/Howto-Customizing-Paths.html#Include%2Fexclude+files+in+the+source+directory)
 
@@ -35,6 +36,7 @@ You can even build several entrypoints for different purposes by extending this 
 
 
 ## More
+
 If you have enabled the fatal-warnings compiler option (and most likely you should), the Scala repl becomes unusable, but, it's easily fixed by disabling that options and other noisy options just when running the console, include the following on your `build.sbt`:
 
 ```scala
