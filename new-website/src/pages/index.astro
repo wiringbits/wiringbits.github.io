@@ -23,39 +23,39 @@ const testimonials = allTestimonials
     .sort(() => Math.random() - 0.5);
 
 
-import ProfileImage from '../assets/profile.jpg';
+import LogoPattern from '../assets/logo-pattern.png';
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-    <!-- Hero Section -->
-    <section id="home" class="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center">
-                <div class="mb-8">
-                    <Image src={ProfileImage}
-                        alt="Alexis Hernandez"
-                        class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg"
-                    />
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4">
-                        Hi, I'm <span class="text-blue-400 animate-pulse-glow">Alexis Hernandez</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 mb-8">
-                        Experienced Sotware Consultant
-                    </p>
-                </div>
-                <div class="max-w-4xl mx-auto text-lg text-gray-300 leading-relaxed">
-                    <p class="mb-6">
-                        I have been programming for 18+ years.
-                        <br>
-                        I got into this the hard way -Trying to reverse engineer the firmware from my Sony Ericsson-
-                        which led me to learn Assembler by myself while living in a rural area with no internet access...
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <!-- TODO
-                        <a href="/about" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">Continue reading</a>
-                        -->
-                        <a href="#contact" class="border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">Get in touch</a>
+    <!-- Hero Section - Agency -->
+    <section id="home" class="relative overflow-hidden">
+        <!-- Background logo pattern positioned on the right -->
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-80 pointer-events-none">
+            <Image 
+                src={LogoPattern} 
+                alt="Logo Pattern Background" 
+                class="w-full h-full object-contain object-right"
+                width={500}
+                height={400}
+            />
+        </div>
+        <div class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row items-center justify-between">
+                    <div class="lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+                            Web and Blockchain<br/>Development Agency
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
+                            Our fully remote developer team can help<br/>
+                            you spot problems early and ship sooner
+                        </p>
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">Get in touch</a>
+                            <a href="/blog/" class="border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">View our blog</a>
+                        </div>
                     </div>
+                    <div class="lg:w-1/2"></div>
                 </div>
             </div>
         </div>
