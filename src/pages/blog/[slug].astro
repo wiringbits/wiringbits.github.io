@@ -4,10 +4,14 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.data.permalink || post.id },
-		props: post,
-	}));
+	// Only generate /blog/<slug>/ routes for posts WITHOUT a custom permalink.
+	// Posts with a permalink are handled by the catch-all route at src/pages/[...permalink].astro
+	return posts
+		.filter((post) => !post.data.permalink)
+		.map((post) => ({
+			params: { slug: post.id },
+			props: post,
+		}));
 }
 type Props = CollectionEntry<'blog'>;
 

@@ -4,13 +4,16 @@ import BlogPost from '../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	const paths = [];
+	type BlogPermalinkPath = { params: { permalink: string } ; props: CollectionEntry<'blog'> };
+	const paths: BlogPermalinkPath[] = [];
 	
 	for (const post of posts) {
 		if (post.data.permalink) {
 			// Handle custom permalinks (Jekyll posts)
+			// [...permalink] accepts a string; Astro will match the rest param internally
+			const clean = post.data.permalink.replace(/^\/+/, '');
 			paths.push({
-				params: { permalink: post.data.permalink },
+				params: { permalink: clean },
 				props: post,
 			});
 		}
