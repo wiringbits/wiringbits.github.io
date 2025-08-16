@@ -1,17 +1,39 @@
 ---
-title: 'First post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
-heroImage: '../../assets/blog-placeholder-3.jpg'
-draft: true
+title: "The story begins"
+description: "While wiringbits has been around unofficially for years, it has been formally there since Jan/2019. The story of how we started and evolved over the years."
+pubDate: "2020-03-07"
+heroImage: ../../assets/posts/story/post_photo.jpg
+categories: ["wiringbits"]
+permalink: "wiringbits/2020/03/07/first-post.html"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+While wiringbits has been around unoficcially for years, it has been formally there since Jan/2019.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+It's incredible how a team that works building different websites needs more than a year to build its own, I admit that I haven't considered it important because have been full of work since the beggining. I aslo kept delaying this because I wanted to get a logo.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+In any case, now I prefer to complete the task than waiting for perfection, not having a name didn't prevented me from starting a team, then, a missing logo won't prevent me from creating a website.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+One of the goals for this website is to try writing a post per month.
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+
+## Jan/2022 Update
+
+3 years passed, 2021 was a year full of changes for us:
+- Our team has grown considerably.
+- We aren't a 100% Scala shop anymore, we started working in more diverse projects (Java/Kotlin/React/TypeScript/etc).
+- We finally got a wonderful logo.
+
+## Jun/2022 Update
+
+In order to simplify the payment processes for our customers, we ended up incorporating a company in the United States.
+
+
+### Logo
+
+Getting a logo wasn't easy, I have tried to draft it many times, same way as my wife, and, others who I have asked to prepare it.
+
+By 2021, one of our customers proposed us a logo, I couldn't believe how he did such a wonderful job, the logo couldn't be better, he did all of this without asking me a single question which I wasn't expecting, anyway, here it is:
+
+![logo-explained](../../assets/posts/story/logo-explained.png)
+
+Thanks a lot Michael Bruny-Groth, I hope that once we release your project, you get as happy as we are with the logo you created.

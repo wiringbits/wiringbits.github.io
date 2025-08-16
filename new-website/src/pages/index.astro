@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getBlogPostUrl } from '../utils/blog';
 
 // Get recent blog posts for featured section
 const posts = (await getCollection('blog'))
@@ -60,28 +61,37 @@ import ProfileImage from '../assets/profile.jpg';
     </section>
 
     <!-- Featured Blog Posts -->
-    <!-- TODO
     <section id="blog" class="py-16 bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Blog Posts</h2>
-                <p class="text-gray-300 text-lg"></p>
+                <p class="text-gray-300 text-lg">Latest insights and technical articles</p>
                 <a href="/blog" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All →</a>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 {posts.map((post) => (
                     <article class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                        {post.data.heroImage && (
+                            <div class="aspect-video overflow-hidden">
+                                <Image 
+                                    width={720} 
+                                    height={360} 
+                                    src={post.data.heroImage} 
+                                    alt={post.data.title}
+                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                        )}
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-3 text-gray-100">{post.data.title}</h3>
                             <p class="text-gray-300 mb-4">{post.data.description}</p>
-                            <a href={`/blog/${post.id}/`} class="text-blue-400 hover:underline font-semibold">Read More →</a>
+                            <a href={getBlogPostUrl(post)} class="text-blue-400 hover:underline font-semibold">Read More →</a>
                         </div>
                     </article>
                 ))}
             </div>
         </div>
     </section>
-    -->
 
     <!-- Projects Section -->
     <!-- TODO

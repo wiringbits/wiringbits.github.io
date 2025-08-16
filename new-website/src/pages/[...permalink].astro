@@ -1,14 +1,24 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BlogPost from '../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.data.permalink || post.id },
-		props: post,
-	}));
+	const paths = [];
+	
+	for (const post of posts) {
+		if (post.data.permalink) {
+			// Handle custom permalinks (Jekyll posts)
+			paths.push({
+				params: { permalink: post.data.permalink },
+				props: post,
+			});
+		}
+	}
+	
+	return paths;
 }
+
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
