@@ -1,12 +1,23 @@
 ---
 import { SITE_TITLE } from '../consts';
+import { Image } from 'astro:assets';
+import WiringbitsLogo from '../assets/branding/wiringbits-logo-inverted-rgb.svg';
 ---
 
 <header class="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-800">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
-            <div class="text-xl font-bold text-blue-400">
-                <a href="/">{SITE_TITLE}</a>
+            <div class="flex items-center">
+                <a href="/" class="flex items-center space-x-3">
+                    <Image 
+                        src={WiringbitsLogo} 
+                        height={32}
+                        width={32}
+                        alt="Wiringbits Logo" 
+                        class="h-8 w-auto"
+                    />
+                    <span class="text-xl font-bold text-blue-400"></span>
+                </a>
             </div>
             <div class="hidden md:flex space-x-8 text-gray-300">
                 <a href="/" class="hover:text-blue-400 transition-colors">Home</a>
