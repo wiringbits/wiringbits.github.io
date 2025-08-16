@@ -7,9 +7,9 @@ import { getBlogPostUrl } from '../utils/blog';
 
 // Get recent blog posts for featured section
 const posts = (await getCollection('blog'))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 3)
-    .sort(() => Math.random() - 0.5);
+    // .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
 
 // Get recent projects for featured section
 const projects = (await getCollection('projects'))
