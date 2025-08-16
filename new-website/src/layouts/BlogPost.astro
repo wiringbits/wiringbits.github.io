@@ -45,7 +45,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<!-- Blog Post Content -->
 	<section class="py-8 px-4 sm:px-6 lg:px-8">
 		<div class="max-w-4xl mx-auto">
-			<article class="prose prose-lg max-w-none">
+			<article class="prose prose-lg prose-invert max-w-none blog-content">
 				<slot />
 			</article>
 		</div>
@@ -63,3 +63,61 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</div>
 	</section>
 </BaseLayout>
+
+<style is:global>
+	.blog-content a {
+		color: #60a5fa !important;
+		text-decoration: none !important;
+	}
+	
+	.blog-content a:hover {
+		color: #93c5fd !important;
+		text-decoration: underline !important;
+	}
+	
+	.blog-content ul {
+		list-style-type: disc !important;
+		list-style-position: outside !important;
+		padding-left: 2rem !important;
+		margin-left: 0 !important;
+	}
+	
+	.blog-content ul li {
+		color: #d1d5db !important;
+		margin-bottom: 0.5rem !important;
+		display: list-item !important;
+	}
+	
+	.blog-content ul li::marker {
+		color: #d1d5db !important;
+		content: "• " !important;
+	}
+	
+	.blog-content p {
+		color: #d1d5db !important;
+		line-height: 1.75 !important;
+	}
+	
+	.blog-content h1,
+	.blog-content h2,
+	.blog-content h3,
+	.blog-content h4,
+	.blog-content h5,
+	.blog-content h6 {
+		color: #f3f4f6 !important;
+		font-weight: 600 !important;
+	}
+	
+	/* Override any conflicting prose styles */
+	.prose.blog-content a {
+		color: #60a5fa !important;
+	}
+	
+	.prose.blog-content ul {
+		list-style-type: disc !important;
+	}
+	
+	.prose.blog-content li {
+		color: #d1d5db !important;
+	}
+</style>
