@@ -8,7 +8,8 @@ import { getBlogPostUrl } from '../utils/blog';
 // Get recent blog posts for featured section
 const posts = (await getCollection('blog'))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 3);
+    .slice(0, 3)
+    .sort(() => Math.random() - 0.5);
 
 // Get recent projects for featured section
 const projects = (await getCollection('projects'))
@@ -116,68 +117,6 @@ import ProfileImage from '../assets/profile.jpg';
         </div>
     </section>
     -->
-
-    <!-- Conference Talks -->
-    <section id="talks" class="py-16 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Conference Talks</h2>
-                <p class="text-gray-300 text-lg">Speaking at international conferences around the world</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    <div class="aspect-video">
-                        <iframe class="w-full h-full"
-                            src="https://www.youtube.com/embed/SJxEXAkxD3I" 
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2"> Welcome to Scala 2.7.7... in 2024 </h3>
-                        <p class="text-gray-300 mb-2">ScalaIO 2024</p>
-                        <p class="text-sm text-gray-500">Paris, France</p>
-                    </div>
-                </div>
-                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    <div class="aspect-video">
-                        <iframe class="w-full h-full"
-                            src="https://www.youtube.com/embed/TcKRe-sTJQY"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">A Year With Scala-CLI As Our Build-Tool</h3>
-                        <p class="text-gray-300 mb-2">Functional Scala 2023</p>
-                        <p class="text-sm text-gray-500">London, United Kingdom</p>
-                    </div>
-                </div>
-                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    <div class="aspect-video">
-                        <iframe class="w-full h-full"
-                            src="https://www.youtube.com/embed/9ePQwMA_g_w"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Scala.js As A Simple Entry Point To Get People Into Scala</h3>
-                        <p class="text-gray-300 mb-2">Functional Scala 2022</p>
-                        <p class="text-sm text-gray-500"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Testimonials -->
     <section id="testimonials" class="py-16">
