@@ -57,9 +57,25 @@ const today = new Date();
             <div>
                 <h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">Newsletter</h4>
                 <p class="mt-4 text-gray-400">Get occasional updates about new posts and projects.</p>
-                <form class="mt-4 flex w-full max-w-sm" onsubmit={`event.preventDefault(); window.location.href=\`mailto:${COMPANY_EMAIL}?subject=\${encodeURIComponent('Newsletter signup')}&body=\${encodeURIComponent('Please add me to your newsletter.')}\``}>
-                    <input type="email" required placeholder="you@example.com" class="flex-1 px-3 py-2 rounded-l-md bg-gray-800 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <button type="submit" class="px-4 py-2 rounded-r-md bg-blue-600 hover:bg-blue-500 text-white border border-blue-600">Notify me</button>
+                <form 
+                  class="mt-4 flex w-full max-w-sm"
+                  action="https://wiringbits.us19.list-manage.com/subscribe/post?u=7ed4d4d25be6d189d1795765d&id=67cb3fe8dc"
+                  method="post"
+                  target="_blank"
+                  novalidate
+                >
+                    <input 
+                      type="email" 
+                      id="mce-EMAIL" 
+                      name="EMAIL" 
+                      required 
+                      placeholder="you@example.com" 
+                      class="flex-1 px-3 py-2 rounded-l-md bg-gray-800 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    />
+                    <div aria-hidden="true" style="position: absolute; left: -5000px;" class="hidden">
+                      <input type="text" name="b_7ed4d4d25be6d189d1795765d_67cb3fe8dc" tabindex="-1" value="" />
+                    </div>
+                    <button type="submit" class="px-4 py-2 rounded-r-md bg-blue-600 hover:bg-blue-500 text-white border border-blue-600">Subscribe</button>
                 </form>
             </div>
 
