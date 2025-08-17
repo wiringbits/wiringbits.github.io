@@ -84,7 +84,9 @@ import LogoPattern from '../assets/logo-pattern.png';
                             </div>
                         )}
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-gray-100">{post.data.title}</h3>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">
+                                <a href={getBlogPostUrl(post)} class="hover:text-blue-400 transition-colors">{post.data.title}</a>
+                            </h3>
                             <p class="text-gray-300 mb-4">{post.data.description}</p>
                             <a href={getBlogPostUrl(post)} class="text-blue-400 hover:underline font-semibold">Read More →</a>
                         </div>
