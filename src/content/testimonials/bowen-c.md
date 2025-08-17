@@ -1,7 +1,7 @@
 ---
 author: "Bowen C"
 position: "Non-profit webapp founder"
-image: "https://wiringbits.net/assets/home/testimonials/reviewer/placeholder.png"
+image: "../../assets/testimonials/placeholder.png"
 ---
 
 Alexis is a true lifesaver!
