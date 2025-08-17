@@ -1,66 +1,15 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
-
-const posts = (await getCollection('projects')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// Temporary redirect until Projects is ready
+Astro.redirect('/', 302);
 ---
 
-<BaseLayout title={`Project - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
-	<!-- Project Header -->
-	<section class="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-7xl mx-auto">
-			<div class="text-center">
-				<h1 class="text-4xl md:text-6xl font-bold mb-4">
-					<span class="text-blue-400">Projects</span>
-				</h1>
-				<p class="text-xl md:text-2xl text-gray-300 mb-8">
-					Thoughts on software engineering, blockchain, and technology
-				</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- Project Posts -->
-	<section class="py-16 bg-gray-800">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{posts.map((post) => (
-					<article class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-						{post.data.heroImage && (
-							<div class="aspect-video overflow-hidden">
-								<Image 
-									width={720} 
-									height={360} 
-									src={post.data.heroImage} 
-									alt={post.data.title}
-									class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-								/>
-							</div>
-						)}
-						<div class="p-6">
-							<div class="text-sm text-blue-400 font-semibold mb-2">
-								<FormattedDate date={post.data.pubDate} />
-							</div>
-							<h3 class="text-xl font-bold mb-3 text-gray-100">
-								<a href={`/projects/${post.id}/`} class="hover:text-blue-400 transition-colors">
-									{post.data.title}
-								</a>
-							</h3>
-							{post.data.description && (
-								<p class="text-gray-300 mb-4">{post.data.description}</p>
-							)}
-							<a href={`/projects/${post.id}/`} class="text-blue-400 hover:underline font-semibold">
-								Read More →
-							</a>
-						</div>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
-</BaseLayout>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="refresh" content="0; url=/" />
+    <title>Redirecting…</title>
+  </head>
+  <body class="bg-gray-900 text-gray-100">
+    <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+  </body>
+</html>

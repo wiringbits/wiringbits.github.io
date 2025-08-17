@@ -1,20 +1,19 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import ProjectPost from '../../layouts/ProjectPost.astro';
+import { type CollectionEntry } from 'astro:content';
 
+// Temporarily disable building any project detail pages
 export async function getStaticPaths() {
-	const posts = await getCollection('projects');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  return [];
 }
 type Props = CollectionEntry<'projects'>;
-
-const post = Astro.props;
-const { Content } = await render(post);
 ---
 
-<ProjectPost {...post.data}>
-	<Content />
-</ProjectPost>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Not available</title>
+  </head>
+  <body>
+    <p>Project pages are not available yet.</p>
+  </body>
+</html>
