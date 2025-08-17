@@ -16,6 +16,7 @@ Sometimes you may need to test how the extension behaves when Firefox starts, or
 ## Summary
 
 Gladly, there is a simple solution if you are using Firefox Developer or the ESR build:
+
 1. Update your extension manifest to include custom `browser_specific_settings`.
 2. Disable signature checks while installing extensions.
 3. Package your extension as a zip file.
@@ -28,6 +29,7 @@ Learn more at https://support.mozilla.org/en-US/kb/add-on-signing-in-firefox.
 These steps will not work for you if you are using the stable version of Firefox.
 
 ### Step 1
+
 Update your `manifest.json` to include a new key, the `id` could be any email:
 
 ```json
@@ -39,15 +41,19 @@ Update your `manifest.json` to include a new key, the `id` could be any email:
 ```
 
 ### Step 2
+
 Go to `about:config`, change `xpinstall.signatures.required` to `false`.
 
 ### Step 3
+
 Simply run `zip -r -FS ../my-extension.zip * --exclude '*.git*'`.
 
 ### Step 4
+
 Go to `about:addons`, and choose the `Install Add-on from file` option, choose the zip file created in the previous step.
 
 ### Step 5
+
 Go to `about:config`, change `xpinstall.signatures.required` to `true`.
 
 That's it, you have installed an unsigned extension permanently.

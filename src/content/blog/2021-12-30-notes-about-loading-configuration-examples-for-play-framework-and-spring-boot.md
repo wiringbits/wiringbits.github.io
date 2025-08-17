@@ -12,6 +12,7 @@ Loading configuration is a crucial part for most applications, still, I have see
 This post summarizes the process we have followed to load configuration our projects, while the examples are for Play Framework and Spring Boot, most ideas are agnostic to the framework/language.
 
 In summary:
+
 1. It should be clear what a configuration entry is for, with reasonable defaults.
 1. Prefer small typed models to represent a configuration unit.
 1. Allow overriding environment-dependent entries with environment variables.
@@ -20,12 +21,14 @@ In summary:
 1. Configuration models should be immutable.
 
 ## Details
+
 Let me dive into the suggested approach, the examples use:
+
 - [Play Framework](https://www.playframework.com/documentation/2.8.x/ConfigFile) which uses [HOCON files](https://github.com/lightbend/config), commonly loading the configuration from the `application.conf` file.
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html) loading the configuration from a properties file, commonly called `application.properties`.
 
-
 ### 1. It should be clear what a configuration entry is for, with reasonable defaults
+
 How many times have you got into a new project that requires lots of tries to get it running? Unfortunately, it seems that this is more common than what I would expect, we have experienced this problem in most of the projects we have inherited.
 
 While a good README is a sane expectation for any project, it is also ideal to document what are the configuration entries for.
@@ -51,7 +54,6 @@ aws.region=us-east-1
 aws.accessKeyId=REPLACE_ME
 aws.secretAccessKey=REPLACE_ME
 ```
-
 
 ### 2. Prefer small typed models to represent a configuration unit
 
@@ -85,7 +87,6 @@ class SecretsManagerService {
 }
 ```
 
-
 **Spring Boot example**
 
 Let's define the config, `application.properties`:
@@ -97,6 +98,7 @@ aws.secretAccessKey=REPLACE_ME
 ```
 
 Let's use the config, `SecretsManagerService.java`:
+
 ```java
 import org.springframework.beans.factory.annotation.Value;
 
@@ -124,9 +126,8 @@ While this approach works, there are many details that you can be improved, for 
 3. It is time to write tests, you will find out that you have no simple way to test the `SecretsManagerService` with different configuration values, in the case of Spring Boot, you are stuck with a properties file per test suite, and, you need the spring suite just to run a simple test, Play Framework is not very different.
 4. Notice how we are repeating `aws.*` many times, all classes depending on the configuration need to be aware of the global configuration structure, we could define a typed model that only expect the values to be there no matter who's the wrapper, accessing `region`/`accessKeyId`/`secretAccessKey` directly, which is more flexible.
 
-
-
 ### 3. Allow overriding environment-dependent entries with environment variables
+
 I believe there isn't much to be said for justifying this point, it is really useful to have the flexibility to override most settings from environment variables.
 
 Let's take this config:
@@ -148,8 +149,8 @@ Play Framework config approach is pretty handy because it allow us to optionally
 
 While Spring Boot has a way to do this, it requires code changes instead of just updating the configuration file.
 
-
 ### 4. Fail-fast, most configuration models should be loaded eagerly when the application starts
+
 This is specially useful when adding new entries to the configuration, it is easy to forget updating the production settings after adding new entries to the default settings.
 
 When the configuration models are loaded eagerly, you will see an error just after deploying the new application's version, which allows you to notice and fix the problem right away.
@@ -159,14 +160,13 @@ On the other hand, when the configuration models are loaded lazily, the problem 
 Additionally, it can be useful to validate critical settings when the application starts.
 Most of the time, it doesn't make sense to start an application if it can't even access its database (think about wrong credentials).
 
-
 ### 5. Log the loaded config to easily understand what’s going on when the application starts
+
 Following the previous point, have you ever wondered if your configuration changes took effect in a production environment? This shouldn't be a problem if you log the loaded configuration after loading it eagerly (just make sure to mask secrets to avoid propagating those to the log aggregators).
 
-
 ### 6. Configuration models should be immutable
-In 2021, immutability is a pattern that has become quite popular, I won't say much about this but the code is far simple when it gets an `AwsConfig` immutable object, for example, this could allow you to create an `AwsClient` once and use it through the application's lifecycle instead of creating it every time you need to deal with AWS.
 
+In 2021, immutability is a pattern that has become quite popular, I won't say much about this but the code is far simple when it gets an `AwsConfig` immutable object, for example, this could allow you to create an `AwsClient` once and use it through the application's lifecycle instead of creating it every time you need to deal with AWS.
 
 ## Show me the code
 
@@ -174,8 +174,8 @@ Let's dive into some examples that follow these practices.
 
 **NOTE**: For simplicity, I'm ommiting the packages, as well as using Lombok avoid the Java boilerplate.
 
-
 ### Play Framework
+
 The config (`application.conf`):
 
 ```hocon
@@ -184,7 +184,7 @@ aws {
   # The region where the secrets are stored
   region = us-east-1
   region = ${?AWS_REGION}
-  
+
   accessKeyId = REPLACE_ME
   accessKeyId = ${?AWS_ACCESS_KEY_ID}
 
@@ -194,6 +194,7 @@ aws {
 ```
 
 The typed config object (`AwsConfig.scala`):
+
 ```scala
 import play.api.Configuration
 
@@ -283,14 +284,13 @@ class AwsService @Inject()(config: AwsConfig) {}
 That's it for Play, run your application, everything should be wired and working.
 
 References:
+
 - [https://www.playframework.com/documentation/2.8.x/ConfigFile](https://www.playframework.com/documentation/2.8.x/ConfigFile)
 - [https://www.playframework.com/documentation/2.8.x/ScalaDependencyInjection](https://www.playframework.com/documentation/2.8.x/ScalaDependencyInjection)
 - [https://github.com/google/guice](https://github.com/google/guice)
 
-
-
-
 ### Spring Boot
+
 The config (`application.properties`):
 
 ```properties
@@ -303,6 +303,7 @@ aws.secretAccessKey=REPLACE_ME
 ```
 
 The typed config object (`AwsConfig.java`):
+
 ```java
 import lombok.Builder;
 import lombok.Data;
@@ -358,15 +359,13 @@ class AwsConfigSpringFactory {
             .accessKeyId(accessKeyId)
             .secretAccessKey(secretAccessKey)
             .build();
-    
+
     // log the config
     log.info("Config loaded: {}", config);
     return config;
   }
 }
 ```
-
-
 
 Now, use the new `AwsConfig`, `AwsService.java`:
 
@@ -389,8 +388,8 @@ public class AwsService {
 
 That's it for Spring Boot, run your application, everything should be wired and working.
 
-
 ## Conclusion
+
 We have visited some useful details to consider when loading configuration files, as well as real-world examples. While these details may seem obvious, I have touched many projects which could benefit from these, Which is what motivated me to write the post.
 
 I hope that the post can be useful for other developers.

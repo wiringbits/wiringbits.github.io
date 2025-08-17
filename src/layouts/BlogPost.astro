@@ -1,177 +1,204 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import { getBlogPostUrl } from '../utils/blog';
-import BaseLayout from './BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getBlogPostUrl } from "../utils/blog";
+import BaseLayout from "./BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type BlogData = CollectionEntry<'blog'>['data'];
-type PageProps = BlogData & { relatedPosts?: CollectionEntry<'blog'>[] };
+type BlogData = CollectionEntry<"blog">["data"];
+type PageProps = BlogData & { relatedPosts?: CollectionEntry<"blog">[] };
 
-const { title, description, pubDate, updatedDate, heroImage, relatedPosts = [] } = Astro.props as PageProps;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  relatedPosts = [],
+} = Astro.props as PageProps;
 ---
 
 <BaseLayout title={title} description={description} showParticles={false}>
-	<!-- Blog Post Header -->
-	<section class="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto">
-			{heroImage && (
-				<div class="mb-6 mx-auto max-w-sm md:max-w-md">
-					<Image 
-						width={800} 
-						height={480} 
-						src={heroImage} 
-						alt={title}
-						class="w-full h-auto max-h-40 md:max-h-48 object-contain rounded-lg shadow-md"
-					/>
-				</div>
-			)}
-			<div class="text-center">
-				<div class="text-sm text-blue-400 font-semibold mb-4">
-					<FormattedDate date={pubDate} />
-					{updatedDate && (
-						<span class="block text-gray-500 font-normal italic mt-1">
-							Last updated on <FormattedDate date={updatedDate} />
-						</span>
-					)}
-				</div>
-				<h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-100">{title}</h1>
-				{description && (
-					<p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">{description}</p>
-				)}
-				<div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
-			</div>
-		</div>
-	</section>
+  <!-- Blog Post Header -->
+  <section class="px-4 pt-20 pb-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      {
+        heroImage && (
+          <div class="mx-auto mb-6 max-w-sm md:max-w-md">
+            <Image
+              width={800}
+              height={480}
+              src={heroImage}
+              alt={title}
+              class="h-auto max-h-40 w-full rounded-lg object-contain shadow-md md:max-h-48"
+            />
+          </div>
+        )
+      }
+      <div class="text-center">
+        <div class="mb-4 text-sm font-semibold text-blue-400">
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <span class="mt-1 block font-normal text-gray-500 italic">
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
+            )
+          }
+        </div>
+        <h1 class="mb-6 text-4xl font-bold text-gray-100 md:text-5xl">
+          {title}
+        </h1>
+        {
+          description && (
+            <p class="mx-auto mb-8 max-w-3xl text-xl text-gray-300">
+              {description}
+            </p>
+          )
+        }
+        <div class="mx-auto h-1 w-24 rounded bg-blue-600"></div>
+      </div>
+    </div>
+  </section>
 
-	<!-- Blog Post Content -->
-	<section class="py-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto">
-			<article class="prose prose-lg prose-invert max-w-none blog-content">
-				<slot />
-			</article>
-		</div>
-	</section>
+  <!-- Blog Post Content -->
+  <section class="px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <article class="prose prose-lg prose-invert blog-content max-w-none">
+        <slot />
+      </article>
+    </div>
+  </section>
 
-	<!-- Related Posts (Swiper) -->
-	{relatedPosts.length > 0 && (
-		<section class="py-4 px-4 sm:px-6 lg:px-8">
-			<div class="max-w-5xl mx-auto">
-				<h2 class="text-2xl font-bold mb-6 text-gray-100">You might also like</h2>
-				<div class="swiper related-swiper">
-					<div class="swiper-wrapper">
-						{relatedPosts.map((p) => (
-							<div class="swiper-slide">
-								<a href={getBlogPostUrl(p)} class="group block bg-gray-900 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow h-full">
-									{p.data.heroImage && (
-										<div class="aspect-video overflow-hidden">
-											<Image
-												width={480}
-												height={270}
-												src={p.data.heroImage}
-												alt={p.data.title}
-												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-											/>
-										</div>
-									)}
-									<div class="p-4">
-										<h3 class="text-lg font-semibold text-gray-100 group-hover:text-blue-400 transition-colors">{p.data.title}</h3>
-										{p.data.description && (
-											<p class="text-gray-400 text-sm mt-2 line-clamp-3">{p.data.description}</p>
-										)}
-									</div>
-								</a>
-							</div>
-						))}
-					</div>
-					<!-- Controls below to avoid overlapping cards -->
-					<div class="mt-4 flex items-center justify-between gap-4">
-						<div class="swiper-button-prev !static !text-blue-400 after:!text-2xl"></div>
-						<div class="swiper-pagination flex-1"></div>
-						<div class="swiper-button-next !static !text-blue-400 after:!text-2xl"></div>
-					</div>
-				</div>
-			</div>
-		</section>
-	)}
+  <!-- Related Posts (Swiper) -->
+  {
+    relatedPosts.length > 0 && (
+      <section class="px-4 py-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-5xl">
+          <h2 class="mb-6 text-2xl font-bold text-gray-100">
+            You might also like
+          </h2>
+          <div class="swiper related-swiper">
+            <div class="swiper-wrapper">
+              {relatedPosts.map((p) => (
+                <div class="swiper-slide">
+                  <a
+                    href={getBlogPostUrl(p)}
+                    class="group block h-full overflow-hidden rounded-lg bg-gray-900 shadow transition-shadow hover:shadow-lg"
+                  >
+                    {p.data.heroImage && (
+                      <div class="aspect-video overflow-hidden">
+                        <Image
+                          width={480}
+                          height={270}
+                          src={p.data.heroImage}
+                          alt={p.data.title}
+                          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+                    <div class="p-4">
+                      <h3 class="text-lg font-semibold text-gray-100 transition-colors group-hover:text-blue-400">
+                        {p.data.title}
+                      </h3>
+                      {p.data.description && (
+                        <p class="mt-2 line-clamp-3 text-sm text-gray-400">
+                          {p.data.description}
+                        </p>
+                      )}
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+            <div class="mt-4 flex items-center justify-between gap-4">
+              <div class="swiper-button-prev !static !text-blue-400 after:!text-2xl" />
+              <div class="swiper-pagination flex-1" />
+              <div class="swiper-button-next !static !text-blue-400 after:!text-2xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
-	<!-- Back to Blog -->
-	<section class="py-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto text-center">
-			<a 
-				href="/blog" 
-				class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-			>
-				← Back to Blog
-			</a>
-		</div>
-	</section>
+  <!-- Back to Blog -->
+  <section class="px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <a
+        href="/blog"
+        class="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+      >
+        ← Back to Blog
+      </a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style is:global>
-	.blog-content a {
-		color: #60a5fa !important;
-		text-decoration: none !important;
-	}
-	
-	.blog-content a:hover {
-		color: #93c5fd !important;
-		text-decoration: underline !important;
-	}
-	
-	.blog-content ul {
-		list-style-type: disc !important;
-		list-style-position: outside !important;
-		padding-left: 2rem !important;
-		margin-left: 0 !important;
-	}
-	
-	.blog-content ul li {
-		color: #d1d5db !important;
-		margin-bottom: 0.5rem !important;
-		display: list-item !important;
-	}
-	
-	.blog-content ul li::marker {
-		color: #d1d5db !important;
-		content: "• " !important;
-	}
-	
-	.blog-content p {
-		color: #d1d5db !important;
-		line-height: 1.75 !important;
-	}
-	
-	.blog-content h1,
-	.blog-content h2,
-	.blog-content h3,
-	.blog-content h4,
-	.blog-content h5,
-	.blog-content h6 {
-		color: #f3f4f6 !important;
-		font-weight: 600 !important;
-	}
-	
-	/* Override any conflicting prose styles */
-	.prose.blog-content a {
-		color: #60a5fa !important;
-	}
-	
-	.prose.blog-content ul {
-		list-style-type: disc !important;
-	}
-	
-	.prose.blog-content li {
-		color: #d1d5db !important;
-	}
+  .blog-content a {
+    color: #60a5fa !important;
+    text-decoration: none !important;
+  }
+
+  .blog-content a:hover {
+    color: #93c5fd !important;
+    text-decoration: underline !important;
+  }
+
+  .blog-content ul {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    padding-left: 2rem !important;
+    margin-left: 0 !important;
+  }
+
+  .blog-content ul li {
+    color: #d1d5db !important;
+    margin-bottom: 0.5rem !important;
+    display: list-item !important;
+  }
+
+  .blog-content ul li::marker {
+    color: #d1d5db !important;
+    content: "• " !important;
+  }
+
+  .blog-content p {
+    color: #d1d5db !important;
+    line-height: 1.75 !important;
+  }
+
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    color: #f3f4f6 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Override any conflicting prose styles */
+  .prose.blog-content a {
+    color: #60a5fa !important;
+  }
+
+  .prose.blog-content ul {
+    list-style-type: disc !important;
+  }
+
+  .prose.blog-content li {
+    color: #d1d5db !important;
+  }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Load Swiper JS and initialize for related posts
     const initRelated = () => {
       // @ts-ignore - Swiper is loaded globally via CDN
-      const swiper = new Swiper('.related-swiper', {
+      const swiper = new Swiper(".related-swiper", {
         slidesPerView: 1,
         spaceBetween: 16,
         loop: true,
@@ -180,12 +207,12 @@ const { title, description, pubDate, updatedDate, heroImage, relatedPosts = [] }
           disableOnInteraction: false,
         },
         pagination: {
-          el: '.related-swiper .swiper-pagination',
+          el: ".related-swiper .swiper-pagination",
           clickable: true,
         },
         navigation: {
-          nextEl: '.related-swiper .swiper-button-next',
-          prevEl: '.related-swiper .swiper-button-prev',
+          nextEl: ".related-swiper .swiper-button-next",
+          prevEl: ".related-swiper .swiper-button-prev",
         },
         breakpoints: {
           640: { slidesPerView: 1.2, spaceBetween: 20 },
@@ -200,8 +227,9 @@ const { title, description, pubDate, updatedDate, heroImage, relatedPosts = [] }
     if (window.Swiper) {
       initRelated();
     } else {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+      const script = document.createElement("script");
+      script.src =
+        "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js";
       script.onload = initRelated;
       document.head.appendChild(script);
     }

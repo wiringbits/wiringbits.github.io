@@ -21,7 +21,6 @@ I got the feeling that writing a bot to ban such scammers shouldn't take much ti
 
 I must admit that I thought it was a task for half a day but I likely ended up investing around 10 hours to get it working mostly due to being new to the Discord APIs, with a couple extra hours to get the code cleaner to open source it.
 
-
 ## Try it
 
 Just go to the [discord-scammer-detector-bot](https://github.com/wiringbits/discord-scammer-detector-bot) project, and follow the instructions to get the Bot running.
@@ -33,8 +32,6 @@ Then, install the bot on your discord server, just go to `https://discord.com/oa
 And that's it!
 
 If you like to get it deployed to a server, there is an ansible script to get it ready with a single command, just follow the proper [instructions](https://github.com/wiringbits/discord-scammer-detector-bot/tree/master/infra/deployment).
-
-
 
 ## How it works
 
@@ -49,7 +46,6 @@ Now, just define how strict the scammer detector should be (higher number means 
 But, that's not enough, because the scammer can just use more than 2 invisible characters to bypass this rule, in order to avoid this, we can normalize the strings to use ASCII characters only, which is tricky and I'll likely continue updating the approach for a while.
 
 I plan to keep polishing the detection rules for a while, for now, instead of kicking users out, potential scammers get posted in a channel to let the admins handle it manually, eventually, the bot should get good enough to kick them out.
-
 
 ## Future
 

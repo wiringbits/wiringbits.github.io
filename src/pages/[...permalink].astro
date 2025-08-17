@@ -1,39 +1,42 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../layouts/BlogPost.astro';
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BlogPost from "../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	type BlogPermalinkPath = { params: { permalink: string } ; props: CollectionEntry<'blog'> };
-	const paths: BlogPermalinkPath[] = [];
-	
-	for (const post of posts) {
-		if (post.data.permalink) {
-			// Handle custom permalinks (Jekyll posts)
-			// [...permalink] accepts a string; Astro will match the rest param internally
-			const clean = post.data.permalink.replace(/^\/+/, '');
-			paths.push({
-				params: { permalink: clean },
-				props: post,
-			});
-		}
-	}
-	
-	return paths;
+  const posts = await getCollection("blog");
+  type BlogPermalinkPath = {
+    params: { permalink: string };
+    props: CollectionEntry<"blog">;
+  };
+  const paths: BlogPermalinkPath[] = [];
+
+  for (const post of posts) {
+    if (post.data.permalink) {
+      // Handle custom permalinks (Jekyll posts)
+      // [...permalink] accepts a string; Astro will match the rest param internally
+      const clean = post.data.permalink.replace(/^\/+/, "");
+      paths.push({
+        params: { permalink: clean },
+        props: post,
+      });
+    }
+  }
+
+  return paths;
 }
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await render(post);
 
 // Build-time random selection of related posts
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 const pool = allPosts.filter((p) => p.id !== post.id);
 const shuffled = [...pool].sort(() => Math.random() - 0.5);
 const relatedPosts = shuffled;
 ---
 
 <BlogPost {...post.data} relatedPosts={relatedPosts}>
-	<Content />
+  <Content />
 </BlogPost>

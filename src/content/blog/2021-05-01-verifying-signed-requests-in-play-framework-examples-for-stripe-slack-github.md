@@ -11,15 +11,16 @@ Verifying a signed request is a common task when you work with services that req
 
 Before going to the code, its worth reading [How (not) to sign a JSON object](https://latacora.micro.blog/2019/07/24/how-not-to.html), which should give you an understanding of the problem's complexity.
 
-
 ## Summary
+
 In simple terms, you should avoid any custom request parser in your controller, and read the bytes as they were sent, because the signature won't match if you let play parse the request into any data type other than bytes (let it be `AnyContent`/`JsValue`/etc).
 
-
 ## Show me the code
+
 Let's go to the code examples, while every service uses a slightly different mechanism, at the end, what matters is to not alter the request by parsing the bytes.
 
 ### Stripe
+
 The Stripe case is pretty simple thanks to their [Java SDK](https://github.com/stripe/stripe-java):
 
 ```scala
@@ -49,6 +50,7 @@ POST /webhooks/stripe controllers.WebhooksController.stripeWebhook()
 ```
 
 ### Slack
+
 Depending on how you integrate with slack, you may need to handle Slack requests in many urls, this is one example on how to verify that those requests came from Slack.
 
 ```scala
@@ -103,8 +105,8 @@ The same points from Stripe apply, getting the request as bytes is what matters 
 
 At last, its worth adding that `DatatypeConverter` is used for simplicity but such class doesn't exist in the newest Java versions.
 
-
 ### Github
+
 Github uses a very similar approach to Slack, the main difference is that the request body is a JSON, and the usage of SHA1 instead of SHA256, but, overall, the trick is the same, parse the request as bytes:
 
 ```scala
@@ -139,7 +141,7 @@ Github uses a very similar approach to Slack, the main difference is that the re
       .split("=")
       .lift(1)
       .getOrElse("")
-    
+
     for {
       _ <- Future {
         verifyGithubSignature(
@@ -159,4 +161,5 @@ Github uses a very similar approach to Slack, the main difference is that the re
 Of course, the same remarks from Stripe/Slack apply.
 
 ## More
+
 By now, you should understand that the key point while verifying a signed request is to get the same data that was sent to you, which is simpler when parsing the request as bytes.

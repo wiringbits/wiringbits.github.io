@@ -1,65 +1,75 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseLayout from './BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<'project'>['data'];
+type Props = CollectionEntry<"project">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} showParticles={false}>
-	<!-- Project Post Header -->
-	<section class="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto">
-			{heroImage && (
-				<div class="mb-8">
-					<Image 
-						width={1020} 
-						height={510} 
-						src={heroImage} 
-						alt={title}
-						class="w-full h-auto rounded-lg shadow-lg"
-					/>
-				</div>
-			)}
-			<div class="text-center">
-				<div class="text-sm text-blue-400 font-semibold mb-4">
-					<FormattedDate date={pubDate} />
-					{updatedDate && (
-						<span class="block text-gray-500 font-normal italic mt-1">
-							Last updated on <FormattedDate date={updatedDate} />
-						</span>
-					)}
-				</div>
-				<h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-100">{title}</h1>
-				{description && (
-					<p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">{description}</p>
-				)}
-				<div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
-			</div>
-		</div>
-	</section>
+  <!-- Project Post Header -->
+  <section class="px-4 pt-20 pb-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      {
+        heroImage && (
+          <div class="mb-8">
+            <Image
+              width={1020}
+              height={510}
+              src={heroImage}
+              alt={title}
+              class="h-auto w-full rounded-lg shadow-lg"
+            />
+          </div>
+        )
+      }
+      <div class="text-center">
+        <div class="mb-4 text-sm font-semibold text-blue-400">
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <span class="mt-1 block font-normal text-gray-500 italic">
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
+            )
+          }
+        </div>
+        <h1 class="mb-6 text-4xl font-bold text-gray-100 md:text-5xl">
+          {title}
+        </h1>
+        {
+          description && (
+            <p class="mx-auto mb-8 max-w-3xl text-xl text-gray-300">
+              {description}
+            </p>
+          )
+        }
+        <div class="mx-auto h-1 w-24 rounded bg-blue-600"></div>
+      </div>
+    </div>
+  </section>
 
-	<!-- Project Post Content -->
-	<section class="py-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto">
-			<article class="prose prose-lg max-w-none">
-				<slot />
-			</article>
-		</div>
-	</section>
+  <!-- Project Post Content -->
+  <section class="px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <article class="prose prose-lg max-w-none">
+        <slot />
+      </article>
+    </div>
+  </section>
 
-	<!-- Back to Projects -->
-	<section class="py-8 px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto text-center">
-			<a 
-				href="/projects" 
-				class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-			>
-				← Back to Projects
-			</a>
-		</div>
-	</section>
+  <!-- Back to Projects -->
+  <section class="px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <a
+        href="/projects"
+        class="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+      >
+        ← Back to Projects
+      </a>
+    </div>
+  </section>
 </BaseLayout>

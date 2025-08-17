@@ -11,7 +11,6 @@ We got to work with a customer that has a legacy application that needs to get r
 
 It is worth highlighting that such an app can be created and launched in less than 1 hour.
 
-
 ## Context
 
 This particular project has been running for many years, it has many customers using it the whole day, it works smoothly most of the times, still, there are some triggers that cause it to get into an unusable state, which has been solved by restarting the application.
@@ -23,7 +22,6 @@ In an ideal world, we would dig into the problem and fix it, still, we can't act
 Right now, our effort is being invested into migrating the legacy app customers out of it, which makes it hard to justify putting enough time to create a decent application just to restart the legacy services, hence, I came up with a super simple app with the goal to create/launch it in around 1 hour.
 
 Honestly, it took a bit more because I put extra time to figure details I wasn't expecting, still, I'm confident that the next time I do this, 30m should be good enough to do everything, hopefully you can do the same by taking this post as a guide.
-
 
 ## Summary
 
@@ -48,7 +46,6 @@ In short, we'll follow these steps:
 4. Install and configure [OpenResty](https://openresty.org) which has an nginx version including [lua-nginx-module](https://github.com/openresty/lua-nginx-module) (default nginx version does not have this), set up nginx to serve the simple html page, then, protect it with a password (http basic authentication).
 5. Make sure that everything works the way you expect.
 
-
 ## Details
 
 Let's start by getting a server in your preferred cloud, the cheapest one available should work fine.
@@ -64,7 +61,6 @@ In this case, I used ubuntu 20.04, most of the commands listed should work in ot
 - In another terminal, ssh into any server where `dummy` needs access, append the copied public key to `~/.ssh/authorized_keys`
 - Confirm that `dummy` can access perform the restart task on those servers, for example: `ssh my-server "sudo service nginx restart"`
 
-
 ### Prepare scripts
 
 By following previous steps, we have a terminal where we are logged in as user `dummy`, let's create a simple script that restarts the legacy app, in my case, I'd name it `restart-app.sh`:
@@ -77,7 +73,6 @@ ssh legacy-server "sudo service nginx restart"
 Be sure to replace `legacy-server` with your desired server and `sudo service nginx restart` with the command to restart your app.
 
 Repeat this step with any other script you need to expose.
-
 
 ### Create the html page
 
@@ -125,13 +120,12 @@ Follow the official [guide](https://openresty.org/en/installation.html), pre-bui
 - Reload changes with `sudo service openresty reload`
 - Now, `curl localhost` must display your html page.
 
-
 #### Update nginx.conf
+
 Let's edit `/etc/openresty/nginx.conf` to define:
 
 - The user who will trigger the restarts.
 - The handler to trigger the restart scripts.
-
 
 We'll require that OpenResty launches the scripts with our `dummy` user, who is the one allowed to interact with our legacy server, update `nginx.conf` to replace `user  nobody;` with `user dummy;`, which must be the first line in `nginx.conf` (make sure this line is not commented).
 
@@ -187,7 +181,6 @@ http {
 
 Let's reload `OpenResty` so that changes take effect: `sudo service openresty reload`
 
-
 ### Review/Test
 
 It is time to test! go to the ip address linked to your server, which must display the basic web page:
@@ -195,7 +188,6 @@ It is time to test! go to the ip address linked to your server, which must displ
 ![Page Screenshot](../../assets/posts/simple-app-triggering-restarts/simple-app-screenshot.png)
 
 Clicking on a button must trigger the restart command on your target application.
-
 
 ## Conclusion
 

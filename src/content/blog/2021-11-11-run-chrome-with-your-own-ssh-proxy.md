@@ -14,6 +14,7 @@ This short post explains the workaround we used to overcome that issue.
 ## Summary
 
 In short:
+
 - Let's take any VPS where you have ssh access to, this VPS will be used to send all the chrome traffic to internet (just like if Chrome was running in the VPS): `ssh -nNT -D 2000 user@ipaddress`
 - Launch Chrome with a custom profile that uses the socks proxy: `/usr/bin/google-chrome --user-data-dir="$HOME/chrome-proxy-profile" --proxy-server="socks5://localhost:2000"`
 

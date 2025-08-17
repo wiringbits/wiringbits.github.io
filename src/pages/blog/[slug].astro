@@ -1,29 +1,29 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	// Only generate /blog/<slug>/ routes for posts WITHOUT a custom permalink.
-	// Posts with a permalink are handled by the catch-all route at src/pages/[...permalink].astro
-	return posts
-		.filter((post) => !post.data.permalink)
-		.map((post) => ({
-			params: { slug: post.id },
-			props: post,
-		}));
+  const posts = await getCollection("blog");
+  // Only generate /blog/<slug>/ routes for posts WITHOUT a custom permalink.
+  // Posts with a permalink are handled by the catch-all route at src/pages/[...permalink].astro
+  return posts
+    .filter((post) => !post.data.permalink)
+    .map((post) => ({
+      params: { slug: post.id },
+      props: post,
+    }));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await render(post);
 
 // Build-time list of related posts (exclude current). Shuffle for variety; Swiper will traverse all.
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 const pool = allPosts.filter((p) => p.id !== post.id);
 const relatedPosts = [...pool].sort(() => Math.random() - 0.5);
 ---
 
 <BlogPost {...post.data} relatedPosts={relatedPosts}>
-	<Content />
+  <Content />
 </BlogPost>

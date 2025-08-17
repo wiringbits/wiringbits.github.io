@@ -1,111 +1,142 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getBlogPostUrl } from '../utils/blog';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getBlogPostUrl } from "../utils/blog";
 
 // Get blog posts for featured section (all of them)
-const posts = (await getCollection('blog'))
-    .sort(() => Math.random() - 0.5);
+const posts = (await getCollection("blog")).sort(() => Math.random() - 0.5);
 
 // Get recent projects for featured section
-const projects = (await getCollection('projects'))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 3);
+const projects = (await getCollection("projects"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 // Get testimonials
-const allTestimonials = await getCollection('testimonials');
+const allTestimonials = await getCollection("testimonials");
 // Shuffle and select 3 random testimonials
-const testimonials = allTestimonials
-    .sort(() => Math.random() - 0.5);
+const testimonials = allTestimonials.sort(() => Math.random() - 0.5);
 
-
-import LogoPattern from '../assets/logo-pattern.png';
+import LogoPattern from "../assets/logo-pattern.png";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-    <!-- Hero Section - Agency -->
-    <section id="home" class="relative overflow-hidden">
-        <!-- Background logo pattern positioned on the right -->
-        <div class="absolute top-0 right-0 w-1/2 h-full opacity-80 pointer-events-none hidden lg:block">
-            <Image 
-                src={LogoPattern} 
-                alt="Logo Pattern Background" 
-                class="w-full h-full object-contain object-right"
-                width={500}
-                height={400}
-            />
+  <!-- Hero Section - Agency -->
+  <section id="home" class="relative overflow-hidden">
+    <!-- Background logo pattern positioned on the right -->
+    <div
+      class="pointer-events-none absolute top-0 right-0 hidden h-full w-1/2 opacity-80 lg:block"
+    >
+      <Image
+        src={LogoPattern}
+        alt="Logo Pattern Background"
+        class="h-full w-full object-contain object-right"
+        width={500}
+        height={400}
+      />
+    </div>
+    <div class="relative z-10 px-4 pt-20 pb-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col items-center justify-between lg:flex-row">
+          <div class="mb-8 text-center lg:mb-0 lg:w-1/2 lg:text-left">
+            <h1 class="mb-6 text-4xl font-bold text-white md:text-6xl">
+              Web and Blockchain<br />Development Agency
+            </h1>
+            <p class="mb-8 text-xl leading-relaxed text-gray-300 md:text-2xl">
+              Our fully remote developer team can help<br />
+              you spot problems early and ship sooner
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
+              <a
+                href="#contact"
+                class="rounded-lg bg-blue-600 px-8 py-3 text-white transition-colors hover:bg-blue-700"
+                >Get in touch</a
+              >
+              <a
+                href="/blog/"
+                class="rounded-lg border-2 border-blue-400 px-8 py-3 text-blue-400 transition-colors hover:bg-gray-800"
+                >View our blog</a
+              >
+            </div>
+          </div>
+          <div class="lg:w-1/2"></div>
         </div>
-        <div class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col lg:flex-row items-center justify-between">
-                    <div class="lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-                            Web and Blockchain<br/>Development Agency
-                        </h1>
-                        <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-                            Our fully remote developer team can help<br/>
-                            you spot problems early and ship sooner
-                        </p>
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                            <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">Get in touch</a>
-                            <a href="/blog/" class="border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">View our blog</a>
-                        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Blog Posts -->
+  <section id="blog" class="bg-gray-800 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-bold md:text-4xl">Featured Blog Posts</h2>
+        <p class="text-lg text-gray-300">
+          Latest insights and technical articles
+        </p>
+        <a
+          href="/blog"
+          class="mt-4 inline-block font-semibold text-blue-400 transition-colors hover:text-blue-300"
+          >View All →</a
+        >
+      </div>
+      <div class="swiper blogposts-swiper">
+        <div class="swiper-wrapper">
+          {
+            posts.map((post) => (
+              <div class="swiper-slide">
+                <article class="h-full overflow-hidden rounded-lg bg-gray-900 shadow-lg transition-shadow hover:shadow-xl">
+                  {post.data.heroImage && (
+                    <div class="aspect-video overflow-hidden">
+                      <Image
+                        width={720}
+                        height={360}
+                        src={post.data.heroImage}
+                        alt={post.data.title}
+                        class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
                     </div>
-                    <div class="lg:w-1/2"></div>
-                </div>
-            </div>
+                  )}
+                  <div class="p-6">
+                    <h3 class="mb-3 text-xl font-bold text-gray-100">
+                      <a
+                        href={getBlogPostUrl(post)}
+                        class="transition-colors hover:text-blue-400"
+                      >
+                        {post.data.title}
+                      </a>
+                    </h3>
+                    <p class="mb-4 text-gray-300">{post.data.description}</p>
+                    <a
+                      href={getBlogPostUrl(post)}
+                      class="font-semibold text-blue-400 hover:underline"
+                    >
+                      Read More →
+                    </a>
+                  </div>
+                </article>
+              </div>
+            ))
+          }
         </div>
-    </section>
-
-    <!-- Featured Blog Posts -->
-    <section id="blog" class="py-16 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Blog Posts</h2>
-                <p class="text-gray-300 text-lg">Latest insights and technical articles</p>
-                <a href="/blog" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All →</a>
-            </div>
-            <div class="swiper blogposts-swiper">
-                <div class="swiper-wrapper">
-                    {posts.map((post) => (
-                        <div class="swiper-slide">
-                            <article class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full">
-                                {post.data.heroImage && (
-                                    <div class="aspect-video overflow-hidden">
-                                        <Image 
-                                            width={720} 
-                                            height={360} 
-                                            src={post.data.heroImage} 
-                                            alt={post.data.title}
-                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                        />
-                                    </div>
-                                )}
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold mb-3 text-gray-100">
-                                        <a href={getBlogPostUrl(post)} class="hover:text-blue-400 transition-colors">{post.data.title}</a>
-                                    </h3>
-                                    <p class="text-gray-300 mb-4">{post.data.description}</p>
-                                    <a href={getBlogPostUrl(post)} class="text-blue-400 hover:underline font-semibold">Read More →</a>
-                                </div>
-                            </article>
-                        </div>
-                    ))}
-                </div>
-                <!-- Controls below to avoid overlapping cards -->
-                <div class="mt-6 flex items-center justify-between gap-4">
-                    <div class="swiper-button-prev !static !text-blue-400 after:!text-2xl"></div>
-                    <div class="swiper-pagination flex-1"></div>
-                    <div class="swiper-button-next !static !text-blue-400 after:!text-2xl"></div>
-                </div>
-            </div>
+        <!-- Controls below to avoid overlapping cards -->
+        <div class="mt-6 flex items-center justify-between gap-4">
+          <div
+            class="swiper-button-prev !static !text-blue-400 after:!text-2xl"
+          >
+          </div>
+          <div class="swiper-pagination flex-1"></div>
+          <div
+            class="swiper-button-next !static !text-blue-400 after:!text-2xl"
+          >
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <!-- TODO
+  <!-- Projects Section -->
+  <!-- TODO
     <section id="projects" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -128,167 +159,213 @@ import LogoPattern from '../assets/logo-pattern.png';
     </section>
     -->
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Testimonials</h2>
-                <p class="text-gray-300 text-lg">What colleagues and clients say about working with me</p>
-                <a href="/testimonials" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All Testimonials →</a>
-            </div>
-            
-            <!-- Swiper Container -->
-            <div class="swiper testimonials-swiper max-w-4xl mx-auto">
-                <div class="swiper-wrapper">
-                    {testimonials.map((testimonial, index) => {
-                        const fullText = testimonial.body;
-                        const isLong = fullText.length > 200;
-                        const truncatedText = isLong ? fullText.substring(0, 200).trim() : fullText;
-                        return (
-                            <div class="swiper-slide">
-                                <div class="bg-gray-800 rounded-lg p-8 shadow-lg mx-4">
-                                    <div class="mb-6 text-center">
-                                        <svg class="w-10 h-10 text-blue-500 mb-4 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="text-gray-300 mb-8 italic text-lg text-center leading-relaxed">
-                                        "
-                                        <span class="testimonial-text whitespace-pre-line" data-full-text={fullText} data-truncated-text={truncatedText}>
-                                            {isLong ? truncatedText : fullText}
-                                        </span>
-                                        {isLong && (
-                                            <span class="testimonial-toggle text-blue-400 hover:text-blue-300 cursor-pointer ml-1 font-normal not-italic" data-expanded="false">
-                                                (...)
-                                            </span>
-                                        )}
-                                        "
-                                    </div>
-                                    <div class="flex items-center justify-center">
-                                        <Image src={testimonial.data.image} alt={testimonial.data.author} class="w-12 h-12 rounded-full mr-4 object-cover" width={48} height={48} />
-                                        <div>
-                                            <p class="font-semibold text-white">{testimonial.data.author}</p>
-                                            <p class="text-sm text-gray-400">{testimonial.data.position}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-bold md:text-4xl">Testimonials</h2>
+        <p class="text-lg text-gray-300">
+          What colleagues and clients say about working with me
+        </p>
+        <a
+          href="/testimonials"
+          class="mt-4 inline-block font-semibold text-blue-400 transition-colors hover:text-blue-300"
+          >View All Testimonials →</a
+        >
+      </div>
+
+      <!-- Swiper Container -->
+      <div class="swiper testimonials-swiper mx-auto max-w-4xl">
+        <div class="swiper-wrapper">
+          {
+            testimonials.map((testimonial, index) => {
+              const fullText = testimonial.body;
+              const isLong = fullText.length > 200;
+              const truncatedText = isLong
+                ? fullText.substring(0, 200).trim()
+                : fullText;
+              return (
+                <div class="swiper-slide">
+                  <div class="mx-4 rounded-lg bg-gray-800 p-8 shadow-lg">
+                    <div class="mb-6 text-center">
+                      <svg
+                        class="mx-auto mb-4 h-10 w-10 text-blue-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div class="mb-8 text-center text-lg leading-relaxed text-gray-300 italic">
+                      "
+                      <span
+                        class="testimonial-text whitespace-pre-line"
+                        data-full-text={fullText}
+                        data-truncated-text={truncatedText}
+                      >
+                        {isLong ? truncatedText : fullText}
+                      </span>
+                      {isLong && (
+                        <span
+                          class="testimonial-toggle ml-1 cursor-pointer font-normal text-blue-400 not-italic hover:text-blue-300"
+                          data-expanded="false"
+                        >
+                          (...)
+                        </span>
+                      )}
+                      "
+                    </div>
+                    <div class="flex items-center justify-center">
+                      <Image
+                        src={testimonial.data.image}
+                        alt={testimonial.data.author}
+                        class="mr-4 h-12 w-12 rounded-full object-cover"
+                        width={48}
+                        height={48}
+                      />
+                      <div>
+                        <p class="font-semibold text-white">
+                          {testimonial.data.author}
+                        </p>
+                        <p class="text-sm text-gray-400">
+                          {testimonial.data.position}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                
-                <!-- Navigation -->
-                <div class="swiper-button-next !text-blue-400 !text-2xl after:!text-2xl"></div>
-                <div class="swiper-button-prev !text-blue-400 !text-2xl after:!text-2xl"></div>
-                
-                <!-- Pagination -->
-                <div class="swiper-pagination !bottom-0 [&_.swiper-pagination-bullet]:!bg-gray-600 [&_.swiper-pagination-bullet-active]:!bg-blue-500"></div>
-            </div>
+              );
+            })
+          }
         </div>
-    </section>
 
-    <!-- Custom scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Smooth scrolling for anchor links
-            const links = document.querySelectorAll('a[href^="#"]');
-            
-            links.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        <!-- Navigation -->
+        <div
+          class="swiper-button-next !text-2xl !text-blue-400 after:!text-2xl"
+        >
+        </div>
+        <div
+          class="swiper-button-prev !text-2xl !text-blue-400 after:!text-2xl"
+        >
+        </div>
+
+        <!-- Pagination -->
+        <div
+          class="swiper-pagination !bottom-0 [&_.swiper-pagination-bullet]:!bg-gray-600 [&_.swiper-pagination-bullet-active]:!bg-blue-500"
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Smooth scrolling for anchor links
+      const links = document.querySelectorAll('a[href^="#"]');
+
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
+            window.scrollTo({
+              top: offsetTop,
+              behavior: "smooth",
             });
-
-            // Load Swiper JS and initialize
-            const swiperScript = document.createElement('script');
-            swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
-            swiperScript.onload = () => {
-                // Initialize Swipers after script is loaded
-                // Testimonials Swiper
-                // @ts-ignore - Swiper provided by CDN
-                const testimonialsSwiper = new Swiper('.testimonials-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.testimonials-swiper .swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.testimonials-swiper .swiper-button-next',
-                    prevEl: '.testimonials-swiper .swiper-button-prev',
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 1,
-                    },
-                }
-            });
-
-                // Blog posts Swiper
-                // Blog posts Swiper
-                // @ts-ignore - Swiper provided by CDN
-                const blogSwiper = new Swiper('.blogposts-swiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 16,
-                    loop: true,
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false,
-                    },
-                    pagination: {
-                        el: '.blogposts-swiper .swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.blogposts-swiper .swiper-button-next',
-                        prevEl: '.blogposts-swiper .swiper-button-prev',
-                    },
-                    breakpoints: {
-                        640: { slidesPerView: 1.1, spaceBetween: 20 },
-                        768: { slidesPerView: 2, spaceBetween: 24 },
-                        1024: { slidesPerView: 3, spaceBetween: 24 },
-                    },
-                });
-
-                // Handle expandable text functionality
-                const toggles = document.querySelectorAll('.testimonial-toggle');
-                
-                toggles.forEach(toggle => {
-                    toggle.addEventListener('click', () => {
-                        const textElement = toggle.previousElementSibling;
-                        const isExpanded = toggle.getAttribute('data-expanded') === 'true';
-                        const fullText = textElement.getAttribute('data-full-text');
-                        const truncatedText = textElement.getAttribute('data-truncated-text');
-                        
-                        if (isExpanded) {
-                            textElement.textContent = truncatedText;
-                            toggle.textContent = '(...)';
-                            toggle.setAttribute('data-expanded', 'false');
-                        } else {
-                            textElement.textContent = fullText;
-                            toggle.textContent = ' Show less';
-                            toggle.setAttribute('data-expanded', 'true');
-                        }
-                    });
-                });
-            };
-            document.head.appendChild(swiperScript);
-
+          }
         });
-    </script>
+      });
+
+      // Load Swiper JS and initialize
+      const swiperScript = document.createElement("script");
+      swiperScript.src =
+        "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js";
+      swiperScript.onload = () => {
+        // Initialize Swipers after script is loaded
+        // Testimonials Swiper
+        // @ts-ignore - Swiper provided by CDN
+        const testimonialsSwiper = new Swiper(".testimonials-swiper", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".testimonials-swiper .swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".testimonials-swiper .swiper-button-next",
+            prevEl: ".testimonials-swiper .swiper-button-prev",
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 1,
+            },
+          },
+        });
+
+        // Blog posts Swiper
+        // Blog posts Swiper
+        // @ts-ignore - Swiper provided by CDN
+        const blogSwiper = new Swiper(".blogposts-swiper", {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          loop: true,
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".blogposts-swiper .swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".blogposts-swiper .swiper-button-next",
+            prevEl: ".blogposts-swiper .swiper-button-prev",
+          },
+          breakpoints: {
+            640: { slidesPerView: 1.1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 24 },
+            1024: { slidesPerView: 3, spaceBetween: 24 },
+          },
+        });
+
+        // Handle expandable text functionality
+        const toggles = document.querySelectorAll(".testimonial-toggle");
+
+        toggles.forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            const textElement = toggle.previousElementSibling;
+            const isExpanded = toggle.getAttribute("data-expanded") === "true";
+            const fullText = textElement.getAttribute("data-full-text");
+            const truncatedText = textElement.getAttribute(
+              "data-truncated-text",
+            );
+
+            if (isExpanded) {
+              textElement.textContent = truncatedText;
+              toggle.textContent = "(...)";
+              toggle.setAttribute("data-expanded", "false");
+            } else {
+              textElement.textContent = fullText;
+              toggle.textContent = " Show less";
+              toggle.setAttribute("data-expanded", "true");
+            }
+          });
+        });
+      };
+      document.head.appendChild(swiperScript);
+    });
+  </script>
 </BaseLayout>

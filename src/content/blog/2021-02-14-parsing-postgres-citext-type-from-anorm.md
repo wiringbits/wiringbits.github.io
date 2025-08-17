@@ -66,4 +66,5 @@ object UsersDAO {
 ```
 
 ## More
+
 The astute reader has noticed that our `citextToString` mapper knows how to deal with the `String` type, which allows to define it as a implicit value, which means that if all your parsers have that mapper in scope, you won't even need to specify when you are expecting a `citext` type.

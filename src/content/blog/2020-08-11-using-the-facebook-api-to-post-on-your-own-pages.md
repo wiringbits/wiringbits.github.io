@@ -17,20 +17,17 @@ One of our projects ([cazadescuentos.net](https://cazadescuentos.net)) has a Fac
 
 By now, you should see the automated posts our bot has created, I won't cover how to do that, as it's a simple API call once you get the right access token.
 
-
 ## Constraints
 
 The official [docs](https://developers.facebook.com/docs/app-review) aren't clear if posting to your own page requires app review, and given my tests, you need the review.
 
 Unfortunately, such reviews are paused for individuals indefinitely, but you can still apply if you are behind a business.
 
-
 ## The instructions
 
 Now the actual step by step to get it working.
 
 The first task to do, is to update your account to be a developer account, which can be done in [developers.facebook.com](https://developers.facebook.com/).
-
 
 ### Create an app
 
@@ -50,7 +47,6 @@ The summary after this is:
 - Use the previous token, to get a long-lived user access token.
 - Take the previous long-lived user access token, to get an actual page access token that doesn't expire.
 
-
 ### Get a short-lived user token
 
 While you might try to get the page token directly, it won't work, Facebook will start complaining about your app not been verified, etc. if, you know, or you find a simpler way to do so, I'd thank you for such information.
@@ -65,7 +61,6 @@ On the right, choose these options, and then, click on the `Generate Access Toke
 ![img](../../assets/posts/facebook-pages-api/fb-graph-api-default-options.png)
 <br/><br/>
 
-
 A popup should open, asking you for permission to login, which you should approve:
 
 ![img](../../assets/posts/facebook-pages-api/fb-login-to-get-first-token.png)
@@ -75,7 +70,6 @@ The `Access Token` field now displays a long token, and, the `Permissions` lists
 
 ![img](../../assets/posts/facebook-pages-api/fb-first-token.png)
 <br/><br/>
-
 
 ### Add permissions to your short-lived user access token
 
@@ -102,20 +96,19 @@ Just ignore the warning, make sure the permission for creating content on the pa
 ![img](../../assets/posts/facebook-pages-api/fb-authorize-page-warning.png)
 <br/><br/>
 
-
 Now you get a confirmation that your app got linked to your page, there is a hyperlink where you could go to remove such integration if you ever need to, click on the `Ok` button to close the popup.
 
 ![img](../../assets/posts/facebook-pages-api/fb-app-linked.png)
 <br/><br/>
 
-
 Now you have a short-lived user access token allowing you to post on your page.
 
-
 ### Get the long-lived user access token
+
 Once you have the long-lived user access token (expires in 1 hour) allowed to post on your page, you can get a long-lived user access token.
 
 Let's replace the following placeholders and invoke this API:
+
 - `[app-id]` is the app id you got after creating your app.
 - `[long-lived-user-access-token]` is the token you got in the previous step.
 - `[client-secret]` is the value you need to find.
@@ -125,7 +118,7 @@ To get the client secret, go to your app dashboard, which you can choose on the 
 ![img](../../assets/posts/facebook-pages-api/fb-app-settings.png)
 <br/><br/>
 
-Then, click on the `Show` button that's next to the `App Secret` field 
+Then, click on the `Show` button that's next to the `App Secret` field
 (you will likely need to enter your Facebook password to authenticate), that's your `[client-secret]`, use it on the next API call (I believe this is only available once you generated your first token, otherwise, the `App Secret` isn't available).
 
 ![img](../../assets/posts/facebook-pages-api/fb-app-settings-basic.png)
@@ -140,9 +133,12 @@ curl -i -X GET "https://graph.facebook.com/oauth/access_token?grant_type=fb_exch
 The API call returns something like:
 
 ```json
-{"access_token":"a_long_token","token_type":"bearer","expires_in":5183999}
+{
+  "access_token": "a_long_token",
+  "token_type": "bearer",
+  "expires_in": 5183999
+}
 ```
-
 
 ### Get the actual page access token
 
@@ -157,11 +153,10 @@ curl -i -X GET "https://graph.facebook.com/[page-id]/accounts?fields=name,access
 Which returns something like:
 
 ```json
-{"access_token":"a_long_token","id":"219581950295819"}
+{ "access_token": "a_long_token", "id": "219581950295819" }
 ```
 
 That's your long-lived page access token! It's a token that never expires.
-
 
 ### Try it
 
@@ -171,21 +166,19 @@ Now, let's create a post by invoking the Facebook API, replace the place holders
 curl -i -X POST "https://graph.facebook.com/[page-id]/feed?message=Hello&access_token=[page-access-token]"
 ```
 
-
 You should expect a response like:
 
 ```json
-{"id":"105001477592284_283557336403363"}
+{ "id": "105001477592284_283557336403363" }
 ```
-
 
 ### Troubleshooting
 
 Facebook has a very useful tool for debugging access token, find it on the [Tools -> Access Token Debugger](https://developers.facebook.com/docs/pages/access-tokens) menu, there you can input the generated tokens to make sure what's their scope, lifetime, permissions, etc.
 
 The page token we got should says:
-- `Expires`: `Never`.
 
+- `Expires`: `Never`.
 
 ### More
 

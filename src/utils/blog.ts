@@ -1,5 +1,5 @@
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
-export function getBlogPostUrl(post: CollectionEntry<'blog'>): string {
-	return post.data.permalink ? `/${post.data.permalink}` : `/blog/${post.id}/`;
+export function getBlogPostUrl(post: CollectionEntry<"blog">): string {
+  return post.data.permalink ? `/${post.data.permalink}` : `/blog/${post.id}/`;
 }

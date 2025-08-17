@@ -19,19 +19,17 @@ This post explains how I deployed AudioCraft to Ubuntu 22.04, you can try the li
 
 > Ad: Do you need a reliable dev to help with your project or infrastructure? I'll be talking to potential customers next week to choose my next project.
 
-
 ## Summary
 
 A powerful server is required to run AudioCraft, from my tests, the app seems to require at least 12G of memory + a lot of CPU power, it consumes most of my computer resources, specially when processing a request.
 
 I'll use an old-school approach that involves nginx as the reverse proxy which handles TLS + a systemd service to make sure that AudioCraft runs when the server starts, as well restarting it when it crashes.
 
-[Hetzner](https://www.hetzner.com/) is the provider where I'll host my dedicated server for a reasonable price, given the high CPU requirement, I doubt that a shared cpu would behave nicely but I haven't tried, I selected the `CCX32` version which has 8 vCPUs + 32G memory + 240G disk, costing `77 €`/month. 
+[Hetzner](https://www.hetzner.com/) is the provider where I'll host my dedicated server for a reasonable price, given the high CPU requirement, I doubt that a shared cpu would behave nicely but I haven't tried, I selected the `CCX32` version which has 8 vCPUs + 32G memory + 240G disk, costing `77 €`/month.
 
 ## Details
 
 The following details include the exact steps I took to launch AudioCraft in my own Ubuntu 22.04 server until I got to the current version that's live at [audiocraft.wiringbits.net](https://audiocraft.wiringbits.net)
-
 
 ### 1. Create a server
 
@@ -48,7 +46,6 @@ There is no need to enable backups or increase the disk size, from my tests, we 
 **NOTE** There is a high chance that using a server with a dedicated GPU can improve the performance considerably but I couldn't find any on Hetzner which can be created immediately.
 
 You should be able to log into the server with ssh `ssh root@[ipv4]` (replace `[ipv4]` with your server ip).
-
 
 ### 2. Initial setup
 
@@ -77,7 +74,6 @@ useradd audiocraft --create-home --system
 ```
 
 **NOTE**: If you plan to leave this server running for a while, it is a good idea to do a few extra steps like disabling root login and adding another user to handle that, as well as disabling login by password, changing the default ssh port can be a good idea too.
-
 
 ### 3. First AudioCraft execution
 
@@ -133,7 +129,6 @@ Still, it is good to do this for verifying that the execution will work, you can
 
 Once you verify that AudioCraft worked, stop the service (`ctrl+C`) and exit (run `exit`) the session, you should be back to the root shell.
 
-
 ### 4. Add systemd service
 
 This is the time to solve the drawbacks from step 3, let's create a systemd service by filling `/etc/systemd/system/audiocraft.service` with this content (use your preferred editor):
@@ -171,7 +166,6 @@ These commands will be helpful:
 Verify that AudioCraft is working (see step 3 for alternatives), then, run `systemctl enable audiocraft` to start AudioCraft when the server starts.
 
 **NOTE**: Remember we set a firewall preventing AudioCraft from being accessed from anywhere outside of its server.
-
 
 ## 5. Expose AudioCraft to the internet
 
@@ -216,7 +210,6 @@ server {
 
 Then, `service nginx reload` will pick the new settings, this should allow you to use AudioCraft from your own domain, for example, visiting `http://audiocraft.wiringbits.net` would work (https version next).
 
-
 ### 6. Get TLS certificate
 
 We'll use [Certbot](ttps://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) for this task, which generates TLS certificates from LetsEncrypt.
@@ -231,7 +224,6 @@ certbot --nginx
 
 Just follow the instructions and your TLS certificate must be deployed.
 
-
 ## Some screenshots
 
 The UI from MusicGen, the AudioCraft demo app deployed by this guide:
@@ -245,7 +237,6 @@ CPU/Memory usage from `htop` when AudioCraft is processing a request:
 My laptop crazy usage when AudioCraft is processing a request:
 
 ![laptop-usage](../../assets/posts/deploying-audiocraft/laptop-usage.png)
-
 
 ### Conclusion
 

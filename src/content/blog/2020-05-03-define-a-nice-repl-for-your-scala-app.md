@@ -34,7 +34,6 @@ initialCommands in console := consoleScript
 
 You can even build several entrypoints for different purposes by extending this idea, which should help your team to speed up experimenting, in my case, it's pretty useful to have a handy websocket client for my server without the complexity of building one.
 
-
 ## More
 
 If you have enabled the fatal-warnings compiler option (and most likely you should), the Scala repl becomes unusable, but, it's easily fixed by disabling that options and other noisy options just when running the console, include the following on your `build.sbt`:

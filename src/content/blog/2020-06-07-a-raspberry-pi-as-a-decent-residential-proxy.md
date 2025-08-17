@@ -15,7 +15,6 @@ Hence, we ended up building our own residential proxy, right now being powered b
 
 ![The PI](../../assets/posts/simple-proxy/rpi-simple-proxy.jpg)
 
-
 ## Try it
 
 If you like to jump directly to the code or to play with it, we have open sourced the [simple-http-proxy](https://github.com/wiringbits/simple-http-proxy).
@@ -31,7 +30,6 @@ curl -X POST \
   "https://cazadescuentos.net/proxy"
 ```
 
-
 ## How it works
 
 The approach is actually very simple:
@@ -43,14 +41,12 @@ The approach is actually very simple:
 
 ![Simple proxy flow](../../assets/posts/simple-proxy/simple-proxy-flow.png)
 
-
 ## About security
 
 Security considerations:
 
 - Don't expose the proxy to the world or attackers will be able to interact with your home devices.
 - Ideally, expose the proxy on an isolated network, different to the one where you connect your home devices.
-
 
 ## Pitfalls
 
@@ -66,7 +62,6 @@ What matter the most:
 
 - `ExitOnForwardFailure=yes` forces ssh to exit when there is a failure in the connection instead of silently staying running while the tunnel doesn't work.
 - `ServerAliveInterval=180` keeps sending a ping to the server to avoid the server closing the connection due to inactivity.
-
 
 ## Future
 

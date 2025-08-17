@@ -15,10 +15,10 @@ In any case, now I prefer to complete the task than waiting for perfection, not 
 
 One of the goals for this website is to try writing a post per month.
 
-
 ## Jan/2022 Update
 
 3 years passed, 2021 was a year full of changes for us:
+
 - Our team has grown considerably.
 - We aren't a 100% Scala shop anymore, we started working in more diverse projects (Java/Kotlin/React/TypeScript/etc).
 - We finally got a wonderful logo.
@@ -26,7 +26,6 @@ One of the goals for this website is to try writing a post per month.
 ## Jun/2022 Update
 
 In order to simplify the payment processes for our customers, we ended up incorporating a company in the United States.
-
 
 ### Logo
 

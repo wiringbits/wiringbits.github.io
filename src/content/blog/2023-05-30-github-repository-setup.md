@@ -15,7 +15,6 @@ Have you ever seen a situation like this? Many stale branches because developers
 
 It would be nice if we could store these settings so that they get applied to new repositories by default, unfortunately, Github does not seem to support this.
 
-
 ## Summary
 
 We'll tweak the repository `General` and `Branches` settings so that:
@@ -33,13 +32,11 @@ Then, create a branch protection rule for important branches:
 
 The reasons behind these settings are explained below.
 
-
 ## General settings
 
 Access these items through the `Settings` button that's on each repository:
 
 ![general-item](../../assets/posts/github-repository-setup/general-item.png)
-
 
 ## 1. Automatically delete head branches
 
@@ -50,7 +47,6 @@ This is likely the item that most projects can apply, I don't know why Github do
 Remember the stale branches issue that's mentioned in the intro? This is how you can prevent it, as soon as a Pull Request gets merged, the branch will be deleted automatically by Github.
 
 Is there any reason to keep these stale branches around?
-
 
 ## 2. Always suggest updating pull request branches
 
@@ -66,7 +62,6 @@ This option can be enabled at the General settings too.
 
 ![suggest-updating-pull-requests](../../assets/posts/github-repository-setup/suggest-updating-pr.png)
 
-
 ## 3. Pull Request settings
 
 On the PR settings, I disable the `Allow merge commits` to keep a simple commit history, before you start arguing about this, let me tell you, this option unlocks the usage of [git bisect](https://git-scm.com/docs/git-bisect) which is totally worth it:
@@ -76,7 +71,6 @@ On the PR settings, I disable the `Allow merge commits` to keep a simple commit 
 Also, on the `Squash and merging` item, update the default commit message to `Default to pull request title and description`, this will make sure that most merged PRs will get a single commit with the message that's included on the PR description (your team includes a decent one, right?).
 
 `Squash` means mixing all the commits from a PR into a single one, this means that devs can still push many commits into a single PR but rolling back a feature requires reverting a single commit. Which is another advantage.
-
 
 ## 4. Branch protection rules
 
@@ -88,25 +82,21 @@ Let's add rules to protect our important branches, usually, a single branch need
 
 ![add-branch-protection-rule](../../assets/posts/github-repository-setup/add-branch-protection-rule.png)
 
-
 The options to enable are shown in this screenshot:
 
 ![branch-protection-rules](../../assets/posts/github-repository-setup/branch-protection-rules.png)
 
 All of these options are explained below.
 
-
 ### 4.1. Require a pull request before merging
 
 Most teams aren't ready to allow all team-members to submit commits directly to `main` branch, if this is your case, enabling the `Require a pull request before merging` option would prevent devs to introduce any code directly to the protected branches, requiring them to submit a PR.
-
 
 ### 4.2. Require approvals
 
 If your team does code reviews, enabling the `Require approvals` options would prevent any PR to get merged unless it has `N` approvals, `1` is usually enough for most projects.
 
 Btw, if you do code reviews, you can also do code previews with https://codepreview.io, mention this post to get an extended trial.
-
 
 ### 4.3. Require status checks to pass before merging
 
@@ -117,11 +107,9 @@ Enabling the `Require status checks to pass before merging` option allows you to
 
 ![pull-request-status-checks](../../assets/posts/github-repository-setup/pr-status-checks.png)
 
-
 ### 4.4 Require linear history
 
 This ones goes hand by hand with the `Allow merge commits` option disabled by a previous step, this step will make sure that no merge commits will be allowed, which unlocks the power from [git bisect](https://git-scm.com/docs/git-bisect).
-
 
 ## Conclusion
 

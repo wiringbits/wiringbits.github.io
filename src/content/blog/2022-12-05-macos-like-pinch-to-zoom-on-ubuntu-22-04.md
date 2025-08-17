@@ -12,6 +12,7 @@ Its been years since the last time I used MacOS, Pinch to zoom is the only featu
 ## Demo
 
 Let's start with a demo showcasing the final integration:
+
 - Holding `alt` + trackpad scroll-down triggers zoom-in.
 - Holding `alt` + trackpad scroll-up triggers zoom-out.
 
@@ -23,7 +24,6 @@ Let's start with a demo showcasing the final integration:
 2. Let's create 2 bash scripts to increase/decrease the zoom level.
 3. Let's integrate `xbindkeys` to define mouse/trackpad shortcuts to invoke our zoom in/out scripts, be aware that it won't work at Gnome desktop/terminal.
 4. Optionally switch the UI server from Wayland to Xorg so that the shortcuts work at Gnome desktop/terminal.
-
 
 ## Details
 
@@ -43,7 +43,6 @@ There won't be any visible effect unless you update the Magnification rate, ther
 While these shortcuts could be useful enough, the Magnification rate is increased/decreased by `1` which is just too much for me.
 
 **NOTE**: If this feature gets disabled, the scripts won't, while the Magnifier rate gets updated, the scripts do not enable the feature, feel free to tweak the scripts to do so.
-
 
 ### 2. Create scripts to manage the zoom level
 
@@ -77,7 +76,6 @@ else
 fi
 output=$(gsettings set $key $newValue)
 ```
-
 
 > ~/scripts/zoom-out.sh
 
@@ -136,7 +134,6 @@ I don't really know much about this but `b:` seems to specify that we are intere
 
 **NOTE** Like I mentioned at the summary, `xbindkeys` won't work at gnome desktop/terminal when it we are using Wayland UI server.
 
-
 ### 4. Switch from Wayland to Xorg
 
 This step is optional, it all depends on whether Wayland is working fine for you, in my case, I can't share my screen in calls, hence, I ended up switching back to Xorg.
@@ -161,13 +158,11 @@ WaylandEnable=false
 
 That's it, pinch to zoom integration should work now just like it works on MacOS.
 
-
 ## More
 
 There is a problem with this integration while using some apps (terminal, text editors), for some reason, the text starts scrolling while you are zooming in/out, I haven't dig into solving this, if you know the solution, please share.
 
 Also, I have used CompizConfig Settings Manager in previous Ubuntu versions, in theory, it can get you the same effect, unfortunately, I gave up because it didn't seem to cause any effect. Later I found that `xbindkeys` did not worked consistently while using Wayland, I'll likely try this alternative when I reinstall my OS, if you try it, please share the outcome.
-
 
 ## Conclusion
 

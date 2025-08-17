@@ -1,11 +1,11 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry } from "astro:content";
 
 // Temporarily disable building any project detail pages
 export async function getStaticPaths() {
   return [];
 }
-type Props = CollectionEntry<'projects'>;
+type Props = CollectionEntry<"projects">;
 ---
 
 <html lang="en">

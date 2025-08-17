@@ -21,7 +21,6 @@ As a summary:
 - Ensure that your specific execution contexts are singletons.
 - Ensure your tests use your specific execution contexts to avoid runtime errors.
 
-
 ## Avoid the global ExecutionContext
 
 It should be clear that the global execution context must not be used in any place, while it's common to just add this line while experimenting, you shouldn't it:
@@ -39,7 +38,6 @@ import scala.concurrent.{ExecutionContext, Future}
 
 class MyController @Inject() (implicit ec: ExecutionContext) { ... }
 ```
-
 
 ## Avoid using the default ExecutionContext for everything
 
@@ -91,7 +89,6 @@ Note that the custom context is marked as `Singleton`, if you read the [akka doc
   */
 ```
 
-
 ## Avoid specific execution contexts that depend on akka, use a base trait instead
 
 As you saw, we use a base trait, which allow us to write tests without needing to bring akka to them, but, you need to add the guice module to specify it's implementation, for example:
@@ -122,15 +119,14 @@ implicit val databaseEC: DatabaseExecutionContext = new DatabaseExecutionContext
 }
 ```
 
-
 ## Ensure your tests use you specific execution contexts to avoid runtime errors
 
 At last, as creating the custom execution context depends on the `application.conf` file (due to calling `CustomExecutionContext(system, "database.dispatcher")`), make sure that some of your tests use those specific contexts to catch runtime errors, otherwise, your application will likely fail to start due to the `ConfigurationException` being thrown by akka.
 
-
 ## More
 
 This is the approach we use for our projects, feel free to check these examples:
+
 - [DatabaseExecutionContext](https://github.com/X9Developers/block-explorer/blob/develop/server/app/com/xsn/explorer/executors/DatabaseExecutionContext.scala)
 - [ExecutorsModule](https://github.com/X9Developers/block-explorer/blob/develop/server/app/com/xsn/explorer/modules/ExecutorsModule.scala)
 - [The executors for testing](https://github.com/X9Developers/block-explorer/blob/develop/server/test/com/xsn/explorer/helpers/Executors.scala)

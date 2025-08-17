@@ -7,7 +7,6 @@ categories: ["scala"]
 permalink: "blog/replacing-sbt-with-scala-cli-in-a-simple-project"
 ---
 
-
 This is a somewhat controversial post because we got to use [scala-cli](https://scala-cli.virtuslab.org) outside its purpose, as a build-tool for a multi-module project.
 
 ![scala-cli-is-not-a-build-tool](../../assets/posts/scala-cli-replacing-sbt/scala-cli-is-not-a-build-tool.png)
@@ -83,11 +82,9 @@ The [first execution](https://github.com/wiringbits/scala-cli-multi-module-demo/
 
 ![ci-demo-execution-1](../../assets/posts/scala-cli-replacing-sbt/ci-demo-execution-1.png)
 
-
 The [first execution](https://github.com/wiringbits/scala-cli-multi-module-demo/actions/runs/4916771498/jobs/8780964617) took only 25s! This is an outstanding runtime for scala projects:
 
 ![ci-demo-execution-2](../../assets/posts/scala-cli-replacing-sbt/ci-demo-execution-2.png)
-
 
 ## Conclusion
 
