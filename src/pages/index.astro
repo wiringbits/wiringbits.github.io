@@ -5,11 +5,9 @@ import { Image } from 'astro:assets';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getBlogPostUrl } from '../utils/blog';
 
-// Get recent blog posts for featured section
+// Get blog posts for featured section (all of them)
 const posts = (await getCollection('blog'))
-    // .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+    .sort(() => Math.random() - 0.5);
 
 // Get recent projects for featured section
 const projects = (await getCollection('projects'))
@@ -69,29 +67,39 @@ import LogoPattern from '../assets/logo-pattern.png';
                 <p class="text-gray-300 text-lg">Latest insights and technical articles</p>
                 <a href="/blog" class="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold transition-colors">View All →</a>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                {posts.map((post) => (
-                    <article class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                        {post.data.heroImage && (
-                            <div class="aspect-video overflow-hidden">
-                                <Image 
-                                    width={720} 
-                                    height={360} 
-                                    src={post.data.heroImage} 
-                                    alt={post.data.title}
-                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                        )}
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-gray-100">
-                                <a href={getBlogPostUrl(post)} class="hover:text-blue-400 transition-colors">{post.data.title}</a>
-                            </h3>
-                            <p class="text-gray-300 mb-4">{post.data.description}</p>
-                            <a href={getBlogPostUrl(post)} class="text-blue-400 hover:underline font-semibold">Read More →</a>
+            <div class="swiper blogposts-swiper">
+                <div class="swiper-wrapper">
+                    {posts.map((post) => (
+                        <div class="swiper-slide">
+                            <article class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full">
+                                {post.data.heroImage && (
+                                    <div class="aspect-video overflow-hidden">
+                                        <Image 
+                                            width={720} 
+                                            height={360} 
+                                            src={post.data.heroImage} 
+                                            alt={post.data.title}
+                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                )}
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-3 text-gray-100">
+                                        <a href={getBlogPostUrl(post)} class="hover:text-blue-400 transition-colors">{post.data.title}</a>
+                                    </h3>
+                                    <p class="text-gray-300 mb-4">{post.data.description}</p>
+                                    <a href={getBlogPostUrl(post)} class="text-blue-400 hover:underline font-semibold">Read More →</a>
+                                </div>
+                            </article>
                         </div>
-                    </article>
-                ))}
+                    ))}
+                </div>
+                <!-- Controls below to avoid overlapping cards -->
+                <div class="mt-6 flex items-center justify-between gap-4">
+                    <div class="swiper-button-prev !static !text-blue-400 after:!text-2xl"></div>
+                    <div class="swiper-pagination flex-1"></div>
+                    <div class="swiper-button-next !static !text-blue-400 after:!text-2xl"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -205,8 +213,10 @@ import LogoPattern from '../assets/logo-pattern.png';
             const swiperScript = document.createElement('script');
             swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
             swiperScript.onload = () => {
-                // Initialize Swiper for testimonials
-                const swiper = new Swiper('.testimonials-swiper', {
+                // Initialize Swipers after script is loaded
+                // Testimonials Swiper
+                // @ts-ignore - Swiper provided by CDN
+                const testimonialsSwiper = new Swiper('.testimonials-swiper', {
                 slidesPerView: 1,
                 spaceBetween: 30,
                 loop: true,
@@ -215,12 +225,12 @@ import LogoPattern from '../assets/logo-pattern.png';
                     disableOnInteraction: false,
                 },
                 pagination: {
-                    el: '.swiper-pagination',
+                    el: '.testimonials-swiper .swiper-pagination',
                     clickable: true,
                 },
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                    nextEl: '.testimonials-swiper .swiper-button-next',
+                    prevEl: '.testimonials-swiper .swiper-button-prev',
                 },
                 breakpoints: {
                     768: {
@@ -228,6 +238,32 @@ import LogoPattern from '../assets/logo-pattern.png';
                     },
                 }
             });
+
+                // Blog posts Swiper
+                // Blog posts Swiper
+                // @ts-ignore - Swiper provided by CDN
+                const blogSwiper = new Swiper('.blogposts-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 16,
+                    loop: true,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.blogposts-swiper .swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.blogposts-swiper .swiper-button-next',
+                        prevEl: '.blogposts-swiper .swiper-button-prev',
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 1.1, spaceBetween: 20 },
+                        768: { slidesPerView: 2, spaceBetween: 24 },
+                        1024: { slidesPerView: 3, spaceBetween: 24 },
+                    },
+                });
 
                 // Handle expandable text functionality
                 const toggles = document.querySelectorAll('.testimonial-toggle');
