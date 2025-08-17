@@ -2,7 +2,7 @@
 title: "Sbt binary incompatibilty errors"
 description: "How to diagnose and fix sbt binary incompatibility errors when plugins prevent sbt from loading properly."
 pubDate: "2022-02-28"
-heroImage: ../../assets/posts/sbt-binary-incompatibility/post_photo.svg
+heroImage: ../../assets/posts/sbt-binary-incompatibility/post_photo.png
 categories: ["scala"]
 permalink: "scala/2022/02/28/sbt-binary-incompatibility-errors.html"
 ---
