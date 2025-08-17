@@ -40,7 +40,7 @@ import LogoPattern from "../assets/logo-pattern.png";
       <div class="mx-auto max-w-7xl">
         <div class="flex flex-col items-center justify-between lg:flex-row">
           <div class="mb-8 text-center lg:mb-0 lg:w-1/2 lg:text-left">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+            <h1 class="mb-6 text-4xl font-bold text-white md:text-6xl">
               Software Development Partner
             </h1>
             <p class="mb-8 text-xl leading-relaxed text-gray-300 md:text-2xl">
@@ -71,29 +71,61 @@ import LogoPattern from "../assets/logo-pattern.png";
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mb-12 text-center">
         <h2 class="mb-4 text-3xl font-bold md:text-4xl">What We Do</h2>
-        <p class="text-lg text-gray-300">Pragmatic engineering to ship, scale, and sustain products</p>
+        <p class="text-lg text-gray-300">
+          Pragmatic engineering to ship, scale, and sustain products
+        </p>
       </div>
 
       <div class="grid gap-8 md:grid-cols-4">
         <!-- Selector -->
         <div class="md:col-span-1">
           <div role="tablist" aria-label="Services" class="flex flex-col gap-2">
-            <button data-service-button="web" role="tab" aria-selected="true" class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button
+              data-service-button="web"
+              role="tab"
+              aria-selected="true"
+              class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            >
               Web Applications
             </button>
-            <button data-service-button="extensions" role="tab" aria-selected="false" class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button
+              data-service-button="extensions"
+              role="tab"
+              aria-selected="false"
+              class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            >
               Niche Extensions
             </button>
-            <button data-service-button="ai" role="tab" aria-selected="false" class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button
+              data-service-button="ai"
+              role="tab"
+              aria-selected="false"
+              class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            >
               AI & LLM Apps
             </button>
-            <button data-service-button="blockchain" role="tab" aria-selected="false" class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button
+              data-service-button="blockchain"
+              role="tab"
+              aria-selected="false"
+              class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            >
               Blockchain & Smart Contracts
             </button>
-            <button data-service-button="legacy" role="tab" aria-selected="false" class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button
+              data-service-button="legacy"
+              role="tab"
+              aria-selected="false"
+              class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            >
               Legacy System Recovery
             </button>
-            <button data-service-button="cost" role="tab" aria-selected="false" class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button
+              data-service-button="cost"
+              role="tab"
+              aria-selected="false"
+              class="cursor-pointer rounded-lg border border-gray-700 px-4 py-3 text-left text-gray-200 hover:border-blue-500 hover:text-white focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            >
               Cost Optimization
             </button>
           </div>
@@ -103,10 +135,13 @@ import LogoPattern from "../assets/logo-pattern.png";
         <div class="md:col-span-3">
           <div class="rounded-lg bg-gray-800 p-8 shadow-lg">
             <div data-service-panel="web">
-              <h3 class="mb-3 text-2xl font-bold text-white">Web Applications</h3>
+              <h3 class="mb-3 text-2xl font-bold text-white">
+                Web Applications
+              </h3>
               <p class="text-gray-300">
-                Product discovery, architecture, and implementation of robust web apps using modern frameworks.
-                We focus on clear domain models, great UX, and maintainable code.
+                Product discovery, architecture, and implementation of robust
+                web apps using modern frameworks. We focus on clear domain
+                models, great UX, and maintainable code.
               </p>
               <ul class="mt-6 grid list-disc gap-2 pl-5 text-gray-300">
                 <li>End-to-end feature delivery</li>
@@ -116,9 +151,13 @@ import LogoPattern from "../assets/logo-pattern.png";
             </div>
 
             <div data-service-panel="extensions" class="hidden">
-              <h3 class="mb-3 text-2xl font-bold text-white">Niche Extensions</h3>
+              <h3 class="mb-3 text-2xl font-bold text-white">
+                Niche Extensions
+              </h3>
               <p class="text-gray-300">
-                We have a deep experience developing niche extensions, including Adobe Illustrator and Chrome extensions, we are keen to expand our portfolio to other niche extensions.
+                We have a deep experience developing niche extensions, including
+                Adobe Illustrator and Chrome extensions, we are keen to expand
+                our portfolio to other niche extensions.
               </p>
               <ul class="mt-6 grid list-disc gap-2 pl-5 text-gray-300">
                 <li>Manifest V3 ready</li>
@@ -130,7 +169,8 @@ import LogoPattern from "../assets/logo-pattern.png";
             <div data-service-panel="ai" class="hidden">
               <h3 class="mb-3 text-2xl font-bold text-white">AI & LLM Apps</h3>
               <p class="text-gray-300">
-                Production-ready AI capabilities: retrieval, agents, evals, and observability integrated into your product.
+                Production-ready AI capabilities: retrieval, agents, evals, and
+                observability integrated into your product.
               </p>
               <ul class="mt-6 grid list-disc gap-2 pl-5 text-gray-300">
                 <li>RAG pipelines and embeddings</li>
@@ -140,10 +180,13 @@ import LogoPattern from "../assets/logo-pattern.png";
             </div>
 
             <div data-service-panel="blockchain" class="hidden">
-              <h3 class="mb-3 text-2xl font-bold text-white">Blockchain & Smart Contracts</h3>
+              <h3 class="mb-3 text-2xl font-bold text-white">
+                Blockchain & Smart Contracts
+              </h3>
               <p class="text-gray-300">
-                Practical on-chain solutions with off-chain services when needed. Security-minded reviews and
-                testable contracts with clean deployment workflows.
+                Practical on-chain solutions with off-chain services when
+                needed. Security-minded reviews and testable contracts with
+                clean deployment workflows.
               </p>
               <ul class="mt-6 grid list-disc gap-2 pl-5 text-gray-300">
                 <li>Contract design and audits</li>
@@ -153,10 +196,13 @@ import LogoPattern from "../assets/logo-pattern.png";
             </div>
 
             <div data-service-panel="legacy" class="hidden">
-              <h3 class="mb-3 text-2xl font-bold text-white">Legacy System Recovery</h3>
+              <h3 class="mb-3 text-2xl font-bold text-white">
+                Legacy System Recovery
+              </h3>
               <p class="text-gray-300">
-                Stabilize, document, and incrementally modernize critical systems without halting business. We
-                reduce risk with small, measurable steps.
+                Stabilize, document, and incrementally modernize critical
+                systems without halting business. We reduce risk with small,
+                measurable steps.
               </p>
               <ul class="mt-6 grid list-disc gap-2 pl-5 text-gray-300">
                 <li>Readability and tests first</li>
@@ -166,10 +212,13 @@ import LogoPattern from "../assets/logo-pattern.png";
             </div>
 
             <div data-service-panel="cost" class="hidden">
-              <h3 class="mb-3 text-2xl font-bold text-white">Cost Optimization</h3>
+              <h3 class="mb-3 text-2xl font-bold text-white">
+                Cost Optimization
+              </h3>
               <p class="text-gray-300">
-                Measure first, then optimize. We tune infrastructure and code paths to cut spend while keeping
-                reliability and user experience intact.
+                Measure first, then optimize. We tune infrastructure and code
+                paths to cut spend while keeping reliability and user experience
+                intact.
               </p>
               <ul class="mt-6 grid list-disc gap-2 pl-5 text-gray-300">
                 <li>Profiling and benchmarks</li>
@@ -182,7 +231,7 @@ import LogoPattern from "../assets/logo-pattern.png";
       </div>
     </div>
   </section>
-  
+
   <!-- Testimonials -->
   <section id="testimonials" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -379,8 +428,6 @@ import LogoPattern from "../assets/logo-pattern.png";
     </section>
     -->
 
-
-
   <!-- Custom scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -404,31 +451,37 @@ import LogoPattern from "../assets/logo-pattern.png";
       });
 
       // Tabs for services (no external deps)
-      const serviceButtons = document.querySelectorAll<HTMLButtonElement>('[data-service-button]');
-      const servicePanels = document.querySelectorAll<HTMLElement>('[data-service-panel]');
+      const serviceButtons = document.querySelectorAll<HTMLButtonElement>(
+        "[data-service-button]",
+      );
+      const servicePanels = document.querySelectorAll<HTMLElement>(
+        "[data-service-panel]",
+      );
       const activateService = (id: string) => {
         serviceButtons.forEach((btn) => {
-          const active = btn.getAttribute('data-service-button') === id;
-          btn.setAttribute('aria-selected', active ? 'true' : 'false');
-          btn.classList.toggle('border-blue-500', active);
-          btn.classList.toggle('text-white', active);
+          const active = btn.getAttribute("data-service-button") === id;
+          btn.setAttribute("aria-selected", active ? "true" : "false");
+          btn.classList.toggle("border-blue-500", active);
+          btn.classList.toggle("text-white", active);
         });
         servicePanels.forEach((panel) => {
-          const show = panel.getAttribute('data-service-panel') === id;
-          panel.classList.toggle('hidden', !show);
+          const show = panel.getAttribute("data-service-panel") === id;
+          panel.classList.toggle("hidden", !show);
         });
       };
       // Default selection
-      const firstBtn = document.querySelector<HTMLButtonElement>('[data-service-button]');
+      const firstBtn = document.querySelector<HTMLButtonElement>(
+        "[data-service-button]",
+      );
       if (firstBtn) {
-        const id = firstBtn.getAttribute('data-service-button');
+        const id = firstBtn.getAttribute("data-service-button");
         if (id) activateService(id);
       }
       serviceButtons.forEach((btn) =>
-        btn.addEventListener('click', () => {
-          const id = btn.getAttribute('data-service-button');
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-service-button");
           if (id) activateService(id);
-        })
+        }),
       );
 
       // Load Swiper JS and initialize (for testimonials/blog only)
@@ -489,11 +542,13 @@ import LogoPattern from "../assets/logo-pattern.png";
 
         toggles.forEach((toggle) => {
           toggle.addEventListener("click", () => {
-            const textElement = toggle.previousElementSibling as HTMLElement | null;
+            const textElement =
+              toggle.previousElementSibling as HTMLElement | null;
             if (!textElement) return;
             const isExpanded = toggle.getAttribute("data-expanded") === "true";
             const fullText = textElement.getAttribute("data-full-text") || "";
-            const truncatedText = textElement.getAttribute("data-truncated-text") || "";
+            const truncatedText =
+              textElement.getAttribute("data-truncated-text") || "";
 
             if (isExpanded) {
               textElement.textContent = truncatedText;
