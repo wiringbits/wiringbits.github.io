@@ -1,0 +1,19 @@
+name: Check PR
+
+on:
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+      - name: Check code format
+        run: npx prettier . --check
