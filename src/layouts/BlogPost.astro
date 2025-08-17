@@ -1,12 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { getBlogPostUrl } from '../utils/blog';
 import BaseLayout from './BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type BlogData = CollectionEntry<'blog'>['data'];
+type PageProps = BlogData & { relatedPosts?: CollectionEntry<'blog'>[] };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, relatedPosts = [] } = Astro.props as PageProps;
 ---
 
 <BaseLayout title={title} description={description} showParticles={false}>
@@ -50,6 +52,48 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			</article>
 		</div>
 	</section>
+
+	<!-- Related Posts (Swiper) -->
+	{relatedPosts.length > 0 && (
+		<section class="py-4 px-4 sm:px-6 lg:px-8">
+			<div class="max-w-5xl mx-auto">
+				<h2 class="text-2xl font-bold mb-6 text-gray-100">You might also like</h2>
+				<div class="swiper related-swiper">
+					<div class="swiper-wrapper">
+						{relatedPosts.map((p) => (
+							<div class="swiper-slide">
+								<a href={getBlogPostUrl(p)} class="group block bg-gray-900 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow h-full">
+									{p.data.heroImage && (
+										<div class="aspect-video overflow-hidden">
+											<Image
+												width={480}
+												height={270}
+												src={p.data.heroImage}
+												alt={p.data.title}
+												class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+											/>
+										</div>
+									)}
+									<div class="p-4">
+										<h3 class="text-lg font-semibold text-gray-100 group-hover:text-blue-400 transition-colors">{p.data.title}</h3>
+										{p.data.description && (
+											<p class="text-gray-400 text-sm mt-2 line-clamp-3">{p.data.description}</p>
+										)}
+									</div>
+								</a>
+							</div>
+						))}
+					</div>
+					<!-- Controls below to avoid overlapping cards -->
+					<div class="mt-4 flex items-center justify-between gap-4">
+						<div class="swiper-button-prev !static !text-blue-400 after:!text-2xl"></div>
+						<div class="swiper-pagination flex-1"></div>
+						<div class="swiper-button-next !static !text-blue-400 after:!text-2xl"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	)}
 
 	<!-- Back to Blog -->
 	<section class="py-8 px-4 sm:px-6 lg:px-8">
@@ -121,3 +165,45 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		color: #d1d5db !important;
 	}
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Load Swiper JS and initialize for related posts
+    const initRelated = () => {
+      // @ts-ignore - Swiper is loaded globally via CDN
+      const swiper = new Swiper('.related-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.related-swiper .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.related-swiper .swiper-button-next',
+          prevEl: '.related-swiper .swiper-button-prev',
+        },
+        breakpoints: {
+          640: { slidesPerView: 1.2, spaceBetween: 20 },
+          768: { slidesPerView: 2, spaceBetween: 24 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+        },
+      });
+    };
+
+    // If Swiper already loaded (from other pages), just init. Otherwise load it.
+    // @ts-ignore - injected by CDN when available
+    if (window.Swiper) {
+      initRelated();
+    } else {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+      script.onload = initRelated;
+      document.head.appendChild(script);
+    }
+  });
+</script>

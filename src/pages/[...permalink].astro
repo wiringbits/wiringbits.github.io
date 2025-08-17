@@ -26,8 +26,14 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+
+// Build-time random selection of related posts
+const allPosts = await getCollection('blog');
+const pool = allPosts.filter((p) => p.id !== post.id);
+const shuffled = [...pool].sort(() => Math.random() - 0.5);
+const relatedPosts = shuffled;
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} relatedPosts={relatedPosts}>
 	<Content />
 </BlogPost>
