@@ -480,7 +480,19 @@ import LogoPattern from "../assets/logo-pattern.png";
       serviceButtons.forEach((btn) =>
         btn.addEventListener("click", () => {
           const id = btn.getAttribute("data-service-button");
-          if (id) activateService(id);
+          if (id) {
+            activateService(id);
+            (
+              window as typeof window & {
+                posthog?: {
+                  capture: (
+                    event: string,
+                    properties?: Record<string, string>,
+                  ) => void;
+                };
+              }
+            ).posthog?.capture("service_selected", { service: id });
+          }
         }),
       );
 

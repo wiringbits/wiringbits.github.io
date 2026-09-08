@@ -128,6 +128,7 @@ const today = new Date();
           Get occasional updates about new posts and projects.
         </p>
         <form
+          id="newsletter-subscription-form"
           class="mt-4 flex w-full max-w-sm"
           action="https://wiringbits.us19.list-manage.com/subscribe/post?u=7ed4d4d25be6d189d1795765d&id=67cb3fe8dc"
           method="post"
@@ -173,3 +174,19 @@ const today = new Date();
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    document
+      .querySelector('a[href^="mailto:"]')
+      ?.addEventListener("click", () => {
+        window.posthog?.capture("contact_email_clicked");
+      });
+
+    document
+      .getElementById("newsletter-subscription-form")
+      ?.addEventListener("submit", () => {
+        window.posthog?.capture("newsletter_subscription_submitted");
+      });
+  });
+</script>
